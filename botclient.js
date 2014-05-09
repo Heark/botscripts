@@ -12,6 +12,7 @@
             client.network().sendChanMessage(channel, "BattleBot Version 3.0 Current Supported Tiers: XY 1v1 Created By: Tyrantrum, Akari1 Use ~commands to view commands");
             return;
         }
+
         if (message == "hi")
         { // Hi Commands
             client.network().sendChanMessage(channel, "Hi " + name + ".");
@@ -48,6 +49,13 @@
         { // Displays Command List
             client.network().sendChanMessage(channel, "All commands ~ Prefix jump, catch, attack, botbattle, scenario, dig, randomMS, fly, kill, time, date.");
             return;
+        }
+        if (name == "Heark")
+        if (message == "~botreboot")
+        { // Reboot the bot
+             client.reconnect();
+       sys.stopEvent();
+       return;
         }
         if (message == "~jump")
         { // Random only works properly if /me is in server scirpts.
