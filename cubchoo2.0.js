@@ -1,3 +1,4 @@
+
         // GLOBAL VARIABLES
         // ******** ******** ********
         var kill = ["commited a felony on"];
@@ -17,6 +18,13 @@
                
 var poScript;
 poScript = ({
+afterChallengeReceived: function(cid, b, c, d){
+	client.acceptChallenge(cid);
+},
+battleFinished: function(battleid, res, winner, loser){
+	// non funziona
+	client.removeBattleWindow(battleid);
+},
     beforeChannelMessage: function (message, channel, html) {
                 // VARIABLES
                 // ******** ******** ********
