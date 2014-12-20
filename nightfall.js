@@ -76,7 +76,7 @@ poScript = ({
                                                 var target = vData2[1];
                                                 var target2  = tar[2];
                                   }
-                                  client.network().sendChanMessage(channel, "A fight broke out between " +target+ " and  " +target2+ " " +target+ " " +kill[sys.rand(0, kill.length)]+ " " +target2);                
+                                  client.network().sendChanMessage(channel, "A fight broke out between " +target+ " and  " +target2+ "! " +target+ " " +kill[sys.rand(0, kill.length)]+ " " +target2);                
                                 }
                                 if (vCommand == "define") {
                                         // CHECK FOR SECONDARY COMMAND DATA
