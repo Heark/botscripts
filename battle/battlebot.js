@@ -1,75 +1,92 @@
-// Created by Lutra edited and transformed by Heark
+
+var useAI=true;
+
+var channel = 0;
+
+var nick = function(spot) { return battle.data.field.poke(spot).pokemon.nick; };
+var verb = true;
+var send = function(msg) {
+   if (!verb) /*print (msg)*/;
+   else client.network().sendChanMessage(channel, msg);
+};
+
+var poke = function(spot) { return battle.data.team(spot).poke(0);};
+var fpoke = function(spot) { return battle.data.field.poke(spot);};
+var tpoke = function(ind) { return battle.data.team(battle.me).poke(ind);};
 
 ({
-	onTierNotification: function (tier) {
-		XY = tier === "XY 1v1";
-		if (XY){
-			event = this;
-			reset = function () {
-				counter = 0;
-				timer = 0;
-				pause_sent = false;
-			}
-			reset();
-			pause = function (trigger){
-				if (!pause_sent){
-					var resume_time = 61 - timer;
-					sys.delayedCall(event[trigger], resume_time);
-					battle.battleMessage(battle.id, "Script is pausing to prevent flood... it will resume in " + resume_time + " seconds.");
-					pause_sent = true;
-				}
-			}
-			sys.intervalCall(function(){timer++;},1000);
-			sys.intervalCall(reset, 60000);
-			alive = [0,1,2,3,4,5];
-			var i;
-			for (i = 1; i<6;i++) {
-				if (battle.data.team(battle.me).poke(i).nick === "") {
-					alive = alive.slice(0, i);
-					break;
-				}
-			}
-			battle.battleMessage(battle.id, "Hello " + battle.data.team(battle.opp).name + " Bot Online!"
-	onChoiceSelection: function() {
-		if (XY){
-			if (counter >= 30){
-				pause("onChoiceSelection");
-				return;
-			}
-			var mypoke = battle.data.field.poke(battle.me).pokemon;
-			if (mypoke.isKoed()) {
-				var switch_in = Math.floor(Math.random()*(alive.length-1))+1;
-				battle.battleCommand(battle.id, {"slot":battle.me, "type":"switch", "pokeSlot": alive[switch_in]});
-				counter++;
-				alive.splice(switch_in, 1);
-				return;
-			}
-			battle.battleCommand(battle.id, {"slot":battle.me, "type":"attack", "attackSlot": 0, "target":battle.opponent});
-			counter++;
-		}
-	},
-	onChoiceCancellation: function () {
-		if (metro){
-			if (counter >= 30){
-				pause("onChoiceCancellation");
-				return;
-			}
-			battle.battleCommand(battle.id, {"slot":battle.me, "type":"attack", "attackSlot": -1, "target":battle.opponent});
-			counter++;
-			event.onChoiceSelection();
-		}
-	},
-	onUseAttack: function (spot, move) {
-		if (XY){
-			if (counter >= 30){
-				pause("onUseAttack");
-				return;
-			}
-			if (move == 226 || move == 369 || move == 521) {
-				var switch_in = Math.floor(Math.random()*(alive.length-1))+1;
-				battle.battleCommand(battle.id, {"slot":battle.me, "type":"switch", "pokeSlot": alive[switch_in]});
-				counter++;
-			}
-		}
-	}
+onTierNotification: function (tier) {
+    battle.battleMessage(battle.id, "Hello "+ battle.data.team(battle.opp).name +"! I am Cubchoo The Best Bot, I will be the victor of this battle!");
+},
+
+hicounter: 0,
+maxhis: 3,
+
+onSpectatorJoin: function (id, name) {
+    if (this.hicounter < this.maxhis) {
+        battle.battleMessage(battle.id, "Hello " + name + "!");
+        this.hicounter++;
+        if (this.hicounter == this.maxhis) {
+            battle.battleMessage(battle.id, "Hello Function turned off.");
+        }
+    }
+},
+// onBeginTurn : function(turn) {
+  //  send("Turn " + turn + " of the battle!");
+// },
+onKo : function(spot) {
+    battle.battleMessage(battle.id, "Oh no! " + nick(spot) + " fainted!");
+},
+onDamageDone: function(spot, damage) {
+    if (spot == battle.me) {
+        battle.battleMessage(battle.id, ":(( My " + nick(spot) + " lost " + damage + " HP!");
+    } else {
+       battle.battleMessage(battle.id, nick(spot) + " lost " + damage + "% ;D !");
+    }
+},
+onChoiceSelection: function(player) {
+    if (player!=battle.me || !useAI) {
+        return;
+    }
+    var switches = [];
+    for (var i = 1; i < 6; i++) {
+        if (!tpoke(i).isKoed()) {
+           switches.push(i);
+        }
+    }
+
+   var r = sys.rand(0, 8);
+
+    if (r == 0 || (fpoke(battle.me).onTheField && !poke(battle.me).isKoed() && (r != 1 || switches.length == 0))) {
+        choice = {"slot": battle.me, "type":"attack", "attackSlot":sys.rand(0,4)};
+    } else {
+        var cswitch = switches[sys.rand(0,switches.length)];
+
+        choice = {"slot": battle.me, "type":"switch", "pokeSlot": cswitch};
+    }
+    battle.battleCommand(battle.id, choice);
+},
+onChoiceCancellation: function(player) {
+    this.onChoiceSelection(player);
+},
+onDrawRequest: function (player) {
+    this.onChoiceCancelled(player);
+},
+onChoiceCancelled: function(player) {
+//    print ("old useAI: " + useAI);
+    useAI = !useAI;
+    print ("new useAI: " + useAI);
+}
+,
+onPlayerMessage: function(player, message) {
+    if (player == battle.me) {
+        if (message == "annoy") {
+            verb = true;
+        } else if (message == "debug") {
+            verb = false;
+        } else if (message.substr(0, 5) == "eval ") {
+             sys.eval(message.substr(5));
+        }
+    }
+}
 })
