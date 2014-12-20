@@ -61,12 +61,20 @@ poScript = ({
                 // ******** ******** ********
                 if (vgAutoRespond == true) {
                         if (vgBlockedChannel.indexOf(vChannelName) == -1) {
+                                if (vCommand == "commands"){
+                                        print(vUserSentName);
+                                  client.network().sendChanMessage(channel, "*****Commands*****");
+                                  client.network().sendChanMessage(channel, "// ~define - Defines a word format: ~define word example ~define Cookie");
+                                  client.network().sendChanMessage(channel, "// ~attack - Attack your target with a random move. format: ~attack :target example: ~attack :JoyFrost");
+                                  client.network().sendChanMessage(channel, "// ~fight - Make a fight break out. format: ~fight :target :target2 example: ~fight :Heark :OORA")
+                                }
                                 if (vCommand == "attack"){
                                   if (vCommandData.indexOf(":") !== -1) {
                                                 var vData2 = vCommandData.split(":",2);
                                                 var target = vData2[1];
                                                 var pt2  = vData2[0];
                                   }
+                                  print(vUserSentName);
                                   client.network().sendChanMessage(channel, vUserSentName +" used " + sys.move(sys.rand(0, 559)) +  " on " +target+ "")                
                                 }
                                   if (vCommand == "fight"){
@@ -75,10 +83,22 @@ poScript = ({
                                                 var tar = vCommandData.split(":",3);
                                                 var target = vData2[1];
                                                 var target2  = tar[2];
+                                                var posswin = [];
                                   }
-                                  client.network().sendChanMessage(channel, "A fight broke out between " +target+ " and  " +target2+ "! " +target+ " " +kill[sys.rand(0, kill.length)]+ " " +target2);                
+                                  print(vUserSentName);
+                                  var num = Math.floor((Math.random() * 10) + 1);
+                                  if (num > 5){
+                                  var winner = target;
+                                  var loser = target2;
+                                  } else if (num < 5){
+                                          var winner = target2;
+                                          var loser = target;
+                                  }
+                                  client.network().sendChanMessage(channel, "A fight broke out between " +target+ " and  " +target2+ "! " +winner+ " " +kill[sys.rand(0, kill.length)]+ " " +loser+ ". " +winner+ " Wins!");  
+                                  
                                 }
                                 if (vCommand == "define") {
+                                        print(vUserSentName);
                                         // CHECK FOR SECONDARY COMMAND DATA
                                         if (vCommandData.indexOf(":") !== -1) {
                                                 // SPLIT
