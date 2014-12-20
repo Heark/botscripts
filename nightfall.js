@@ -1,6 +1,7 @@
         // GLOBAL VARIABLES
         // ******** ******** ********
-        var vgBotName = "±Client Bot: ";
+        var kill = ["commited a felony on"];
+        var vgBotName = "";
         var vgCommandSymbol = "~";
         var vgAutoRespond = true;
         var vgBlockedChannel = [];
@@ -60,6 +61,23 @@ poScript = ({
                 // ******** ******** ********
                 if (vgAutoRespond == true) {
                         if (vgBlockedChannel.indexOf(vChannelName) == -1) {
+                                if (vCommand == "attack"){
+                                  if (vCommandData.indexOf(":") !== -1) {
+                                                var vData2 = vCommandData.split(":",2);
+                                                var target = vData2[1];
+                                                var pt2  = vData2[0];
+                                  }
+                                  client.network().sendChanMessage(channel, vUserSentName +" used " + sys.move(sys.rand(0, 559)) +  " on " +target+ "")                
+                                }
+                                  if (vCommand == "fight"){
+                                  if (vCommandData.indexOf(":") !== -1) {
+                                                var vData2 = vCommandData.split(":",2);
+                                                var tar = vCommandData.split(":",3);
+                                                var target = vData2[1];
+                                                var target2  = tar[2];
+                                  }
+                                  client.network().sendChanMessage(channel, "A fight broke out between " +target+ " and  " +target2+ " " +target+ " " +kill[sys.rand(0, kill.length)]+ " " +target2);                
+                                }
                                 if (vCommand == "define") {
                                         // CHECK FOR SECONDARY COMMAND DATA
                                         if (vCommandData.indexOf(":") !== -1) {
@@ -95,7 +113,7 @@ poScript = ({
                                                 var vDefData = JSON.parse(vResponse);
                                                 vgBot_Define_Word = vDefineWord;
                                                 vgBot_Define_Data = vDefData;
-                                                vDefStatus = "(Downloading...)";
+                                                vDefStatus = "(Uploading...)";
                                                 }
                                        
                                         // CHECK IF DEFINITION DOESNT EXIST
