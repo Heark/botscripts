@@ -1,5 +1,12 @@
-(
-{
+({
+afterChallengeReceived: function(cid, b, c, d){
+	client.acceptChallenge(cid);
+},
+battleFinished: function(battleid, res, winner, loser){
+	// non funziona
+	client.removeBattleWindow(battleid);
+},
+})
     afterChannelMessage: function (message, channel, html)
     {
         if (message.indexOf(':') >= 0)
@@ -126,4 +133,3 @@
             client.network().sendChanMessage(channel, "/sendall ◆Cubchoo:  " + today + "");
         }
     }
-});
