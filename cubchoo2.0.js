@@ -215,10 +215,8 @@ battleFinished: function(battleid, res, winner, loser){
                                 }
                         }
                        
-                }
-        });
-   var greet;
-   greet =  ({
+                },
+
    	 afterChannelMessage: function (message, channel, html)
     {
         if (message.indexOf(':') >= 0)
