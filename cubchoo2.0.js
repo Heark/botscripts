@@ -1,7 +1,6 @@
 
         // GLOBAL VARIABLES
         // ******** ******** ********
-        var kill = ["commited a felony on"];
         var vgBotName = "";
         var vgCommandSymbol = "~";
         var vgAutoRespond = true;
@@ -76,6 +75,9 @@ battleFinished: function(battleid, res, winner, loser){
                                   client.network().sendChanMessage(channel, "// ~attack - Attack your target with a random move. format: ~attack :target example: ~attack :JoyFrost");
                                   client.network().sendChanMessage(channel, "// ~fight - Make a fight break out. format: ~fight :target :target2 example: ~fight :Heark :OORA")
                                 }
+                                if (vCommand == "catch"){
+                                	client.network().sendChanMessage(channel, vUserSentName +" Caught a "+ sys.pokemon(sys.rand(1, 719)) + " At Level " + sys.rand(1, 100) +" with a " + sys.nature(sys.rand(1, 25)) + " nature!")
+                                }
                                 if (vCommand == "attack"){
                                   if (vCommandData.indexOf(":") !== -1) {
                                                 var vData2 = vCommandData.split(":",2);
@@ -102,6 +104,7 @@ battleFinished: function(battleid, res, winner, loser){
                                           var winner = target2;
                                           var loser = target;
                                   }
+                                   var kill = ["commited a felony on", "read a book to", "drove their car into " +loser+"'s face and destroyed ", "shot"];
                                   client.network().sendChanMessage(channel, "A fight broke out between " +target+ " and  " +target2+ "! " +winner+ " " +kill[sys.rand(0, kill.length)]+ " " +loser+ ". " +winner+ " Wins!");  
                                   
                                 }
