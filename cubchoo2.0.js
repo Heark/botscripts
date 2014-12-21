@@ -1,4 +1,5 @@
-
+// Hearks Cubchoo bot!
+// Special Thanks: Nightfall Alicorn, Jinora, Lutra, Coyotte508
         // GLOBAL VARIABLES
         // ******** ******** ********
         var vgBotName = "";
