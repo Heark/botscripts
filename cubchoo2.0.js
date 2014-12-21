@@ -88,6 +88,13 @@ battleFinished: function(battleid, res, winner, loser){
                                   print(vUserSentName);
                                   client.network().sendChanMessage(channel, vUserSentName +" used " + sys.move(sys.rand(0, 559)) +  " on " +target+ "")                
                                 }
+                                if (vCommand == "botreboot"){
+                                	if (vUserSentName == "Heark"){
+                                    client.reconnect();
+                                      sys.stopEvent();
+                                          return;
+                                	}
+                                }
                                   if (vCommand == "fight"){
                                   if (vCommandData.indexOf(":") !== -1) {
                                                 var vData2 = vCommandData.split(":",2);
@@ -210,3 +217,90 @@ battleFinished: function(battleid, res, winner, loser){
                        
                 }
         });
+   var greet;
+   greet =  ({
+   	 afterChannelMessage: function (message, channel, html)
+    {
+        if (message.indexOf(':') >= 0)
+        {
+            name = message.split(':')[0];
+            message = message.substr(message.indexOf(':') + 2);
+        }
+        if (message == "hi")
+        { // Hi Commands
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Hi " + name + ".");
+        }
+        if (message == "Hi")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Hi " + name + ".");
+        }
+        if (message == "hello")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Hi " + name + ".");
+        }
+        if (message == "Hello")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Hi " + name + ".");
+        }
+        if (message == "Hey")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Hi " + name + ".");
+        }
+        if (message == "hey")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Hi " + name + ".");
+        }
+        if (message == "yo")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Hi " + name + ".");
+        }
+        if (message == "Yo")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Hi " + name + ".");
+        }
+        if (message == "bye")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Bye " + name + ".");
+        }
+        if (message == "Bye")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Bye " + name + ".");
+        }
+        if (message == "cya")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Bye " + name + ".");
+        }
+        if (message == "Cya")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Bye " + name + ".");
+        }
+        if (message == "im out")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Bye " + name + ".");
+        }
+        if (message == "Im out")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Bye " + name + ".");
+        }
+        if (message == "Im Out")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Bye " + name + ".");
+        }
+        if (message == "im Out")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Bye " + name + ".");
+        }
+        if (message == "I'm out")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Bye " + name + ".");
+        }
+        if (message == "I'm Out")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Bye " + name + ".");
+        }
+        if (message == "i'm Out")
+        {
+            client.network().sendChanMessage(channel, "/sendall ◆Cubchoo: Bye " + name + ".");
+        }
+    }
+   })
