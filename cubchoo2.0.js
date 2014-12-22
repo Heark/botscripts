@@ -71,10 +71,11 @@ battleFinished: function(battleid, res, winner, loser){
                         if (vgBlockedChannel.indexOf(vChannelName) == -1) {
                                 if (vCommand == "commands"){
                                         print(vUserSentName);
-                                  client.network().sendChanMessage(channel, "*****Commands*****");
                                   client.network().sendChanMessage(channel, "// ~define - Defines a word format: ~define word example ~define Cookie");
                                   client.network().sendChanMessage(channel, "// ~attack - Attack your target with a random move. format: ~attack :target example: ~attack :JoyFrost");
                                   client.network().sendChanMessage(channel, "// ~fight - Make a fight break out. format: ~fight :target :target2 example: ~fight :Heark :OORA")
+                                  client.network().sendChanMessage(channel, "// ~catch - Catch a random pokemon");
+                                  client.network().sendChanMessage(channel, "// ~stats - View the stats of a pokemon. format: ~stats :target example: ~stats :pikachu")
                                 }
                                 if (vCommand == "catch"){
                                 	client.network().sendChanMessage(channel, vUserSentName +" Caught a "+ sys.pokemon(sys.rand(1, 719)) + " At Level " + sys.rand(1, 100) +" with a " + sys.nature(sys.rand(1, 25)) + " nature!")
@@ -87,6 +88,22 @@ battleFinished: function(battleid, res, winner, loser){
                                   }
                                   print(vUserSentName);
                                   client.network().sendChanMessage(channel, vUserSentName +" used " + sys.move(sys.rand(0, 559)) +  " on " +target+ "")                
+                                }
+                                if (vCommand == "stats"){
+                                	        if (vCommandData.indexOf(":") !== -1) {
+                                                var vData2 = vCommandData.split(":",2);
+                                                var chosenPokemon = vData2[1];
+                                                var chosen = sys.pokeNum(chosenPokemon)
+                                }
+                                if (chosen == undefined){
+                                	client.network().sendChanMessage(channel, chosenPokemon+" doesn't exist in the database.");
+                                } else {	
+                                client.network().sendChanMessage(channel, chosenPokemon+"'s stats: HP: " +sys.baseStats(chosen, 0)+ " ATK: " +sys.baseStats(chosen, 1)+ " DEF: "+sys.baseStats(chosen, 2)+ " SPA: " +sys.baseStats(chosen, 3)+ " SPD: " +sys.baseStats(chosen, 4)+ " SPEED: "+sys.baseStats(chosen, 3)+".");	
+                                }
+                                if (vCommand == "savelogs"){
+                                	client.printHtml("<b><font color =red>Now saving logs...</font></b>")
+                                	sys.makeDir(botlogs);
+                                }
                                 }
                                 if (vCommand == "botreboot"){
                                 	if (vUserSentName == "Heark"){
