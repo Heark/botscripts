@@ -1,45 +1,6 @@
 /*
-Hot Potato Game Client Script v1.01
-Edited by Nightfall Alicorn
-Remade by <anonymous>
-Original script idea by Cirno
-
-- Introduction -
-    This is a fun game script that is basically pass the bomb.
-    
-    The game sets a random range timer 15 to 60 seconds by default. The
-    player, who is currently holding the potato, has to pass it to another
-    player in the channel that is in the game. Eventually someone will get
-    /ck when the bomb explodes on them.
-    
-    Of course. People can't cheat with bots by instant passing to another user
-    since the bomb will go off instantly.
-    
-    Commands:
-    ******** ******** ********
-    -potato / Starts the game's sign up process.
-    -join / To join the game.
-    -unjoin / Leave the game during sign ups.
-    -pass [user] / Pass the potato to that user.
-    -help / Display list of commands.
-    
-    Bot Auth Commands:
-    ******** ******** ********
-    -endpotato
-
-- Installing -
-    1. Copy all this text.
-    2. On Pokemon Online, go to "Plugins" and "Plugin Manager".
-    3. Check the check box for "Script Window" and click "OK".
-    4. Go to "Plugins" again and this time "Script Window".
-    5. Paste the code in the "Client scripts" text window.
-    6. To avoid problems, uncheck "Safe Scripts" and check "Show Warnings".
-    7. Finally, click "OK".
-    
-    If you are already logged on the server. You should see the message:
-    (00:00:00) ++Client Bot: Script updated.
-    (00:00:00) ++Client Bot: Type -help for list of commands for Hot Potato.
-
+ Special Thanks: Nightfall Alicorn
+ Created by: Heark
 - Notes -
     For safety reasons, the Hot Potato Game bot won't work in official channels
     by default.
