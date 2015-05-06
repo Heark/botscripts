@@ -62,7 +62,7 @@ print(vgBotName + "Type " + vgCommandSymbol + "help for list of commands for War
 // ******** ******** ********
 sys.unsetAllTimers();
 
-// POTATO GLOBALS
+// Apples to apples GLOBALS
 // ******** ******** ********
 var vgPotatoPlayerArray = [],
     vgPotatoPlayerUncasedArray = [],
@@ -78,7 +78,10 @@ var vgPotatoPlayerArray = [],
     vgPotatoAuthArray = [client.ownName().toLowerCase()],
     vgPotatoTimerSignUp,
     vgPotatoTimerExplode,
-    vgPotatoTimerCooldown;
+    vgPotatoTimerCooldown,
+    AdjWordbank = ["big", "dirty", "fresh",'gigantic','cold','difficult','lame','royal','sweet','super'.'scientific','slow','tall','short',
+    ],
+    Wordbank = ['Television','Pokemon','Earth','Solar System','table','book','clothes','paper','video game'];
 
 // POTATO FUNCTIONS
 // ******** ******** ********
@@ -188,7 +191,7 @@ objPoScript = ({
         // ******** ******** ********
         if ((vCommand === "join") && (vgPotatoSignup === true)) {
             if (vChannelName !== vgPotatoChannel) { // PREVENTS JOINING GAME IN ANOTHER CHANNEL
-                client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game of Hot Potato is in signups in #" + vgPotatoChannel + "!");
+                client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game of Apples to Apples is in signups in #" + vgPotatoChannel + "!");
                 return;
             }
             if (vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase()) !== -1) { // PREVENT DUPLICATE ALTS JOINING
@@ -221,7 +224,9 @@ objPoScript = ({
 
         // MOVES
         // ******** ******** ********
-        if (vgPotoStarted === true)
+        if (vgPotatoStarted === true){
+            if (vg)
+        }
         
         // END POTATO
         // ******** ******** ********
