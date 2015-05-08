@@ -17,7 +17,7 @@ var vgBotMsgPrefix = "";
 var vgOfficalChannelArray = ["Blackjack", "Developer's Den", "Evolution Game", "Hangman", "Indigo Plateau", "Mafia", "Mafia Review", "Tohjo Falls", "Tohjo v2", "Tournaments", "TrivReview", "Trivia", "Victory Road", "Watch"];
 
 print(vgBotName + "Script updated.");
-print(vgBotName + "Type " + vgCommandSymbol + "help for list of commands for Warrior.");
+print(vgBotName + "Type " + vgCommandSymbol + "help for list of commands for Roulette.");
 
 // RESET ALL TIMERS
 // ******** ******** ********
@@ -40,8 +40,8 @@ var vgPotatoPlayerArray = [],
     vgPotatoTimerSignUp,
     vgPotatoTimerExplode,
     vgPotatoTimerCooldown,
-    AdjWordbank = ["big", "dirty", "fresh",'gigantic','cold','difficult','lame','royal','sweet','super'.'scientific','slow','tall','short',
-    ],
+    playerAmount = 0,
+    scores = [],
     Wordbank = ['Television','Pokemon','Earth','Solar System','table','book','clothes','paper','video game'];
 
 // POTATO FUNCTIONS
@@ -61,25 +61,26 @@ function funPotatoStart(channel, vZero) {
     if (vgPotatoPlayerArray.length < 2) {
         client.network().sendChanMessage(channel, vgBotMsgPrefix + "Game over! Not enough players have signed up!");
         funPotatoEnd();
-    } else {
-        var vPlayerRng = Math.floor((Math.random() * vgPotatoPlayerUncasedArray.length) + vZero);
-        var vPotatoExplodeLengthRng = Math.floor((Math.random() * vgPotatoExplodeWaitMax) + vgPotatoExplodeWaitMin);
-        var vPlayersJoined = vgPotatoPlayerUncasedArray
-                .toString()
-                .replace(/\,/g, ", ");
-        vgPotatoVictim = vgPotatoPlayerUncasedArray[vPlayerRng];
-        client.network().sendChanMessage(channel, vgBotMsgPrefix + "Players playing: " + vPlayersJoined);
-        client.network().sendChanMessage(channel, vgBotMsgPrefix + vgPotatoPlayerUncasedArray[vPlayerRng] + " is holding the potato! Use " + vgCommandSymbol + "pass <username> to pass the potato!");
+    } 
+     else {
+//        var vPlayerRng = Math.floor((Math.random() * vgPotatoPlayerUncasedArray.length) + vZero);
+  //      var vPotatoExplodeLengthRng = Math.floor((Math.random() * vgPotatoExplodeWaitMax) + vgPotatoExplodeWaitMin);
+    //    var vPlayersJoined = vgPotatoPlayerUncasedArray
+      //          .toString()
+        //        .replace(/\,/g, ", ");
+        // vgPotatoVictim = vgPotatoPlayerUncasedArray[vPlayerRng];
+        //client.network().sendChanMessage(channel, vgBotMsgPrefix + "Players playing: " + vPlayersJoined);
+        //client.network().sendChanMessage(channel, vgBotMsgPrefix + vgPotatoPlayerUncasedArray[vPlayerRng] + " is holding the potato! Use " + vgCommandSymbol + "pass <username> to pass the potato!");
         vgPotatoStarted = true;
-        vgPotatoTimerExplode = sys.setTimer(function () {
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + "The potato exploded on " + vgPotatoVictim + "!");
-            client.network().sendChanMessage(channel, "/ck " + vgPotatoVictim);
-            funPotatoEnd();
-        }, vPotatoExplodeLengthRng * 1000, false);
-        vgPotatoCooldown = true;
-        vgPotatoTimerCooldown = sys.setTimer(function () {
-            vgPotatoCooldown = false;
-        }, vgPotatoCooldownWait, false);
+        //vgPotatoTimerExplode = sys.setTimer(function () {
+          //  client.network().sendChanMessage(channel, vgBotMsgPrefix + "The potato exploded on " + vgPotatoVictim + "!");
+           // client.network().sendChanMessage(channel, "/ck " + vgPotatoVictim);
+            //funPotatoEnd();
+        //}, vPotatoExplodeLengthRng * 1000, false);
+        //vgPotatoCooldown = true;
+        //vgPotatoTimerCooldown = sys.setTimer(function () {
+          //  vgPotatoCooldown = false;
+       // }, vgPotatoCooldownWait, false);
     }
     return;
 }
@@ -125,7 +126,7 @@ objPoScript = ({
 
         // START POTATO SIGNUPS
         // ******** ******** ********
-        if ((vCommand === "warrior") && (vgPotatoSignup === false) && (vgPotatoStarted === false)) {
+        if ((vCommand === "roulette") && (vgPotatoSignup === false) && (vgPotatoStarted === false)) {
             vgPotatoChannel = vChannelName;
             client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game of Warrior has started! Type " + vgCommandSymbol + "join to join! Signups will be over in " + vgPotatoSignUpWait + " seconds!");
             client.network().sendChanMessage(channel, vgBotMsgPrefix + "Caution: Do not join if you are unprepared to be kicked from the channel.");
@@ -134,13 +135,13 @@ objPoScript = ({
                 vgPotatoSignup = false;
                 funPotatoStart(channel, vZero);
             }, vgPotatoSignUpWait * 1000, false);
-        } else if ((vCommand === "potato") && (vgPotatoSignup === true) && (vgPotatoStarted === false)) {
+        } else if ((vCommand === "roulette") && (vgPotatoSignup === true) && (vgPotatoStarted === false)) {
             if (vChannelName !== vgPotatoChannel) {
                 client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game is currently in signups in #" + vgPotatoChannel + "!");
             } else {
                 client.network().sendChanMessage(channel, "/me A game is currently in signups here! Use " + vgCommandSymbol + "join to join!");
             }
-        } else if ((vCommand === "potato") && (vgPotatoSignup === false) && (vgPotatoStarted === true)) {
+        } else if ((vCommand === "roulette") && (vgPotatoSignup === false) && (vgPotatoStarted === true)) {
             if (vChannelName !== vgPotatoChannel) {
                 client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game is already playing in #" + vgPotatoChannel + "!");
             } else {
@@ -152,7 +153,7 @@ objPoScript = ({
         // ******** ******** ********
         if ((vCommand === "join") && (vgPotatoSignup === true)) {
             if (vChannelName !== vgPotatoChannel) { // PREVENTS JOINING GAME IN ANOTHER CHANNEL
-                client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game of Apples to Apples is in signups in #" + vgPotatoChannel + "!");
+                client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game of Roulette is in signups in #" + vgPotatoChannel + "!");
                 return;
             }
             if (vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase()) !== -1) { // PREVENT DUPLICATE ALTS JOINING
@@ -160,6 +161,7 @@ objPoScript = ({
                 return;
             }
             vgPotatoPlayerArray.push(vUserSentName.toLowerCase());
+            playerAmount =+ 1
             vgPotatoPlayerUncasedArray.push(vUserSentName);
             // vgPotatoPlayerUncasedArray IS SO ACTUAL NAME CAN BE PRINTED LATER
             client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " joined the game!");
@@ -174,6 +176,7 @@ objPoScript = ({
                 return;
             }
             if (vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase()) !== -1) {
+                playerAmount =- 1
                 vgPotatoPlayerArray.splice(vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase), 1);
                 vgPotatoPlayerUncasedArray.splice(vgPotatoPlayerUncasedArray.indexOf(vUserSentName), 1);
                 client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " unjoined the game!");
@@ -185,15 +188,30 @@ objPoScript = ({
 
         // MOVES
         // ******** ******** ********
-        if (vgPotatoStarted === true){
-            if (vg)
+        if (vCommand === "capture" && vgPotatoStarted == true){
+           stats = function(name, player, level, nature){
+            this.name = sys.pokemon(sys.rand(1, 719))
+            this.player = vUserSentName
+            this.level = sys.rand(1, 100)
+            this.nature = sys.nature(sys.rand(1, 25))
+           }
+           playerAmount =- 1
+           scores.push(stats.level)
+           client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " Caught a " +stats.name+ " at level " +stats.level+ " with a " +stats.nature+ " nature!");
         }
         
+          if(vCommand === "capture" && vgPotatoPlayerArray.indexOf(vUserSentName)) {
+          client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " isn't in the game!");
+          }
+        if (playerAmount == 0 && potatoStarted == true){
+         winner = Math.max(scores);
+         client.network().sendChanMessage(channel, vgBotMsgPrefix + winner + " is the winner!");
+        }
         // END POTATO
         // ******** ******** ********
         if ((vCommand === "end") && (vgPotatoAuthArray.indexOf(vUserSentName.toLowerCase()) !== -1)) {
             if ((vgPotatoSignup === true) || (vgPotatoStarted === true)) {
-                client.network().sendChanMessage(channel, vgBotMsgPrefix + "The game of Warrior has ended!");
+                client.network().sendChanMessage(channel, vgBotMsgPrefix + "The game of Roulette has ended!");
                 if (vgPotatoSignup === true) {
                     sys.unsetTimer(vgPotatoTimerSignUp);
                 }
@@ -227,4 +245,4 @@ objPoScript = ({
         }
 
     } // END OF beforeChannelMessage
-}); // END OF objPoScript
+}); })// END OF objPoScript
