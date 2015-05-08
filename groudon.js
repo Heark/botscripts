@@ -6,6 +6,7 @@
         var vgCommandSymbol = "~";
         var vgAutoRespond = true;
         var vgBlockedChannel = [];
+        var botOnline = true;
        
         // DEFINE CACHED MEMORY
         var vgBot_Define_Word;
@@ -51,31 +52,36 @@ battleFinished: function(battleid, res, winner, loser){
                 // BOT OWNER COMMANDS
                 // ******** ******** ********
                 if (vMyName == vUserSentName) {
-                        // AUTO RESPOND SWITCH
-                        // ******** ******** ********
-                        if (vCommand == "setbot") {
                                 if (vCommandData == "on") {
-                                        vgAutoRespond = true;
-                                        client.network().sendChanMessage(channel, vgBotName + "Auto Messages enabled.");
+                                        botOnline = true;
+                                        client.network().sendChanMessage(channel, vgBotName + "Bot enabled.");
                                         }
                                 if (vCommandData == "off") {
-                                        vgAutoRespond = false;
-                                        client.network().sendChanMessage(channel, vgBotName + "Auto Messages disabled.");
+                                        botOnline = false;
+                                        client.network().sendChanMessage(channel, vgBotName + "Bot disabled.");
                                         }
+                                if (vCommandData == "userinfo"){
+                                var vTarget                 = vData[0];
+                                var info =	getUserInfo(vTarget)
+                                print(info)
+                                 
                                 }
-                        }
-               
+                                } else {
+                                	client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
+                                }
+ if (botOnline == true){
+ 	
                 // DEFINE (CODE PROVIDED BY JINORA + EDITED BY NIGHTFALL ALICORN)
                 // ******** ******** ********
                 if (vgAutoRespond == true) {
                         if (vgBlockedChannel.indexOf(vChannelName) == -1) {
                                 if (vCommand == "commands"){
                                         print(vUserSentName);
-                                  client.network().sendChanMessage(channel, "// ~define - Defines a word format: ~define word example ~define Cookie");
-                                  client.network().sendChanMessage(channel, "// ~attack - Attack your target with a random move. format: ~attack :target example: ~attack :JoyFrost");
-                                  client.network().sendChanMessage(channel, "// ~fight - Make a fight break out. format: ~fight :target :target2 example: ~fight :Heark :OORA")
-                                  client.network().sendChanMessage(channel, "// ~catch - Catch a random pokemon");
-                                  client.network().sendChanMessage(channel, "// ~stats - View the stats of a pokemon. format: ~stats :target example: ~stats :pikachu")
+                                  client.network().sendChanMessage(channel, "/me // ~define - Defines a word format: ~define word example ~define Cookie");
+                                  client.network().sendChanMessage(channel, "/me // ~attack - Attack your target with a random move. format: ~attack :target example: ~attack :JoyFrost");
+                                  client.network().sendChanMessage(channel, "/me // ~fight - Make a fight break out. format: ~fight :target :target2 example: ~fight :Heark :OORA")
+                                  client.network().sendChanMessage(channel, "/me // ~catch - Catch a random pokemon");
+                                  client.network().sendChanMessage(channel, "/me // ~stats - View the stats of a pokemon. format: ~stats :target example: ~stats :pikachu")
                                 }
                                 if (vCommand == "catch"){
                                 	client.network().sendChanMessage(channel, vUserSentName +" Caught a "+ sys.pokemon(sys.rand(1, 719)) + " At Level " + sys.rand(1, 100) +" with a " + sys.nature(sys.rand(1, 25)) + " nature!")
@@ -88,6 +94,13 @@ battleFinished: function(battleid, res, winner, loser){
                                   }
                                   print(vUserSentName);
                                   client.network().sendChanMessage(channel, vUserSentName +" used " + sys.move(sys.rand(0, 559)) +  " on " +target+ "")                
+                                }
+                                if (vCommand == "shoot"){
+                                	var gun = ["AK-47", "Arsenal MG", "Arsenal MG", "6P62", "M14 Rifle", "Stoner 63"]
+                                                var vTarget                 = vData[0];
+                                                var vDefineSelection    = vData[1];
+                                        }
+                                        client.network().sendChanMessage(channel, "/me ** " + vUserSentName +" shot " +Target+ " with a "+gun[sys.rand(0, gun.length)]+)
                                 }
                                 if (vCommand == "stats"){
                                 	        if (vCommandData.indexOf(":") !== -1) {
@@ -233,8 +246,10 @@ battleFinished: function(battleid, res, winner, loser){
                                 }
                         }
                        
-                },
-
+                }
+} else {
+	sendPM(vUserSentName, "Bot is offline.");
+}
    	 afterChannelMessage: function (message, channel, html)
     {
         if (message.indexOf(':') >= 0)
