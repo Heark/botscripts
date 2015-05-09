@@ -2,6 +2,7 @@
 // Special Thanks: Nightfall Alicorn, Jinora, Lutra, Coyotte508
         // GLOBAL VARIABLES
         // ******** ******** ********
+        var gun = ["AK-47", "Arsenal MG", "Arsenal MG", "6P62", "M14 Rifle", "Stoner 63"]
         var vgBotName = "";
         var vgCommandSymbol = "~";
         var vgAutoRespond = true;
@@ -20,7 +21,7 @@
 var poScript;
 poScript = ({
 afterChallengeReceived: function(cid, b, c, d){
-	client.acceptChallenge(cid);
+    client.acceptChallenge(cid);
 },
 battleFinished: function(battleid, res, winner, loser){
 	// non funziona
@@ -51,24 +52,23 @@ battleFinished: function(battleid, res, winner, loser){
                
                 // BOT OWNER COMMANDS
                 // ******** ******** ********
-                if (vMyName == vUserSentName) {
-                                if (vCommandData == "on") {
+                                if (vCommand == "on") {
+                                  if (vUserSentName == "Heark" || "Liberal") {
                                         botOnline = true;
                                         client.network().sendChanMessage(channel, vgBotName + "Bot enabled.");
-                                        }
-                                if (vCommandData == "off") {
+                                        } else {
+                                	client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
+                                } 
+                                }
+                                if (vCommand == "off") {
+                                	if (vUserSentName == "Heark" || "Liberal") {
                                         botOnline = false;
                                         client.network().sendChanMessage(channel, vgBotName + "Bot disabled.");
-                                        }
-                                if (vCommandData == "userinfo"){
-                                var vTarget                 = vData[0];
-                                var info =	getUserInfo(vTarget)
-                                print(info)
-                                 
-                                }
-                                } else {
+                                        } else {
                                 	client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                                 }
+                                }
+
  if (botOnline == true){
  	
                 // DEFINE (CODE PROVIDED BY JINORA + EDITED BY NIGHTFALL ALICORN)
@@ -96,11 +96,23 @@ battleFinished: function(battleid, res, winner, loser){
                                   client.network().sendChanMessage(channel, vUserSentName +" used " + sys.move(sys.rand(0, 559)) +  " on " +target+ "")                
                                 }
                                 if (vCommand == "shoot"){
-                                	var gun = ["AK-47", "Arsenal MG", "Arsenal MG", "6P62", "M14 Rifle", "Stoner 63"]
+                                	        var vData = vCommandData.split(":",2);
                                                 var vTarget                 = vData[0];
                                                 var vDefineSelection    = vData[1];
+                                        client.network().sendChanMessage(channel, "/me ** " + vUserSentName +" shot " +vTarget+ " with a "+gun[sys.rand(0, gun.length)])
                                         }
-                                        client.network().sendChanMessage(channel, "/me ** " + vUserSentName +" shot " +Target+ " with a "+gun[sys.rand(0, gun.length)]+)
+                                        
+                                }
+                                 if (vCommand == "userinfo"){
+                                 if (vUserSentName == "Heark" || "Liberal") {
+                                var vData = vCommandData.split(":",2);
+                                var vTarget                 = vData[0];
+                                var info =	getUserInfo(vTarget)
+                                print(info)
+                                 
+                                } else {
+                                	client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
+                                } 
                                 }
                                 if (vCommand == "stats"){
                                 	        if (vCommandData.indexOf(":") !== -1) {
@@ -245,93 +257,9 @@ battleFinished: function(battleid, res, winner, loser){
                                         }
                                 }
                         }
-                       
-                }
-} else {
+        else {
 	sendPM(vUserSentName, "Bot is offline.");
 }
-   	 afterChannelMessage: function (message, channel, html)
-    {
-        if (message.indexOf(':') >= 0)
-        {
-            name = message.split(':')[0];
-            message = message.substr(message.indexOf(':') + 2);
-        }
-        if (message == "hi")
-        { // Hi Commands
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Hi " + name + ".");
-        }
-        if (message == "Hi")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Hi " + name + ".");
-        }
-        if (message == "hello")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Hi " + name + ".");
-        }
-        if (message == "Hello")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Hi " + name + ".");
-        }
-        if (message == "Hey")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Hi " + name + ".");
-        }
-        if (message == "hey")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Hi " + name + ".");
-        }
-        if (message == "yo")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Hi " + name + ".");
-        }
-        if (message == "Yo")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Hi " + name + ".");
-        }
-        if (message == "bye")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Bye " + name + ".");
-        }
-        if (message == "Bye")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Bye " + name + ".");
-        }
-        if (message == "cya")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Bye " + name + ".");
-        }
-        if (message == "Cya")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Bye " + name + ".");
-        }
-        if (message == "im out")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Bye " + name + ".");
-        }
-        if (message == "Im out")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Bye " + name + ".");
-        }
-        if (message == "Im Out")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Bye " + name + ".");
-        }
-        if (message == "im Out")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Bye " + name + ".");
-        }
-        if (message == "I'm out")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Bye " + name + ".");
-        }
-        if (message == "I'm Out")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Bye " + name + ".");
-        }
-        if (message == "i'm Out")
-        {
-            client.network().sendChanMessage(channel, "/sendall ◆Groudon: Bye " + name + ".");
-        }
-    }
-   })
+                       
+                }
+})
