@@ -2,6 +2,13 @@
 // Special Thanks: Nightfall Alicorn, Jinora, Lutra, Coyotte508
         // GLOBAL VARIABLES
         // ******** ******** ********
+    // Insults
+    var insults = [" You swine. You vulgar little maggot. You worthless bag of filth. As we say in Texas, you couldnt pour water out of a boot with instructions printed on the heel. You are a canker, an open wound. I would rather kiss a lawyer than be seen with you. You took your last vacation inthe Isles of Langerhan.", " You're a putrescent mass, a walking vomit. You are a spineless little worm deserving nothing but the profoundest contempt. You are a jerk, a cad, a weasel. Your life is a monument to stupidity. You are a stench, a revulsion, a big suck on a sour lemon."
+    ," You are a bleating foal, a curdled staggering mutant dwarf smeared richly with the effluvia and offal accompanying your alleged birth into a hostile world. You are an insensate, blinking calf, meaningful to nobody, abandoned by the puke-drooling, giggling beasts who sired you and then died of shame in recognition of what they had done. They were a bit late.",
+    " I will never get over the embarrassment of belonging to the same species as you. You are a monster, an ogre, a malformity. I barf at the very thought of you. You have all the appeal of a paper cut. Lepers avoid you. You are vile, worthless, less than nothing. You are a weed, a fungus, the dregs of this earth. And did I mention that you smell?", 
+    " Try to edit your responses of unnecessary material before attempting to impress us with your insight. The evidence that you are a nincompoop will still be available to readers, but they will be able to access it ever so much more rapidly.", 
+    " You snail-skulled little rabbit. Would that a hawk pick you up, drive its beak into your brain, and upon finding it rancid set you loose to fly briefly before spattering the ocean rocks with the frothy pink shame of your ignoble blood. May you choke on the queasy, convulsing nausea of your own trite, foolish beliefs.",
+    " You are weary, stale, flat and unprofitable. You are grimy, squalid, nasty and profane. You are foul and disgusting. You're a fool, an ignoramus. Monkeys look down on you. Even sheep won't have sex with you. You are unreservedly pathetic, starved for attention, and lost in a land that reality forgot. You are not ANSI compliant. You have a couple of address lines shorted together. You should be promoted to Engineering Manager."]
         var gun = ["AK-47", "Arsenal MG", "Arsenal MG", "6P62", "M14 Rifle", "Stoner 63"]
         var vgBotName = "";
         var vgCommandSymbol = "~";
@@ -95,6 +102,14 @@ battleFinished: function(battleid, res, winner, loser){
                                   print(vUserSentName);
                                   client.network().sendChanMessage(channel, vUserSentName +" used " + sys.move(sys.rand(0, 559)) +  " on " +target+ "")                
                                 }
+                                if (vCommand == "insult"){
+                                	        var vData = vCommandData.split(":",2);
+                                                var name                 = vData[0];
+                                                client.network().sendChanMessage(channel,  name+ ""+insults[sys.rand(0, insults.length)]+"")
+                                }
+                                                
+                                	
+                        
                                 if (vCommand == "shoot"){
                                 	        var vData = vCommandData.split(":",2);
                                                 var vTarget                 = vData[0];
