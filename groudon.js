@@ -24,7 +24,7 @@ afterChallengeReceived: function(cid, b, c, d){
     client.acceptChallenge(cid);
 },
 battleFinished: function(battleid, res, winner, loser){
-	// non funziona
+    // non funziona
 	client.removeBattleWindow(battleid);
 },
     beforeChannelMessage: function (message, channel, html) {
@@ -102,7 +102,28 @@ battleFinished: function(battleid, res, winner, loser){
                                         client.network().sendChanMessage(channel, "/me ** " + vUserSentName +" shot " +vTarget+ " with a "+gun[sys.rand(0, gun.length)])
                                         }
                                         
-                                }
+                                
+                                         if (vCommand == "battle"){
+                                                 var num2 = Math.floor((Math.random() * 10) + 1); 
+                                                 	var pokemon1 = sys.pokemon(sys.rand(1, 719))
+                                                 	var pokemon2 = sys.pokemon(sys.rand(1, 719))
+                                                 
+                                                 if (num2 < 5){
+                                                 var winner = pokemon1
+                                                 var loser = pokemon2
+                                                 } else if (num2 > 5){
+                                                 var winner = pokemon2
+                                                 var loser = pokemon1
+                                                 	
+                                                 }
+                                        client.network().sendChanMessage(channel, "/me ** a battle started between " +pokemon1+ " and  "+pokemon2+ " "+winner+" used "+ sys.move(sys.rand(0, 559)))
+                                        client.network().sendChanMessage(channel, "/me " +winner+ " wins!  " +loser+ " fainted.")
+                                        
+                                        }
+                        
+                        }
+                                        
+                                
                                  if (vCommand == "userinfo"){
                                  if (vUserSentName == "Heark" || "Liberal") {
                                 var vData = vCommandData.split(":",2);
@@ -257,9 +278,6 @@ battleFinished: function(battleid, res, winner, loser){
                                         }
                                 }
                         }
-        else {
-	sendPM(vUserSentName, "Bot is offline.");
-}
                        
                 }
 })
