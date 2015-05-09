@@ -116,7 +116,7 @@ battleFinished: function(battleid, res, winner, loser){
                                                  var loser = pokemon1
                                                  	
                                                  }
-                                        client.network().sendChanMessage(channel, "/me ** a battle started between " +pokemon1+ " and  "+pokemon2+ " | "+winner+" used "+ sys.move(sys.rand(0, 559)))
+                                        client.network().sendChanMessage(channel, "/me ** A battle started between " +pokemon1+ " and  "+pokemon2+ " | "+winner+" used "+ sys.move(sys.rand(0, 559)))
                                         client.network().sendChanMessage(channel, "/me " +winner+ " wins!  " +loser+ " fainted.")
                                         
                                         }
