@@ -33,6 +33,8 @@ function funFact() {
 }
 
 // Rest of code
+var Joy = "Heark's friend <3 Oora's sex slave";
+var OORA = "Joy's friend <3 Heark's sex slave";
 var matches = ["are a match made in heaven!", "were not meant to be.", "both had AIDS.", "'s wedding was destroyed by a gorilla.", "ended up dating eachothers siblings.", "decided to change their sexualities."];
 var vgBotName = "++Client Bot: ";
 var vgCommandSymbol = "~";
