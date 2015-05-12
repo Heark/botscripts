@@ -451,10 +451,10 @@ beforeChannelMessage: function(message, channel, html) {
             }
            
             if (vCommand == "stats") {
-                    var vDat2 = vCommandData.split(":", 2);
+                    var vData2 = vCommandData.split(":", 2);
                     var chosenPokemon = vData2[0];
                     var chosen = sys.pokeNum(chosenPokemon)
-                }
+                
                 var type1 = sys.pokeType1(chosen, 6)
                 var type2 = sys.pokeType2(chosen, 6)
                 var ab1 = sys.pokeAbility(chosen, 0)
@@ -465,7 +465,7 @@ beforeChannelMessage: function(message, channel, html) {
                 } else {
                     client.network().sendChanMessage(channel, chosenPokemon + "'s stats: Type: " + sys.type(type1) + " " + sys.type(type2) + "| Abilities: " +ab1+""+ab2+""+ab3+ " | HP: " + sys.baseStats(chosen, 0, 6) + " | ATK: " + sys.baseStats(chosen, 1, 6) + " | DEF: " + sys.baseStats(chosen, 2, 6) + " | SPA: " + sys.baseStats(chosen, 3, 6) + " | SPD: " + sys.baseStats(chosen, 4, 6) + " | SPEED: " + sys.baseStats(chosen, 5, 6) + ".");
                 }
-                
+            }
             if (vCommand == "savelogs") {
                 client.printHtml("<b><font color =red>Now saving logs...</font></b>")
                 sys.makeDir(botlogs);
