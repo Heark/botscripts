@@ -11,7 +11,7 @@ var insults = [" You swine. You vulgar little maggot. You worthless bag of filth
     " And what meaning do you expect your delusionally self-important statements of unknowing, inexperienced opinion to have with us? What fantasy do you hold that you would believe that your tiny-fisted tantrums would have more weight than that of a leprous desert rat, spinning rabidly in a circle, waiting for the bite of the snake?",
     " You are a waste of flesh. You have no rhythm. You are ridiculous and obnoxious. You are the moral equivalent of a leech. You are a living emptiness, a meaningless void. You are sour and senile. You are a loathsome disease, a puerile slack-jawed drooling meatslapper. You make Quakers shout and strike Pentecostals silent. Your mother had to tie a pork chop around your neck just to get your dog to play  with you.  You think P.D.Q. Bach is the greatest composer who ever lived.  You prefer L. Ron Hubbard to Larry Niven and Jerry Pournelle.  Hee-Haw is too deep for you.  You would watch test patterns all day if the other inmates would let you.",
     " On a good day you're a half-wit. You remind me of drool. You are deficient in all that lends character. You have the personality of wallpaper. You are dank and filthy. You are asinine and benighted. You are the source of all unpleasantness. You spread misery and sorrow wherever you go."
-]
+];
 
 
 
@@ -20,17 +20,18 @@ var facts = ["The word Scientist first appeared in 1833", "The average number of
     "A 10-Year-Old Accidentally Created in 2012 a New Molecule in Science Class: Tetranitratoxycarbon.", "41 new species are discovered by scientists every single day. ", "Sphenopalatine ganglioneuralgia is the scientific term for brain freeze.", "More germs are transferred shaking hands than kissing.", "The human brain takes in 11 million bits of information every second but is aware of only 40.", "A red blood cell can make a complete circuit of your body in 20 seconds.", " Scientists have developed a way of charging mobile phones using urine.",
     "Scientists have developed a microparticle filled with oxygen that can be injected into the blood stream, so we can live without breathing.", "The World's oldest known creature, a mollusc, was 507 years old until scientists killed it by mistake.", "The average person accidentally eats 430 bugs each year of their life.",
     "Males produce one thousand sperm cells each second – 86 million each day.", "Human saliva contains a painkiller called opiorphin that is six times more powerful than morphine.", "Girls have more taste buds than boys.", "Gorillas and potatoes have two more chromosomes than humans do.", "A pig’s orgasm lasts for 30 minutes.", "At over 2000 kilometres long The Great Barrier Reef is the largest living structure on Earth."
-]
+];
 
 var FactTime = 900; // 1 FACT EVERY 900 SECONDS (15 MINUTES)
 var hFacts = true; // Disable to turn random facts off
 var sysFact = false;
 
-    function funFact(){
-	sysFact = false;
+function funFact() {
+    sysFact = false;
 }
 
 // Rest of code
+var matches = ["are a match made in heaven!", "were not meant to be.", "both had AIDS.", "'s wedding was destroyed by a gorilla.", "ended up dating eachothers siblings.", "decided to change their sexualities."];
 var vgBotName = "++Client Bot: ";
 var vgCommandSymbol = "~";
 var vgBotMsgPrefix = "";
@@ -101,7 +102,7 @@ function funPotatoStart(channel, vZero) {
     }
     return;
 }
-var gun = ["AK-47", "Arsenal MG", "Arsenal MG", "6P62", "M14 Rifle", "Stoner 63"]
+var gun = ["AK-47", "Arsenal MG", "Arsenal MG", "6P62", "M14 Rifle", "Stoner 63"];
 var vgBotName = "";
 var vgCommandSymbol = "~";
 var vgAutoRespond = true;
@@ -119,488 +120,521 @@ print(vgBotName + "// -define [word]:[selection number]");
 
 var poScript;
 poScript = ({
-        afterChallengeReceived: function(cid, b, c, d) {
-            client.acceptChallenge(cid);
-        },
-        battleFinished: function(battleid, res, winner, loser) {
-            // non funziona
-            client.removeBattleWindow(battleid);
-        },
-        beforeChannelMessage: function(message, channel, html) {
-            // VARIABLES
-            // ******** ******** ********
-            var vMyName = client.ownName();
-            var vUserSentName = message.substring(0, message.indexOf(':'));
-            var vUserSentMessage = message.substr(message.indexOf(':') + 2).toLowerCase();
-            var vChannelName = client.channelName(channel);
-            "use strict";
-            // VARIABLES
-            // ******** ******** ********
-            var x, y, z,
-                vMyName = client.ownName(),
-                vUserSentName = message.substring(0, message.indexOf(':')),
-                vUserSentMessage = message.substr(message.indexOf(':') + 2),
-                vUserSentId = client.id(message.substring(0, message.indexOf(':'))),
-                vUserSentAuth = client.auth(client.id(message.substring(0, message.indexOf(':')))),
-                vUserSentColor = client.color(client.id(message.substring(0, message.indexOf(':')))),
-                vChannelName = client.channelName(channel),
-                vChannelId = channel,
-                vChannelCurrentlyViewingId = client.currentChannel(),
-                vChannelCurrentlyViewingName = client.channelName(client.currentChannel()),
-                vZero = 0;
+afterChallengeReceived: function(cid, b, c, d) {
+    client.acceptChallenge(cid);
+},
+battleFinished: function(battleid, res, winner, loser) {
+    // non funziona
+    client.removeBattleWindow(battleid);
+},
+beforeChannelMessage: function(message, channel, html) {
+    // VARIABLES
+    // ******** ******** ********
+    var vMyName = client.ownName();
+    var vUserSentName = message.substring(0, message.indexOf(':'));
+    var vUserSentMessage = message.substr(message.indexOf(':') + 2).toLowerCase();
+    var vChannelName = client.channelName(channel);
+    // "use strict";
+    // VARIABLES
+    // ******** ******** ********
+    var x, y, z,
+        vMyName = client.ownName(),
+        vUserSentName = message.substring(0, message.indexOf(':')),
+        vUserSentMessage = message.substr(message.indexOf(':') + 2),
+        vUserSentId = client.id(message.substring(0, message.indexOf(':'))),
+        vUserSentAuth = client.auth(client.id(message.substring(0, message.indexOf(':')))),
+        vUserSentColor = client.color(client.id(message.substring(0, message.indexOf(':')))),
+        vChannelName = client.channelName(channel),
+        vChannelId = channel,
+        vChannelCurrentlyViewingId = client.currentChannel(),
+        vChannelCurrentlyViewingName = client.channelName(client.currentChannel()),
+        vZero = 0;
 
-            // PREVENT GAME WORKING IN OFFICIAL CHANNELS
-            // ******** ******** ********
-            if (vgOfficalChannelArray.indexOf(vChannelName) !== -1) {
-                return;
+    // PREVENT GAME WORKING IN OFFICIAL CHANNELS
+    // ******** ******** ********
+    if (vgOfficalChannelArray.indexOf(vChannelName) !== -1) {
+        return;
+    }
+
+    // COMMAND + COMMAND DATA SETUP
+    // ******** ******** ********
+    var vCommand = "",
+        vCommandData = "";
+    if (vgCommandSymbol === vUserSentMessage.charAt(0)) {
+        //    print("command symbol detected");
+        var vSplit = vUserSentMessage.indexOf(" ");
+        if (vSplit !== -1) {
+            vCommand = vUserSentMessage.substring(1, vSplit).toLowerCase();
+            vCommandData = vUserSentMessage.substr(vSplit + 1);
+        } else {
+            vCommand = vUserSentMessage.substr(1).toLowerCase();
+        }
+    }
+
+    // START POTATO SIGNUPS
+    // ******** ******** ********
+    if ((vCommand === "potato") && (vgPotatoSignup === false) && (vgPotatoStarted === false)) {
+        vgPotatoChannel = vChannelName;
+        client.network().sendChanMessage(channel, vgBotMsgPrefix + "A new game of Hot Potato has started! Type " + vgCommandSymbol + "join to join! Signups will be over in " + vgPotatoSignUpWait + " seconds!");
+        client.network().sendChanMessage(channel, vgBotMsgPrefix + "Caution: Do not join if you are unprepared to be kicked from the channel.");
+        vgPotatoSignup = true;
+        vgPotatoTimerSignUp = sys.setTimer(function() {
+            vgPotatoSignup = false;
+            funPotatoStart(channel, vZero);
+        }, vgPotatoSignUpWait * 1000, false);
+    } else if ((vCommand === "potato") && (vgPotatoSignup === true) && (vgPotatoStarted === false)) {
+        if (vChannelName !== vgPotatoChannel) {
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game is currently in signups in #" + vgPotatoChannel + "!");
+        } else {
+            client.network().sendChanMessage(channel, "/me A game is currently in signups here! Use " + vgCommandSymbol + "join to join!");
+        }
+    } else if ((vCommand === "potato") && (vgPotatoSignup === false) && (vgPotatoStarted === true)) {
+        if (vChannelName !== vgPotatoChannel) {
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game is already playing in #" + vgPotatoChannel + "!");
+        } else {
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game is already playing here!");
+        }
+    }
+
+    // JOIN
+    // ******** ******** ********
+    if ((vCommand === "join") && (vgPotatoSignup === true)) {
+        if (vChannelName !== vgPotatoChannel) { // PREVENTS JOINING GAME IN ANOTHER CHANNEL
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game of Hot Potato is in signups in #" + vgPotatoChannel + "!");
+            return;
+        }
+        if (vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase()) !== -1) { // PREVENT DUPLICATE ALTS JOINING
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " has already joined!");
+            return;
+        }
+        vgPotatoPlayerArray.push(vUserSentName.toLowerCase());
+        vgPotatoPlayerUncasedArray.push(vUserSentName);
+        // vgPotatoPlayerUncasedArray IS SO ACTUAL NAME CAN BE PRINTED LATER
+        client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " joined the game!");
+        return;
+    }
+
+    // UNJOIN
+    // ******** ******** ********
+    if ((vCommand === "unjoin") && (vgPotatoSignup === true)) {
+        if (vChannelName !== vgPotatoChannel) { // PREVENTS UNJOINING GAME IN ANOTHER CHANNEL
+            // DO NOTHING
+            return;
+        }
+        if (vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase()) !== -1) {
+            vgPotatoPlayerArray.splice(vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase), 1);
+            vgPotatoPlayerUncasedArray.splice(vgPotatoPlayerUncasedArray.indexOf(vUserSentName), 1);
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " unjoined the game!");
+            return;
+        }
+        client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " isn't in the game!");
+        return;
+    }
+
+    // PASS
+    // ******** ******** ********
+    if ((vCommand === "pass") && (vgPotatoStarted === true) && (vUserSentName.toLowerCase() === vgPotatoVictim.toLowerCase())) {
+        if (vChannelName !== vgPotatoChannel) { // PREVENTS CHEATING BY PASSING IN ANOTEHR CHANNEL
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + "Don't cheat by passing in another channel!");
+            return;
+        }
+        if (vgPotatoPlayerArray.indexOf(vCommandData.toLowerCase()) === -1) { // PREVENT PASSING TO A USER NOT IN THE GAME
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + "That user is not in the game!");
+            return;
+        }
+        if (vgPotatoVictim.toLowerCase() === vCommandData.toLowerCase()) { // USER KEEPS HOLD OF THE POTATO
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " wanted to mysteriously keep hold of the potato for some reason!");
+            return;
+        }
+        if (vgPotatoCooldown === true) { // EXPLODE THE POTATO EARLY, FOR PASSING TOO SOON
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + "The potato exploded on " + vgPotatoVictim + " due to passing too soon!");
+            client.network().sendChanMessage(channel, "/ck " + vgPotatoVictim);
+            if (vgPotatoStarted === true) {
+                sys.unsetTimer(vgPotatoTimerExplode);
             }
+            sys.unsetTimer(vgPotatoTimerCooldown);
+            funPotatoEnd();
+            return;
+        }
+        vgPotatoVictim = vCommandData.toLowerCase();
+        client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " passed the potato to " + vgPotatoVictim + "!");
+        vgPotatoCooldown = true;
+        vgPotatoTimerCooldown = sys.setTimer(function() {
+            vgPotatoCooldown = false;
+        }, vgPotatoCooldownWait, false);
+    }
 
-            // COMMAND + COMMAND DATA SETUP
-            // ******** ******** ********
-            var vCommand = "",
-                vCommandData = "";
-            if (vgCommandSymbol === vUserSentMessage.charAt(0)) {
-                //    print("command symbol detected");
-                var vSplit = vUserSentMessage.indexOf(" ");
-                if (vSplit !== -1) {
-                    vCommand = vUserSentMessage.substring(1, vSplit).toLowerCase();
-                    vCommandData = vUserSentMessage.substr(vSplit + 1);
-                } else {
-                    vCommand = vUserSentMessage.substr(1).toLowerCase();
-                }
+    // END POTATO
+    // ******** ******** ********
+    if ((vCommand === "endpotato") && (vgPotatoAuthArray.indexOf(vUserSentName.toLowerCase()) !== -1)) {
+        if ((vgPotatoSignup === true) || (vgPotatoStarted === true)) {
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + "The game of Hot Potato has ended!");
+            if (vgPotatoSignup === true) {
+                sys.unsetTimer(vgPotatoTimerSignUp);
             }
-
-            // START POTATO SIGNUPS
-            // ******** ******** ********
-            if ((vCommand === "potato") && (vgPotatoSignup === false) && (vgPotatoStarted === false)) {
-                vgPotatoChannel = vChannelName;
-                client.network().sendChanMessage(channel, vgBotMsgPrefix + "A new game of Hot Potato has started! Type " + vgCommandSymbol + "join to join! Signups will be over in " + vgPotatoSignUpWait + " seconds!");
-                client.network().sendChanMessage(channel, vgBotMsgPrefix + "Caution: Do not join if you are unprepared to be kicked from the channel.");
-                vgPotatoSignup = true;
-                vgPotatoTimerSignUp = sys.setTimer(function() {
-                    vgPotatoSignup = false;
-                    funPotatoStart(channel, vZero);
-                }, vgPotatoSignUpWait * 1000, false);
-            } else if ((vCommand === "potato") && (vgPotatoSignup === true) && (vgPotatoStarted === false)) {
-                if (vChannelName !== vgPotatoChannel) {
-                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game is currently in signups in #" + vgPotatoChannel + "!");
-                } else {
-                    client.network().sendChanMessage(channel, "/me A game is currently in signups here! Use " + vgCommandSymbol + "join to join!");
-                }
-            } else if ((vCommand === "potato") && (vgPotatoSignup === false) && (vgPotatoStarted === true)) {
-                if (vChannelName !== vgPotatoChannel) {
-                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game is already playing in #" + vgPotatoChannel + "!");
-                } else {
-                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game is already playing here!");
-                }
+            if (vgPotatoStarted === true) {
+                sys.unsetTimer(vgPotatoTimerExplode);
             }
-
-            // JOIN
-            // ******** ******** ********
-            if ((vCommand === "join") && (vgPotatoSignup === true)) {
-                if (vChannelName !== vgPotatoChannel) { // PREVENTS JOINING GAME IN ANOTHER CHANNEL
-                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game of Hot Potato is in signups in #" + vgPotatoChannel + "!");
-                    return;
-                }
-                if (vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase()) !== -1) { // PREVENT DUPLICATE ALTS JOINING
-                    client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " has already joined!");
-                    return;
-                }
-                vgPotatoPlayerArray.push(vUserSentName.toLowerCase());
-                vgPotatoPlayerUncasedArray.push(vUserSentName);
-                // vgPotatoPlayerUncasedArray IS SO ACTUAL NAME CAN BE PRINTED LATER
-                client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " joined the game!");
-                return;
+            if (vgPotatoCooldown === true) {
+                sys.unsetTimer(vgPotatoTimerCooldown);
             }
+            funPotatoEnd();
+            return;
+        }
+    }
 
-            // UNJOIN
-            // ******** ******** ********
-            if ((vCommand === "unjoin") && (vgPotatoSignup === true)) {
-                if (vChannelName !== vgPotatoChannel) { // PREVENTS UNJOINING GAME IN ANOTHER CHANNEL
-                    // DO NOTHING
-                    return;
-                }
-                if (vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase()) !== -1) {
-                    vgPotatoPlayerArray.splice(vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase), 1);
-                    vgPotatoPlayerUncasedArray.splice(vgPotatoPlayerUncasedArray.indexOf(vUserSentName), 1);
-                    client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " unjoined the game!");
-                    return;
-                }
-                client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " isn't in the game!");
-                return;
-            }
+    // HELP POTATO
+    // ******** ******** ********
+    if (vCommand === "help") {
+        var vMessage = vgBotMsgPrefix + "Potato Commands: ";
+        var vList = [
+            "potato",
+            "join",
+            "pass [username]",
+            "(Bot Auth)",
+            "endpotato"
+        ];
+        for (x = 0; x < vList.length; x++) {
+            vMessage = vMessage + vgCommandSymbol + vList[x] + " / ";
+        }
+        client.network().sendChanMessage(channel, vgBotName + vMessage);
+        return;
+    }
 
-            // PASS
-            // ******** ******** ********
-            if ((vCommand === "pass") && (vgPotatoStarted === true) && (vUserSentName.toLowerCase() === vgPotatoVictim.toLowerCase())) {
-                if (vChannelName !== vgPotatoChannel) { // PREVENTS CHEATING BY PASSING IN ANOTEHR CHANNEL
-                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "Don't cheat by passing in another channel!");
-                    return;
+    // COMMAND + COMMAND DATA SETUP
+    // ******** ******** ********
+    if (vgCommandSymbol == vUserSentMessage.charAt(0)) {
+        //      print("command symbol detected");
+        var vCommand, vCommandData;
+        var vSplit = vUserSentMessage.indexOf(' ');
+        if (vSplit !== -1) {
+            vCommand = vUserSentMessage.substring(1, vSplit).toLowerCase();
+            vCommandData = vUserSentMessage.substr(vSplit + 1);
+        } else {
+            vCommand = vUserSentMessage.substr(1).toLowerCase();
+        }
+    }
+
+    // BOT OWNER COMMANDS
+    // ******** ******** ********
+    if (vCommand == "on") {
+        if (vUserSentName === "Heark" || "Liberal") {
+            botOnline = true;
+            client.network().sendChanMessage(channel, vgBotName + "Bot enabled.");
+        } else {
+            client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
+        }
+    }
+    if (vCommand == "off") {
+        if (vUserSentName === "Heark" || "Liberal") {
+            botOnline = false;
+            client.network().sendChanMessage(channel, vgBotName + "Bot disabled.");
+        } else {
+            client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
+        }
+    }
+    if (vCommand == "namebot") {
+        if (vUserSentName === "Heark" || "Liberal" || "Bill Nye") {
+            var vData = vCommandData.split(":", 2);
+            var name = vData[0];
+            client.changeName(name);
+            client.network().sendChanMessage(channel, vUserSentName + " changed the bot's name to " + name + "!");
+        }
+    }
+    if (vCommand == "boteval") {
+        if (vUserSentName === "Heark" || "Liberal" || "Bill Nye") {
+            var vData = vCommandData.split(":", 2);
+            var script = vData[0];
+            var code = sys.eval(script);
+            client.network().sendChanMessage(channel, code + "");
+        }
+    }
+
+    if (vCommand == "makedir") {
+        if (vUserSentName === "Heark" || "Liberal" || "Bill Nye") {
+            var vData = vCommandData.split(":", 2);
+            var dir = vData[0];
+            sys.makeDir(dir);
+            client.network().sendChanMessage(channel, "Directory named " + dir + " successfully created!");
+        }
+    }
+
+
+    if (botOnline == true) {
+
+        // DEFINE (CODE PROVIDED BY JINORA + EDITED BY NIGHTFALL ALICORN)
+        // ******** ******** ********
+        if (vgAutoRespond == true) {
+            if (vgBlockedChannel.indexOf(vChannelName) == -1) {
+                if (vCommand == "commands") {
+                    print(vUserSentName);
+                    client.network().sendChanMessage(channel, "Commands: (~) Prefix | define, catch, attack, potato, fight, insult, shoot, stats, match. ");
                 }
-                if (vgPotatoPlayerArray.indexOf(vCommandData.toLowerCase()) === -1) { // PREVENT PASSING TO A USER NOT IN THE GAME
-                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "That user is not in the game!");
-                    return;
+                if (vCommand == "catch") {
+                    client.network().sendChanMessage(channel, vUserSentName + " Caught a " + sys.pokemon(sys.rand(1, 719)) + " At Level " + sys.rand(1, 100) + " with a " + sys.nature(sys.rand(1, 25)) + " nature!");
                 }
-                if (vgPotatoVictim.toLowerCase() === vCommandData.toLowerCase()) { // USER KEEPS HOLD OF THE POTATO
-                    client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " wanted to mysteriously keep hold of the potato for some reason!");
-                    return;
+                if (vCommand == "randfact") {
+                   client.network().sendChanMessage(channel, "Random Fact: Did you know " + facts[sys.rand(0, facts.length)] + "")
                 }
-                if (vgPotatoCooldown === true) { // EXPLODE THE POTATO EARLY, FOR PASSING TOO SOON
-                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "The potato exploded on " + vgPotatoVictim + " due to passing too soon!");
-                    client.network().sendChanMessage(channel, "/ck " + vgPotatoVictim);
-                    if (vgPotatoStarted === true) {
-                        sys.unsetTimer(vgPotatoTimerExplode);
+                if (vCommand == "attack") {
+                    var vData = vCommandData.split(":", 2);
+                    var vTarget = vData[0];
+                    var hp = sys.rand(1, 100);
+                    print(vUserSentName);
+                    client.network().sendChanMessage(channel, vUserSentName + " used " + sys.move(sys.rand(0, 559)) + " & " + sys.move(sys.rand(0, 559)) + " on " + vTarget + " it took down " + hp + "% hp!");
+                }
+                if (vCommand == "insult") {
+                    var vData = vCommandData.split(":", 2);
+                    var name = vData[0];
+                    client.network().sendChanMessage(channel, name + "" + insults[sys.rand(0, insults.length)] + "");
+                }
+
+                /*                     if (hFacts == true) {
+                                            factTimer = sys.setTimer(function () {
+                                                client.network().sendChanMessage(channel, "Random Fact: Did you know " + facts[sys.rand(0, facts.length)] + "")
+                                                sysFact = true
+                                                funFact();
+                                                }, 6000, false)
+                                        }
+                */
+                if (sysFact == true) {
+                    sys.unsetTimer(factTimer);
+                }
+
+                if (vCommand == "shoot") {
+                    var vData = vCommandData.split(":", 2);
+                    var vTarget = vData[0];
+                    var vDefineSelection = vData[1];
+                    client.network().sendChanMessage(channel, "/me ** " + vUserSentName + " shot " + vTarget + " with a " + gun[sys.rand(0, gun.length)])
+                }
+                if (vCommand == "match") {
+                    var vData = vCommandData.split(":", 2);
+                    var vTarget = vData[0];
+                    var vTarget2 = vData[1];
+                    client.network().sendChanMessage(channel, "/me ** " + vTarget + " & " + vTarget2 + " " + matches[sys.rand(0, matches.length)])
+                }
+
+                if (vCommand == "battle") {
+                    var num2 = Math.floor((Math.random() * 10) + 1);
+                    var pokemon1 = sys.pokemon(sys.rand(1, 719))
+                    var pokemon2 = sys.pokemon(sys.rand(1, 719))
+
+                    if (num2 < 5) {
+                        var winner = pokemon1
+                        var loser = pokemon2
+                    } else if (num2 > 5) {
+                        var winner = pokemon2;
+                        var loser = pokemon1;
+
                     }
-                    sys.unsetTimer(vgPotatoTimerCooldown);
-                    funPotatoEnd();
-                    return;
+                    client.network().sendChanMessage(channel, "/me ** A battle started between " + pokemon1 + " and  " + pokemon2 + " | " + winner + " used " + sys.move(sys.rand(0, 559)));
+                    client.network().sendChanMessage(channel, "/me " + winner + " wins!  " + loser + " fainted.");
+
                 }
-                vgPotatoVictim = vCommandData.toLowerCase();
-                client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " passed the potato to " + vgPotatoVictim + "!");
-                vgPotatoCooldown = true;
-                vgPotatoTimerCooldown = sys.setTimer(function() {
-                    vgPotatoCooldown = false;
-                }, vgPotatoCooldownWait, false);
+
             }
 
-            // END POTATO
-            // ******** ******** ********
-            if ((vCommand === "endpotato") && (vgPotatoAuthArray.indexOf(vUserSentName.toLowerCase()) !== -1)) {
-                if ((vgPotatoSignup === true) || (vgPotatoStarted === true)) {
-                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "The game of Hot Potato has ended!");
-                    if (vgPotatoSignup === true) {
-                        sys.unsetTimer(vgPotatoTimerSignUp);
-                    }
-                    if (vgPotatoStarted === true) {
-                        sys.unsetTimer(vgPotatoTimerExplode);
-                    }
-                    if (vgPotatoCooldown === true) {
-                        sys.unsetTimer(vgPotatoTimerCooldown);
-                    }
-                    funPotatoEnd();
-                    return;
-                }
-            }
+            if (vCommand == "userinfo") {
+                if (vUserSentName == "Heark" || "Liberal") {
+                    var vData = vCommandData.split(":", 2);
+                    var vTarget = vData[0];
+                    var info = getUserInfo(vTarget)
+                    print(info)
 
-            // HELP POTATO
-            // ******** ******** ********
-            if (vCommand === "help") {
-                var vMessage = vgBotMsgPrefix + "Potato Commands: ";
-                var vList = [
-                    "potato",
-                    "join",
-                    "pass [username]",
-                    "(Bot Auth)",
-                    "endpotato"
-                ];
-                for (x = 0; x < vList.length; x++) {
-                    vMessage = vMessage + vgCommandSymbol + vList[x] + " / ";
-                }
-                client.network().sendChanMessage(channel, vgBotName + vMessage);
-                return;
-            }
-
-            // COMMAND + COMMAND DATA SETUP
-            // ******** ******** ********
-            if (vgCommandSymbol == vUserSentMessage.charAt(0)) {
-                //      print("command symbol detected");
-                var vCommand, vCommandData;
-                var vSplit = vUserSentMessage.indexOf(' ');
-                if (vSplit !== -1) {
-                    vCommand = vUserSentMessage.substring(1, vSplit).toLowerCase();
-                    vCommandData = vUserSentMessage.substr(vSplit + 1);
-                } else {
-                    vCommand = vUserSentMessage.substr(1).toLowerCase();
-                }
-            }
-
-            // BOT OWNER COMMANDS
-            // ******** ******** ********
-            if (vCommand == "on") {
-                if (vUserSentName === "Heark" || "Liberal") {
-                    botOnline = true;
-                    client.network().sendChanMessage(channel, vgBotName + "Bot enabled.");
                 } else {
                     client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
             }
-            if (vCommand == "off") {
-                if (vUserSentName === "Heark" || "Liberal") {
-                    botOnline = false;
-                    client.network().sendChanMessage(channel, vgBotName + "Bot disabled.");
+            /*
+            if (vCommand == "stats") {
+                    var vDat2 = vCommandData.split(":", 2);
+                    var chosenPokemon = vData2[0];
+                    var chosen = sys.pokeNum(chosenPokemon)
+                }
+                var type1 = sys.pokeType1(chosen, 6)
+                var type2 = sys.pokeType2(chosen, 6)
+                var ab1 = sys.pokeAbility(chosen, 0)
+                var ab2 = sys.pokeAbility(chosen, 1)
+                var ab3 = sys.pokeAbility(chosen, 2)
+                if (chosen == undefined) {
+                    client.network().sendChanMessage(channel, chosenPokemon + " doesn't exist in the database.");
                 } else {
-                    client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
+                    client.network().sendChanMessage(channel, chosenPokemon + "'s stats: Type: " + sys.type(type1) + " " + sys.type(type2) + "| Abilities: " +ab1+""+ab2+""+ab3+ " | HP: " + sys.baseStats(chosen, 0, 6) + " | ATK: " + sys.baseStats(chosen, 1, 6) + " | DEF: " + sys.baseStats(chosen, 2, 6) + " | SPA: " + sys.baseStats(chosen, 3, 6) + " | SPD: " + sys.baseStats(chosen, 4, 6) + " | SPEED: " + sys.baseStats(chosen, 5, 6) + ".");
                 }
+                */
+            if (vCommand == "savelogs") {
+                client.printHtml("<b><font color =red>Now saving logs...</font></b>")
+                sys.makeDir(botlogs);
             }
-
-            if (botOnline == true) {
-
-                // DEFINE (CODE PROVIDED BY JINORA + EDITED BY NIGHTFALL ALICORN)
-                // ******** ******** ********
-                if (vgAutoRespond == true) {
-                    if (vgBlockedChannel.indexOf(vChannelName) == -1) {
-                        if (vCommand == "commands") {
-                            print(vUserSentName);
-                            client.network().sendChanMessage(channel, "// ~define - Defines a word format: ~define word example ~define Cookie");
-                            client.network().sendChanMessage(channel, "// ~attack - Attack your target with a random move. format: ~attack :target example: ~attack :JoyFrost");
-                            client.network().sendChanMessage(channel, "// ~fight - Make a fight break out. format: ~fight :target :target2 example: ~fight :Heark :OORA")
-                            client.network().sendChanMessage(channel, "// ~catch - Catch a random pokemon");
-                            client.network().sendChanMessage(channel, "// ~stats - View the stats of a pokemon. format: ~stats :target example: ~stats :pikachu")
-                        }
-                        if (vCommand == "catch") {
-                            client.network().sendChanMessage(channel, vUserSentName + " Caught a " + sys.pokemon(sys.rand(1, 719)) + " At Level " + sys.rand(1, 100) + " with a " + sys.nature(sys.rand(1, 25)) + " nature!")
-                        }
-                        if (vCommand == "attack") {
-                            var vData = vCommandData.split(":", 2);
-                            var vTarget = vData[0];
-                            var pt2 = vData2[0];
-                            print(vUserSentName)
-                            client.network().sendChanMessage(channel, vUserSentName + " used " + sys.move(sys.rand(0, 559)) + " on " + vTarget + "")
-                        }
-                        if (vCommand == "insult") {
-                            var vData = vCommandData.split(":", 2);
-                            var name = vData[0];
-                            client.network().sendChanMessage(channel, name + "" + insults[sys.rand(0, insults.length)] + "")
-                        }
-
-                        if (hFacts == true) {
-                            factTimer = sys.setTimer(function () {
-                                client.network().sendChanMessage(channel, "Random Fact: Did you know " + facts[sys.rand(0, facts.length)] + "")
-                                sysFact = true
-                                funFact();
-                                }, 6000, false)
-                        }
-                        if (sysFact == true) {
-                            sys.unsetTimer(factTimer)
-                        }
-
-                        if (vCommand == "shoot") {
-                            var vData = vCommandData.split(":", 2);
-                            var vTarget = vData[0];
-                            var vDefineSelection = vData[1];
-                            client.network().sendChanMessage(channel, "/me ** " + vUserSentName + " shot " + vTarget + " with a " + gun[sys.rand(0, gun.length)])
-                        }
-
-
-                        if (vCommand == "battle") {
-                            var num2 = Math.floor((Math.random() * 10) + 1);
-                            var pokemon1 = sys.pokemon(sys.rand(1, 719))
-                            var pokemon2 = sys.pokemon(sys.rand(1, 719))
-
-                            if (num2 < 5) {
-                                var winner = pokemon1
-                                var loser = pokemon2
-                            } else if (num2 > 5) {
-                                var winner = pokemon2
-                                var loser = pokemon1
-
-                            }
-                            client.network().sendChanMessage(channel, "/me ** A battle started between " + pokemon1 + " and  " + pokemon2 + " | " + winner + " used " + sys.move(sys.rand(0, 559)))
-                            client.network().sendChanMessage(channel, "/me " + winner + " wins!  " + loser + " fainted.")
-
-                        }
-
-                    }
-
-                    if (vCommand == "userinfo") {
-                        if (vUserSentName == "Heark" || "Liberal") {
-                            var vData = vCommandData.split(":", 2);
-                            var vTarget = vData[0];
-                            var info = getUserInfo(vTarget)
-                            print(info)
-
-                        } else {
-                            client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
-                        }
-                    }
-                    if (vCommand == "stats") {
-                        if (vCommandData.indexOf(":") !== -1) {
-                            var vData2 = vCommandData.split(":", 2);
-                            var chosenPokemon = vData2[1];
-                            var chosen = sys.pokeNum(chosenPokemon)
-                        }
-                        var type1 = sys.pokeType1(chosen, 6)
-                        var type2 = sys.pokeType2(chosen, 6)
-                        if (chosen == undefined) {
-                            client.network().sendChanMessage(channel, chosenPokemon + " doesn't exist in the database.");
-                        } else {
-                            client.network().sendChanMessage(channel, chosenPokemon + "'s stats: Type: " + sys.type(type1) + " " + sys.type(type2) + " | HP: " + sys.baseStats(chosen, 0, 6) + " | ATK: " + sys.baseStats(chosen, 1, 6) + " | DEF: " + sys.baseStats(chosen, 2, 6) + " | SPA: " + sys.baseStats(chosen, 3, 6) + " | SPD: " + sys.baseStats(chosen, 4, 6) + " | SPEED: " + sys.baseStats(chosen, 5, 6) + ".");
-                        }
-                        if (vCommand == "savelogs") {
-                            client.printHtml("<b><font color =red>Now saving logs...</font></b>")
-                            sys.makeDir(botlogs);
-                        }
-                    }
-                    if (vCommand == "botreboot") {
-                        if (vUserSentName == "Heark") {
-                            client.reconnect();
-                            sys.stopEvent();
-                            return;
-                        }
-                    }
-                    if (vCommand == "fight") {
-                        if (vCommandData.indexOf(":") !== -1) {
-                            var vData2 = vCommandData.split(":", 2);
-                            var tar = vCommandData.split(":", 3);
-                            var target = vData2[1];
-                            var target2 = tar[2];
-                            var posswin = [];
-                        }
-                        print(vUserSentName);
-                        var num = Math.floor((Math.random() * 10) + 1);
-                        if (num > 5) {
-                            var winner = target;
-                            var loser = target2;
-                        } else if (num < 5) {
-                            var winner = target2;
-                            var loser = target;
-                        }
-                        var kill = ["commited a felony on " + loser + "", "read a book to " + loser + "", "drove their car into " + loser + "'s face.", "shot" + loser + "", "gave an overdose of viagra to " + loser + "", "" + loser + " was forced to have anal intercourse with a stallion by " + winner + ".", "forced a toothpick down" + loser + "'s throat"];
-                        client.network().sendChanMessage(channel, "A fight broke out between " + target + " and  " + target2 + "! " + winner + " " + kill[sys.rand(0, kill.length)] + ". " + winner + " Wins!");
-
-                    }
-                    if (vCommand == "define") {
-                        print(vUserSentName);
-                        // CHECK FOR SECONDARY COMMAND DATA
-                        if (vCommandData.indexOf(":") !== -1) {
-                            // SPLIT
-                            var vData = vCommandData.split(":", 2);
-                            var vDefineWord = vData[0];
-                            var vDefineSelection = vData[1];
-
-                            // MAKE SURE vDefineSelection IS AN INTEGER AND FLOOR
-                            vDefineSelection = Math.floor(parseInt(vDefineSelection));
-                            if (vDefineSelection == parseInt(vDefineSelection)) {
-                                // DO NOTHING
-                            } else {
-                                vDefineSelection = 0;
-                            }
-                        } else {
-                            var vDefineWord = vCommandData;
-                            var vDefineSelection = 0;
-                        }
-
-                        var vDefStatus = "";
-                        // IF WORD IS STORED IN CACHED READ CURRENTLY DOWNLOAD ONE
-                        if (vgBot_Define_Word == vDefineWord) {
-                            vDefData = vgBot_Define_Data;
-                            vDefStatus = "(Cached)";
-                        }
-                        // IF WORD NOT CURRENTLY STORED IN CACHED DOWNLOAD IT
-                        if (vgBot_Define_Word != vDefineWord) {
-                            // GET RESULT FROM URBAN DICTIONARY AND STORE DATA
-                            var vResponse = sys.synchronousWebCall("http://api.urbandictionary.com/v0/define?term=" + (encodeURIComponent(vDefineWord)));
-                            var vDefData = JSON.parse(vResponse);
-                            vgBot_Define_Word = vDefineWord;
-                            vgBot_Define_Data = vDefData;
-                            vDefStatus = "(Uploading...)";
-                        }
-
-                        // CHECK IF DEFINITION DOESNT EXIST
-                        if (vDefData.result_type != "exact") {
-                            client.network().sendChanMessage(channel, vgBotName + "\"" + vDefineWord.toLowerCase() + "\"" + " is not defined!")
-                        }
-                        // IF IT DOES EXIST
-                        else {
-                            // BUILD AND COUNT DEFINITIONS AVAILABLE
-                            var vDefString = [];
-                            var vDefLength = -1;
-                            var vCheck = true;
-                            for (x = 0; vCheck == true; x++) {
-                                try {
-                                    vDefString[x] = vDefData.list[x].definition;
-                                    vDefLength++;
-                                } catch (err) {
-                                    vCheck = false;
-                                }
-                            }
-
-                            // DEFINE SELECTION RANGE CHECK
-                            if (vDefineSelection > vDefLength) {
-                                vDefineSelection = vDefLength;
-                            }
-                            if (vDefineSelection < 0) {
-                                vDefineSelection = 0;
-                            }
-
-                            // OBTAIN STRING TO ALLOW LENGTH CHECK
-                            var vStringLimit = 4900; // String Limit is 4900
-                            var vStringToPrint = vDefString[vDefineSelection];
-
-                            // MESSAGE FORMAT
-                            var vDefMessageWord = "\"" + vDefineWord.toLowerCase() + "\"";
-                            var vDefMessageInfo = vStringToPrint;
-                            var vDefMessageSelection = "(" + vDefineSelection + "/" + vDefLength + ")"
-                            var vDefMessageLimitReached = "[String Limit of " + vStringLimit + " Reached]";
-
-                            // BANNED WORDS
-                            var vDefBanned = [];
-
-                            // CHECK BANNED WORD
-                            if (vDefBanned.indexOf(vDefineWord) == -1) {
-                                // STRING LIMIT CHECK
-                                if (vStringToPrint.length <= vStringLimit) {
-                                    client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo);
-                                }
-                                if (vStringToPrint.length > vStringLimit) {
-                                    client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo.substring(0, vStringLimit) + " " + vDefMessageLimitReached);
-                                }
-                            } else {
-                                client.network().sendChanMessage(channel, vgBotName + "The define for this word is banned.");
-                            }
-                        }
-                    }
-                }
+        }
+        if (vCommand == "botreboot") {
+            if (vUserSentName == "Heark") {
+                client.reconnect();
+                sys.stopEvent();
+                return;
             }
+        }
+        if (vCommand == "fight") {
+            if (vCommandData.indexOf(":") !== -1) {
+                var vData2 = vCommandData.split(":", 2);
+                var tar = vCommandData.split(":", 3);
+                var target = vData2[1];
+                var target2 = tar[2];
+                var posswin = [];
+            }
+            print(vUserSentName);
+            var num = Math.floor((Math.random() * 10) + 1);
+            if (num > 5) {
+                var winner = target;
+                var loser = target2;
+            } else if (num < 5) {
+                var winner = target2;
+                var loser = target;
+            }
+            var kill = ["commited a felony on " + loser + "", "read a book to " + loser + "", "drove their car into " + loser + "'s face.", "shot" + loser + "", "gave an overdose of viagra to " + loser + "", "" + loser + " was forced to have anal intercourse with a stallion by " + winner + ".", "forced a toothpick down" + loser + "'s throat"];
+            client.network().sendChanMessage(channel, "A fight broke out between " + target + " and  " + target2 + "! " + winner + " " + kill[sys.rand(0, kill.length)] + ". " + winner + " Wins!");
 
         }
-    })
-    /*
-    Hot Potato Game Client Script v1.01
-    Edited by Nightfall Alicorn
-    Remade by <anonymous>
-    Original script idea by Cirno
+        if (vCommand == "define") {
+            print(vUserSentName);
+            // CHECK FOR SECONDARY COMMAND DATA
+            if (vCommandData.indexOf(":") !== -1) {
+                // SPLIT
+                var vData = vCommandData.split(":", 2);
+                var vDefineWord = vData[0];
+                var vDefineSelection = vData[1];
 
-    - Introduction -
-        This is a fun game script that is basically pass the bomb.
-        
-        The game sets a random range timer 15 to 60 seconds by default. The
-        player, who is currently holding the potato, has to pass it to another
-        player in the channel that is in the game. Eventually someone will get
-        /ck when the bomb explodes on them.
-        
-        Of course. People can't cheat with bots by instant passing to another user
-        since the bomb will go off instantly.
-        
-        Commands:
-        ******** ******** ********
-        -potato / Starts the game's sign up process.
-        -join / To join the game.
-        -unjoin / Leave the game during sign ups.
-        -pass [user] / Pass the potato to that user.
-        -help / Display list of commands.
-        
-        Bot Auth Commands:
-        ******** ******** ********
-        -endpotato
+                // MAKE SURE vDefineSelection IS AN INTEGER AND FLOOR
+                vDefineSelection = Math.floor(parseInt(vDefineSelection));
+                if (vDefineSelection == parseInt(vDefineSelection)) {
+                    // DO NOTHING
+                } else {
+                    vDefineSelection = 0;
+                }
+            } else {
+                var vDefineWord = vCommandData;
+                var vDefineSelection = 0;
+            }
 
-    - Installing -
-        1. Copy all this text.
-        2. On Pokemon Online, go to "Plugins" and "Plugin Manager".
-        3. Check the check box for "Script Window" and click "OK".
-        4. Go to "Plugins" again and this time "Script Window".
-        5. Paste the code in the "Client scripts" text window.
-        6. To avoid problems, uncheck "Safe Scripts" and check "Show Warnings".
-        7. Finally, click "OK".
-        
-        If you are already logged on the server. You should see the message:
-        (00:00:00) ++Client Bot: Script updated.
-        (00:00:00) ++Client Bot: Type -help for list of commands for Hot Potato.
+            var vDefStatus = "";
+            // IF WORD IS STORED IN CACHED READ CURRENTLY DOWNLOAD ONE
+            if (vgBot_Define_Word == vDefineWord) {
+                vDefData = vgBot_Define_Data;
+                vDefStatus = "(Cached)";
+            }
+            // IF WORD NOT CURRENTLY STORED IN CACHED DOWNLOAD IT
+            if (vgBot_Define_Word != vDefineWord) {
+                // GET RESULT FROM URBAN DICTIONARY AND STORE DATA
+                var vResponse = sys.synchronousWebCall("http://api.urbandictionary.com/v0/define?term=" + (encodeURIComponent(vDefineWord)));
+                var vDefData = JSON.parse(vResponse);
+                vgBot_Define_Word = vDefineWord;
+                vgBot_Define_Data = vDefData;
+                vDefStatus = "(Uploading...)";
+            }
 
-    - Notes -
-        For safety reasons, the Hot Potato Game bot won't work in official channels
-        by default.
-    */
+            // CHECK IF DEFINITION DOESNT EXIST
+            if (vDefData.result_type != "exact") {
+                client.network().sendChanMessage(channel, vgBotName + "\"" + vDefineWord.toLowerCase() + "\"" + " is not defined!")
+            }
+            // IF IT DOES EXIST
+            else {
+                // BUILD AND COUNT DEFINITIONS AVAILABLE
+                var vDefString = [];
+                var vDefLength = -1;
+                var vCheck = true;
+                for (x = 0; vCheck == true; x++) {
+                    try {
+                        vDefString[x] = vDefData.list[x].definition;
+                        vDefLength++;
+                    } catch (err) {
+                        vCheck = false;
+                    }
+                }
+
+                // DEFINE SELECTION RANGE CHECK
+                if (vDefineSelection > vDefLength) {
+                    vDefineSelection = vDefLength;
+                }
+                if (vDefineSelection < 0) {
+                    vDefineSelection = 0;
+                }
+
+                // OBTAIN STRING TO ALLOW LENGTH CHECK
+                var vStringLimit = 4900; // String Limit is 4900
+                var vStringToPrint = vDefString[vDefineSelection];
+
+                // MESSAGE FORMAT
+                var vDefMessageWord = "\"" + vDefineWord.toLowerCase() + "\"";
+                var vDefMessageInfo = vStringToPrint;
+                var vDefMessageSelection = "(" + vDefineSelection + "/" + vDefLength + ")"
+                var vDefMessageLimitReached = "[String Limit of " + vStringLimit + " Reached]";
+
+                // BANNED WORDS
+                var vDefBanned = [];
+
+                // CHECK BANNED WORD
+                if (vDefBanned.indexOf(vDefineWord) == -1) {
+                    // STRING LIMIT CHECK
+                    if (vStringToPrint.length <= vStringLimit) {
+                        client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo);
+                    }
+                    if (vStringToPrint.length > vStringLimit) {
+                        client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo.substring(0, vStringLimit) + " " + vDefMessageLimitReached);
+                    }
+                } else {
+                    client.network().sendChanMessage(channel, vgBotName + "The define for this word is banned.");
+                }
+            }
+        }
+    }
+}
+})
+/*
+Hot Potato Game Client Script v1.01
+Edited by Nightfall Alicorn
+Remade by <anonymous>
+Original script idea by Cirno
+
+- Introduction -
+    This is a fun game script that is basically pass the bomb.
+    
+    The game sets a random range timer 15 to 60 seconds by default. The
+    player, who is currently holding the potato, has to pass it to another
+    player in the channel that is in the game. Eventually someone will get
+    /ck when the bomb explodes on them.
+    
+    Of course. People can't cheat with bots by instant passing to another user
+    since the bomb will go off instantly.
+    
+    Commands:
+    ******** ******** ********
+    -potato / Starts the game's sign up process.
+    -join / To join the game.
+    -unjoin / Leave the game during sign ups.
+    -pass [user] / Pass the potato to that user.
+    -help / Display list of commands.
+    
+    Bot Auth Commands:
+    ******** ******** ********
+    -endpotato
+
+- Installing -
+    1. Copy all this text.
+    2. On Pokemon Online, go to "Plugins" and "Plugin Manager".
+    3. Check the check box for "Script Window" and click "OK".
+    4. Go to "Plugins" again and this time "Script Window".
+    5. Paste the code in the "Client scripts" text window.
+    6. To avoid problems, uncheck "Safe Scripts" and check "Show Warnings".
+    7. Finally, click "OK".
+    
+    If you are already logged on the server. You should see the message:
+    (00:00:00) ++Client Bot: Script updated.
+    (00:00:00) ++Client Bot: Type -help for list of commands for Hot Potato.
+
+- Notes -
+    For safety reasons, the Hot Potato Game bot won't work in official channels
+    by default.
+*/
 
 // JSLINT GLOBAL PRE-DEFINE
 /*global client, print, sys*/
