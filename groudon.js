@@ -320,7 +320,7 @@ beforeChannelMessage: function(message, channel, html) {
     // BOT OWNER COMMANDS
     // ******** ******** ********
     if (vCommand == "on") {
-        if (vUserSentName === "Heark" || "Liberal") {
+        if (vUserSentName == "Heark" || "Liberal") {
             botOnline = true;
             client.network().sendChanMessage(channel, vgBotName + "Bot enabled.");
         } else {
@@ -328,7 +328,7 @@ beforeChannelMessage: function(message, channel, html) {
         }
     }
     if (vCommand == "off") {
-        if (vUserSentName === "Heark" || "Liberal") {
+        if (vUserSentName == "Heark" || "Liberal") {
             botOnline = false;
             client.network().sendChanMessage(channel, vgBotName + "Bot disabled.");
         } else {
@@ -336,7 +336,7 @@ beforeChannelMessage: function(message, channel, html) {
         }
     }
     if (vCommand == "namebot") {
-        if (vUserSentName === "Heark" || "Liberal" || "Bill Nye") {
+        if (vUserSentName == "Heark" || "Liberal" || "Bill Nye") {
             var vData = vCommandData.split(":", 2);
             var name = vData[0];
             client.changeName(name);
@@ -344,7 +344,7 @@ beforeChannelMessage: function(message, channel, html) {
         }
     }
     if (vCommand == "boteval") {
-        if (vUserSentName === "Heark" || "Liberal" || "Bill Nye") {
+        if (vUserSentName == "Heark" || "Liberal" || "Bill Nye") {
             var vData = vCommandData.split(":", 2);
             var script = vData[0];
             var code = sys.eval(script);
