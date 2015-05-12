@@ -26,6 +26,9 @@ var FactTime = 900; // 1 FACT EVERY 900 SECONDS (15 MINUTES)
 var hFacts = true; // Disable to turn random facts off
 var sysFact = false;
 
+    function funFact(){
+	sysFact = false;
+}
 
 // Rest of code
 var vgBotName = "++Client Bot: ";
@@ -361,11 +364,13 @@ poScript = ({
                         }
 
                         if (hFacts == true) {
-                            factTimer = sys.setTimer(sysFact = true, FactTime * 1000, false)
-
+                            factTimer = sys.setTimer(function () {
+                                client.network().sendChanMessage(channel, "Random Fact: Did you know " + facts[sys.rand(0, facts.length)] + "")
+                                sysFact = true
+                                funFact();
+                                }, 6000, false)
                         }
                         if (sysFact == true) {
-                            client.network().sendChanMessage(channel, "Random Fact: Did you know " + facts[sys.rand(0, facts.length)] + "")
                             sys.unsetTimer(factTimer)
                         }
 
