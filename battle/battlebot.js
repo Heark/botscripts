@@ -16,11 +16,11 @@ var tpoke = function(ind) { return battle.data.team(battle.me).poke(ind);};
 
 ({
 onTierNotification: function (tier) {
-    battle.battleMessage(battle.id, "Hello "+ battle.data.team(battle.opp).name +"! I am Cubchoo The Best Bot, I will be the victor of this battle!");
+    battle.battleMessage(battle.id, "Hello "+ battle.data.team(battle.opp).name +"! I am The Best Bot, I will be the victor of this battle!");
 },
 
 hicounter: 0,
-maxhis: 3,
+maxhis: 333333333333333333333333333333333333333333333,
 
 onSpectatorJoin: function (id, name) {
     if (this.hicounter < this.maxhis) {
