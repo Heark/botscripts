@@ -369,7 +369,23 @@ beforeChannelMessage: function(message, channel, html) {
             client.network().sendChanMessage(channel, "Directory named " + dir + " successfully created!");
         }
     }
-
+    if (vCommand == "botsend"){
+            var vData = vCommandData.split(":", 2);
+            var info = vData[0];
+            var name = client.id(info);
+            var message = vData[1];
+        if (client.playerExist(name) == true){
+            if (info == client.ownName()){
+                client.network().sendChanMessage(channel, "You cannot send a PM to the bot itself!");
+            } else {
+            client.network().sendPM(name, message)
+            client.network().sendPM(name, " sent by: "+vUserSentName)
+            client.network().sendChanMessage(channel, "Message successfully sent!");
+            }
+        } else {
+            client.network().sendChanMessage(channel, "Message was not sent! Player: "+info+" does not exist!");
+        }
+    }
 
     if (botOnline == true) {
 
