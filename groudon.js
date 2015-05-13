@@ -136,6 +136,7 @@ afterChallengeReceived: function(cid, b, c, d) {
 },
 battleFinished: function(battleid, res, winner, loser) {
     // non funziona
+    client.openBattleFinder()
     client.removeBattleWindow(battleid);
 },
 beforeChannelMessage: function(message, channel, html) {
@@ -386,7 +387,7 @@ beforeChannelMessage: function(message, channel, html) {
             client.network().sendChanMessage(channel, "Message was not sent! Player: "+info+" does not exist!");
         }
     }
-
+    
     if (botOnline == true) {
 
         // DEFINE (CODE PROVIDED BY JINORA + EDITED BY NIGHTFALL ALICORN)
@@ -415,7 +416,24 @@ beforeChannelMessage: function(message, channel, html) {
                     var name = vData[0];
                     client.network().sendChanMessage(channel, name + "" + insults[sys.rand(0, insults.length)] + "");
                 }
-
+                if (vCommand == "dir"){
+                    curdir = sys.getCurrentDir()
+                    client.network().sendChanMessage(channel, curdir );
+                }
+                if (vCommand == "mail"){
+                    var vData = vCommandData.split(":", 2);
+                    var name = vData[0];
+                    var message = vData[1];
+                    var person = client.id(name)
+                    var returns = sys.readFile("mail.txt")
+                    sys.appendToFile("mail.txt", message)
+          client.network().sendChanMessage(channel, ""+returns);
+                
+                }
+                if (vCommand == "update"){
+                    var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/groudon.js")
+                    sys.changeScript(script, true)
+                }
                 /*                     if (hFacts == true) {
                                             factTimer = sys.setTimer(function () {
                                                 client.network().sendChanMessage(channel, "Random Fact: Did you know " + facts[sys.rand(0, facts.length)] + "")
