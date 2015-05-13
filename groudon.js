@@ -99,10 +99,10 @@ function funPotatoStart(channel, vZero) {
             .replace(/\,/g, ", ");
         vgPotatoVictim = vgPotatoPlayerUncasedArray[vPlayerRng];
         client.network().sendChanMessage(channel, vgBotMsgPrefix + "Players playing: " + vPlayersJoined);
-        client.network().sendChanMessage(channel, vgBotMsgPrefix + vgPotatoPlayerUncasedArray[vPlayerRng] + " is holding the potato! Use " + vgCommandSymbol + "pass <username> to pass the potato!");
+        client.network().sendChanMessage(channel, vgBotMsgPrefix + vgPotatoPlayerUncasedArray[vPlayerRng] + " is holding Electrode! Use " + vgCommandSymbol + "pass <username> to pass Electrode!");
         vgPotatoStarted = true;
         vgPotatoTimerExplode = sys.setTimer(function() {
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + "The potato exploded on " + vgPotatoVictim + "!");
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + "Electrode exploded on " + vgPotatoVictim + "!");
             client.network().sendChanMessage(channel, "/ck " + vgPotatoVictim);
             funPotatoEnd();
         }, vPotatoExplodeLengthRng * 1000, false);
@@ -185,9 +185,9 @@ beforeChannelMessage: function(message, channel, html) {
 
     // START POTATO SIGNUPS
     // ******** ******** ********
-    if ((vCommand === "potato") && (vgPotatoSignup === false) && (vgPotatoStarted === false)) {
+    if ((vCommand === "electrode") && (vgPotatoSignup === false) && (vgPotatoStarted === false)) {
         vgPotatoChannel = vChannelName;
-        client.network().sendChanMessage(channel, vgBotMsgPrefix + "A new game of Hot Potato has started! Type " + vgCommandSymbol + "join to join! Signups will be over in " + vgPotatoSignUpWait + " seconds!");
+        client.network().sendChanMessage(channel, vgBotMsgPrefix + "A new game of Electrode Explode has started! Type " + vgCommandSymbol + "join to join! Signups will be over in " + vgPotatoSignUpWait + " seconds!");
         client.network().sendChanMessage(channel, vgBotMsgPrefix + "Caution: Do not join if you are unprepared to be kicked from the channel.");
         vgPotatoSignup = true;
         vgPotatoTimerSignUp = sys.setTimer(function() {
@@ -212,7 +212,7 @@ beforeChannelMessage: function(message, channel, html) {
     // ******** ******** ********
     if ((vCommand === "join") && (vgPotatoSignup === true)) {
         if (vChannelName !== vgPotatoChannel) { // PREVENTS JOINING GAME IN ANOTHER CHANNEL
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game of Hot Potato is in signups in #" + vgPotatoChannel + "!");
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game of Electrode Explode is in signups in #" + vgPotatoChannel + "!");
             return;
         }
         if (vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase()) !== -1) { // PREVENT DUPLICATE ALTS JOINING
@@ -255,11 +255,11 @@ beforeChannelMessage: function(message, channel, html) {
             return;
         }
         if (vgPotatoVictim.toLowerCase() === vCommandData.toLowerCase()) { // USER KEEPS HOLD OF THE POTATO
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " wanted to mysteriously keep hold of the potato for some reason!");
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " wanted to mysteriously keep hold of Electrode for some reason!");
             return;
         }
         if (vgPotatoCooldown === true) { // EXPLODE THE POTATO EARLY, FOR PASSING TOO SOON
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + "The potato exploded on " + vgPotatoVictim + " due to passing too soon!");
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + "Electrode on " + vgPotatoVictim + " due to passing too soon!");
             client.network().sendChanMessage(channel, "/ck " + vgPotatoVictim);
             if (vgPotatoStarted === true) {
                 sys.unsetTimer(vgPotatoTimerExplode);
@@ -269,7 +269,7 @@ beforeChannelMessage: function(message, channel, html) {
             return;
         }
         vgPotatoVictim = vCommandData.toLowerCase();
-        client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " passed the potato to " + vgPotatoVictim + "!");
+        client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " passed Electrode to " + vgPotatoVictim + "!");
         vgPotatoCooldown = true;
         vgPotatoTimerCooldown = sys.setTimer(function() {
             vgPotatoCooldown = false;
@@ -280,7 +280,7 @@ beforeChannelMessage: function(message, channel, html) {
     // ******** ******** ********
     if ((vCommand === "endpotato") && (vgPotatoAuthArray.indexOf(vUserSentName.toLowerCase()) !== -1)) {
         if ((vgPotatoSignup === true) || (vgPotatoStarted === true)) {
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + "The game of Hot Potato has ended!");
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + "The game of Electrode Explode has ended!");
             if (vgPotatoSignup === true) {
                 sys.unsetTimer(vgPotatoTimerSignUp);
             }
@@ -298,9 +298,9 @@ beforeChannelMessage: function(message, channel, html) {
     // HELP POTATO
     // ******** ******** ********
     if (vCommand === "help") {
-        var vMessage = vgBotMsgPrefix + "Potato Commands: ";
+        var vMessage = vgBotMsgPrefix + "electrode Commands: ";
         var vList = [
-            "potato",
+            "electrode",
             "join",
             "pass [username]",
             "(Bot Auth)",
