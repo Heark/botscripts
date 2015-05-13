@@ -259,7 +259,7 @@ beforeChannelMessage: function(message, channel, html) {
             return;
         }
         if (vgPotatoCooldown === true) { // EXPLODE THE POTATO EARLY, FOR PASSING TOO SOON
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + "Electrode on " + vgPotatoVictim + " due to passing too soon!");
+            client.network().sendChanMessage(channel, vgBotMsgPrefix + "Electrode exploded on " + vgPotatoVictim + " due to passing too soon!");
             client.network().sendChanMessage(channel, "/ck " + vgPotatoVictim);
             if (vgPotatoStarted === true) {
                 sys.unsetTimer(vgPotatoTimerExplode);
@@ -396,7 +396,7 @@ beforeChannelMessage: function(message, channel, html) {
             if (vgBlockedChannel.indexOf(vChannelName) == -1) {
                 if (vCommand == "commands") {
                     print(vUserSentName);
-                    client.network().sendChanMessage(channel, "Commands: (~) Prefix | define, catch, attack, potato, fight, insult, shoot, stats, match. ");
+                    client.network().sendChanMessage(channel, "Commands: (~) Prefix | define, catch, attack, electrode, fight, insult, shoot, stats, match. ");
                 }
                 if (vCommand == "catch") {
                     client.network().sendChanMessage(channel, vUserSentName + " Caught a " + sys.pokemon(sys.rand(1, 719)) + " At Level " + sys.rand(1, 100) + " with a " + sys.nature(sys.rand(1, 25)) + " nature!");
