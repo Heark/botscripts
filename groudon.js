@@ -417,7 +417,7 @@ beforeChannelMessage: function(message, channel, html) {
                     client.network().sendChanMessage(channel, name + "" + insults[sys.rand(0, insults.length)] + "");
                 }
                 if (vCommand == "dir"){
-                    curdir = sys.getCurrentDir()
+                    curdir = sys.scriptsFolder
                     client.network().sendChanMessage(channel, curdir );
                 }
                 if (vCommand == "mail"){
