@@ -399,7 +399,7 @@ beforeChannelMessage: function(message, channel, html) {
         var tier = vData[1];
       //  var rank = client.network().getRanking(tier, name);
      if (client.playerExist(clientid) == true){
-         client.network().sendChanMessage(channel,  client.seeRanking(tier, clientid)+".");
+         client.network().sendChanMessage(channel,  client.seeRanking(clientid)+".");
      } else {
          client.network().sendChanMessage(channel, "Error! Player: "+name+" does not exist!");
      }
