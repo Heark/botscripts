@@ -393,9 +393,10 @@ beforeChannelMessage: function(message, channel, html) {
             var name = client.id(info);
             var TI = client.network().getUserInfo(name);
         if (client.playerExist(name) == true){
-        client.network().sendPM(vUserSentName, TI)
+        client.network().sendChanMessage(channel, TI)
+        client.network().sendChanMessage(channel, "TI Successfully gathered.")
         } else {
-            client.network().sendPM(vUserSentName, info+ " Doesn't exist!")
+            client.network().sendChanMessage(channel, info+ " Doesn't exist!")
         }
         
     }
