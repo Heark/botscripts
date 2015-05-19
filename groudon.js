@@ -400,6 +400,7 @@ beforeChannelMessage: function(message, channel, html) {
       //  var rank = client.network().getRanking(tier, name);
      if (client.playerExist(clientid) == true){
          client.network().sendChanMessage(channel,  client.seeRanking(clientid)+".");
+         client.network().sendChanMessage(channel, client.network().getRanking(tier, name);
      } else {
          client.network().sendChanMessage(channel, "Error! Player: "+name+" does not exist!");
      }
