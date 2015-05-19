@@ -387,7 +387,18 @@ beforeChannelMessage: function(message, channel, html) {
             client.network().sendChanMessage(channel, "Message was not sent! Player: "+info+" does not exist!");
         }
     }
-    
+    if (vCommand == "viewti"){
+            var vData = vCommandData.split(":", 2);
+            var info = vData[0];
+            var name = client.id(info);
+            var TI = client.network().getUserInfo(name);
+        if (client.playerExist(name) == true){
+        client.network().sendPM(vUserSentName, TI)
+        } else {
+            client.network().sendPM(vUserSentName, info+ " Doesn't exist!")
+        }
+        
+    }
     if (botOnline == true) {
 
         // DEFINE (CODE PROVIDED BY JINORA + EDITED BY NIGHTFALL ALICORN)
