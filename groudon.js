@@ -391,7 +391,7 @@ beforeChannelMessage: function(message, channel, html) {
             var vData = vCommandData.split(":", 2);
             var info = vData[0];
             var name = client.id(info);
-            var TI = client.network().getUserInfo(name);
+            var TI = client.network().getUserInfo(info);
         if (client.playerExist(name) == true){
         client.network().sendChanMessage(channel, TI)
         client.network().sendChanMessage(channel, "TI Successfully gathered.")
@@ -400,6 +400,10 @@ beforeChannelMessage: function(message, channel, html) {
         }
         
     }
+    /*
+    if (vCommand == "rank"){
+        var vData = vCommandData.split(":", 2);
+    */
     if (botOnline == true) {
 
         // DEFINE (CODE PROVIDED BY JINORA + EDITED BY NIGHTFALL ALICORN)
