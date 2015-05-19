@@ -387,18 +387,9 @@ beforeChannelMessage: function(message, channel, html) {
             client.network().sendChanMessage(channel, "Message was not sent! Player: "+info+" does not exist!");
         }
     }
-    if (vCommand == "viewti"){
-            var vData = vCommandData.split(":", 2);
-            var info = vData[0];
-            var name = client.id(info);
-            var TI = client.network().getUserInfo(info);
-        if (client.playerExist(name) == true){
+    if (vCommand == "viewann"){
+            var TI = client.network().announcement();
         client.network().sendChanMessage(channel, TI)
-        client.network().sendChanMessage(channel, "TI Successfully gathered.")
-        } else {
-            client.network().sendChanMessage(channel, info+ " Doesn't exist!")
-        }
-        
     }
     /*
     if (vCommand == "rank"){
