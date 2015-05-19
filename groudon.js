@@ -391,10 +391,19 @@ beforeChannelMessage: function(message, channel, html) {
             var TI = announcement();
         client.network().sendChanMessage(channel, TI)
     }
-    /*
+    
     if (vCommand == "rank"){
         var vData = vCommandData.split(":", 2);
-    */
+        var name = vData[0];
+        var clientid = client.id(name);
+        var tier = vData[1];
+        var rank = client.network().getRanking(tier, name);
+     if (client.playerExist(clientid) == true){
+         client.network().sendChanMessage(channel, rank);
+     } else {
+         client.network().sendChanMessage(channel, "Error! Player: "+name+" does not exist!");
+     }
+    }
     if (botOnline == true) {
 
         // DEFINE (CODE PROVIDED BY JINORA + EDITED BY NIGHTFALL ALICORN)
