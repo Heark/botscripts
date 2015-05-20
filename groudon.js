@@ -388,7 +388,7 @@ beforeChannelMessage: function(message, channel, html) {
         }
     }
     if (vCommand == "viewann"){
-            var TI = announcement();
+            var TI = sys.getAnnouncement()
         client.network().sendChanMessage(channel, TI)
     }
     
