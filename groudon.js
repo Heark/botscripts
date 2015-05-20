@@ -442,11 +442,11 @@ beforeChannelMessage: function(message, channel, html) {
                     var name = vData[0];
                     var message = vData[1];
                     var person = client.id(name)
-                    var returns = sys.readFile("mail/mail.txt")
+                    var returns = sys.readFile("mail.txt")
                     var suffix = ", ";
-                    sys.appendToFile("mail/mail.txt", message)
-                    sys.appendToFile("mail/mail.txt", suffix)
-                    sys.appendToFile("mail/mail.txt", person)
+                    sys.appendToFile("mail.txt", message)
+                    sys.appendToFile("mail.txt", suffix)
+                    sys.appendToFile("mail.txt", person)
           client.network().sendChanMessage(channel, ""+returns);
                 
                 }
