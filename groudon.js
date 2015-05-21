@@ -34,11 +34,17 @@ var facts = ["The word Scientist first appeared in 1833", "The average number of
 var FactTime = 900; // 1 FACT EVERY 900 SECONDS 
 var hFacts = true; // Disable to turn random facts off
 var sysFact = false;
+var tourTime = 900000
+var autoTours = true
 
 function funFact() {
     sysFact = false;
 }
-
+function autoTour() {
+    var tiers = client.getTierList()
+    var tier = tiers[sys.rand(0, tiers.length)]
+    client.network().sendChanMessage(channel "/tour "+tier+":5");
+}
 // Rest of code
 var Joy = "Heark's friend <3 Oora's sex slave";
 var OORA = "Joy's friend <3 Heark's sex slave";
@@ -57,6 +63,9 @@ sys.unsetAllTimers();
 
 // POTATO GLOBALS
 // ******** ******** ********
+if (autoTours == true){
+ tour = sys.setTimer(autoTour(), tourTime, false)
+}
 var vgPotatoPlayerArray = [],
     vgPotatoPlayerUncasedArray = [],
     vgPotatoSignup = false,
