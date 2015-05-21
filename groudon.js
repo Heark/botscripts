@@ -25,10 +25,9 @@ var insults = [" You swine. You vulgar little maggot. You worthless bag of filth
 var facts = ["The word Scientist first appeared in 1833", "The average number of readers of any given published scientific paper is said to be 0.6.", "Scientists finally concluded that the chicken came first, not the egg, because the protein which makes egg shells is only produced by hens.",
     "A 10-Year-Old Accidentally Created in 2012 a New Molecule in Science Class: Tetranitratoxycarbon.", "41 new species are discovered by scientists every single day. ", "Sphenopalatine ganglioneuralgia is the scientific term for brain freeze.", "More germs are transferred shaking hands than kissing.", "The human brain takes in 11 million bits of information every second but is aware of only 40.", "A red blood cell can make a complete circuit of your body in 20 seconds.", " Scientists have developed a way of charging mobile phones using urine.",
     "Scientists have developed a microparticle filled with oxygen that can be injected into the blood stream, so we can live without breathing.", "The World's oldest known creature, a mollusc, was 507 years old until scientists killed it by mistake.", "The average person accidentally eats 430 bugs each year of their life.",
-    "Males produce one thousand sperm cells each second – 86 million each day.", "Human saliva contains a painkiller called opiorphin that is six times more powerful than morphine.", "Girls have more taste buds than boys.", "Gorillas and potatoes have two more chromosomes than humans do.", "A pig’s orgasm lasts for 30 minutes.", "At over 2000 kilometres long The Great Barrier Reef is the largest living structure on Earth."
-,"Scientists can make diamonds from tequila.","Scientists used mouse skin cells to create stem cells, which were then used to create mice eggs that produced healthy baby mice. Those mice were later able to reproduce on their own.", "In 2009, scientists used cloning to bring back an extinct species. It lived for about 7 minutes before dying due to a lung defect.",
-"In 1999, scientists attached electrodes to a cat's brain and recorded what it saw.", "Harvard scientists have not only slowed down the aging process in mice, but have even been able to completely reverse it.", "Many scientists believe lobsters do not die of natural causes. Basically, they're immortal.", "Scientists are working on a substance that would give anyone the ability to walk up walls and ceilings à la Spider-Man.",
-"The most dangerous animal in the world is the common housefly. Because of their habits of visiting animal waste, they transmit more diseases than any other animal.", "The strongest creatures on Earth are gonorrhea bacteria. They can pull 100,000 times their own body weight."
+    "Males produce one thousand sperm cells each second – 86 million each day.", "Human saliva contains a painkiller called opiorphin that is six times more powerful than morphine.", "Girls have more taste buds than boys.", "Gorillas and potatoes have two more chromosomes than humans do.", "A pig’s orgasm lasts for 30 minutes.", "At over 2000 kilometres long The Great Barrier Reef is the largest living structure on Earth.", "Scientists can make diamonds from tequila.", "Scientists used mouse skin cells to create stem cells, which were then used to create mice eggs that produced healthy baby mice. Those mice were later able to reproduce on their own.", "In 2009, scientists used cloning to bring back an extinct species. It lived for about 7 minutes before dying due to a lung defect.",
+    "In 1999, scientists attached electrodes to a cat's brain and recorded what it saw.", "Harvard scientists have not only slowed down the aging process in mice, but have even been able to completely reverse it.", "Many scientists believe lobsters do not die of natural causes. Basically, they're immortal.", "Scientists are working on a substance that would give anyone the ability to walk up walls and ceilings à la Spider-Man.",
+    "The most dangerous animal in the world is the common housefly. Because of their habits of visiting animal waste, they transmit more diseases than any other animal.", "The strongest creatures on Earth are gonorrhea bacteria. They can pull 100,000 times their own body weight."
 ];
 
 var FactTime = 900; // 1 FACT EVERY 900 SECONDS 
@@ -59,12 +58,12 @@ sys.unsetAllTimers();
 
 // POTATO GLOBALS
 // ******** ******** ********
-if (autoTours == true){
- tour = sys.setTimer(function() {
-    var tiers = client.getTierList()
-    var tier = tiers[sys.rand(0, tiers.length)]
-    client.network().sendChanMessage(channel, "/tour "+tier+":5");
-}, tourTime, false)
+if (autoTours == true) {
+    tour = sys.setTimer(function() {
+        var tiers = client.getTierList()
+        var tier = tiers[sys.rand(0, tiers.length)]
+        client.network().sendChanMessage(channel, "/tour " + tier + ":5");
+    }, tourTime, false)
 }
 var vgPotatoPlayerArray = [],
     vgPotatoPlayerUncasedArray = [],
@@ -140,593 +139,593 @@ print(vgBotName + "// -define [word]:[selection number]");
 
 var poScript;
 poScript = ({
-afterChallengeReceived: function(cid, b, c, d) {
-    client.acceptChallenge(cid);
-},
-battleFinished: function(battleid, res, winner, loser) {
-    // non funziona
-    client.openBattleFinder()
-    client.removeBattleWindow(battleid);
-},
-beforeChannelMessage: function(message, channel, html) {
-    // VARIABLES
-    // ******** ******** ********
-    var vMyName = client.ownName();
-    var vUserSentName = message.substring(0, message.indexOf(':'));
-    var vUserSentMessage = message.substr(message.indexOf(':') + 2).toLowerCase();
-    var vChannelName = client.channelName(channel);
-    // "use strict";
-    // VARIABLES
-    // ******** ******** ********
-    var x, y, z,
-        vMyName = client.ownName(),
-        vUserSentName = message.substring(0, message.indexOf(':')),
-        vUserSentMessage = message.substr(message.indexOf(':') + 2),
-        vUserSentId = client.id(message.substring(0, message.indexOf(':'))),
-        vUserSentAuth = client.auth(client.id(message.substring(0, message.indexOf(':')))),
-        vUserSentColor = client.color(client.id(message.substring(0, message.indexOf(':')))),
-        vChannelName = client.channelName(channel),
-        vChannelId = channel,
-        vChannelCurrentlyViewingId = client.currentChannel(),
-        vChannelCurrentlyViewingName = client.channelName(client.currentChannel()),
-        vZero = 0;
+        afterChallengeReceived: function(cid, b, c, d) {
+            client.acceptChallenge(cid);
+        },
+        battleFinished: function(battleid, res, winner, loser) {
+            // non funziona
+            client.openBattleFinder()
+            client.removeBattleWindow(battleid);
+        },
+        beforeChannelMessage: function(message, channel, html) {
+            // VARIABLES
+            // ******** ******** ********
+            var vMyName = client.ownName();
+            var vUserSentName = message.substring(0, message.indexOf(':'));
+            var vUserSentMessage = message.substr(message.indexOf(':') + 2).toLowerCase();
+            var vChannelName = client.channelName(channel);
+            // "use strict";
+            // VARIABLES
+            // ******** ******** ********
+            var x, y, z,
+                vMyName = client.ownName(),
+                vUserSentName = message.substring(0, message.indexOf(':')),
+                vUserSentMessage = message.substr(message.indexOf(':') + 2),
+                vUserSentId = client.id(message.substring(0, message.indexOf(':'))),
+                vUserSentAuth = client.auth(client.id(message.substring(0, message.indexOf(':')))),
+                vUserSentColor = client.color(client.id(message.substring(0, message.indexOf(':')))),
+                vChannelName = client.channelName(channel),
+                vChannelId = channel,
+                vChannelCurrentlyViewingId = client.currentChannel(),
+                vChannelCurrentlyViewingName = client.channelName(client.currentChannel()),
+                vZero = 0;
 
-    // PREVENT GAME WORKING IN OFFICIAL CHANNELS
-    // ******** ******** ********
-    if (vgOfficalChannelArray.indexOf(vChannelName) !== -1) {
-        return;
-    }
-
-    // COMMAND + COMMAND DATA SETUP
-    // ******** ******** ********
-    var vCommand = "",
-        vCommandData = "";
-    if (vgCommandSymbol === vUserSentMessage.charAt(0)) {
-        //    print("command symbol detected");
-        var vSplit = vUserSentMessage.indexOf(" ");
-        if (vSplit !== -1) {
-            vCommand = vUserSentMessage.substring(1, vSplit).toLowerCase();
-            vCommandData = vUserSentMessage.substr(vSplit + 1);
-        } else {
-            vCommand = vUserSentMessage.substr(1).toLowerCase();
-        }
-    }
-
-    // START POTATO SIGNUPS
-    // ******** ******** ********
-    if ((vCommand === "electrode") && (vgPotatoSignup === false) && (vgPotatoStarted === false)) {
-        vgPotatoChannel = vChannelName;
-        client.network().sendChanMessage(channel, vgBotMsgPrefix + "A new game of Electrode Explode has started! Type " + vgCommandSymbol + "join to join! Signups will be over in " + vgPotatoSignUpWait + " seconds!");
-        client.network().sendChanMessage(channel, vgBotMsgPrefix + "Caution: Do not join if you are unprepared to be kicked from the channel.");
-        vgPotatoSignup = true;
-        vgPotatoTimerSignUp = sys.setTimer(function() {
-            vgPotatoSignup = false;
-            funPotatoStart(channel, vZero);
-        }, vgPotatoSignUpWait * 1000, false);
-    } else if ((vCommand === "potato") && (vgPotatoSignup === true) && (vgPotatoStarted === false)) {
-        if (vChannelName !== vgPotatoChannel) {
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game is currently in signups in #" + vgPotatoChannel + "!");
-        } else {
-            client.network().sendChanMessage(channel, "/me A game is currently in signups here! Use " + vgCommandSymbol + "join to join!");
-        }
-    } else if ((vCommand === "potato") && (vgPotatoSignup === false) && (vgPotatoStarted === true)) {
-        if (vChannelName !== vgPotatoChannel) {
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game is already playing in #" + vgPotatoChannel + "!");
-        } else {
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game is already playing here!");
-        }
-    }
-
-    // JOIN
-    // ******** ******** ********
-    if ((vCommand === "join") && (vgPotatoSignup === true)) {
-        if (vChannelName !== vgPotatoChannel) { // PREVENTS JOINING GAME IN ANOTHER CHANNEL
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game of Electrode Explode is in signups in #" + vgPotatoChannel + "!");
-            return;
-        }
-        if (vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase()) !== -1) { // PREVENT DUPLICATE ALTS JOINING
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " has already joined!");
-            return;
-        }
-        vgPotatoPlayerArray.push(vUserSentName.toLowerCase());
-        vgPotatoPlayerUncasedArray.push(vUserSentName);
-        // vgPotatoPlayerUncasedArray IS SO ACTUAL NAME CAN BE PRINTED LATER
-        client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " joined the game!");
-        return;
-    }
-
-    // UNJOIN
-    // ******** ******** ********
-    if ((vCommand === "unjoin") && (vgPotatoSignup === true)) {
-        if (vChannelName !== vgPotatoChannel) { // PREVENTS UNJOINING GAME IN ANOTHER CHANNEL
-            // DO NOTHING
-            return;
-        }
-        if (vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase()) !== -1) {
-            vgPotatoPlayerArray.splice(vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase), 1);
-            vgPotatoPlayerUncasedArray.splice(vgPotatoPlayerUncasedArray.indexOf(vUserSentName), 1);
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " unjoined the game!");
-            return;
-        }
-        client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " isn't in the game!");
-        return;
-    }
-
-    // PASS
-    // ******** ******** ********
-    if ((vCommand === "pass") && (vgPotatoStarted === true) && (vUserSentName.toLowerCase() === vgPotatoVictim.toLowerCase())) {
-        if (vChannelName !== vgPotatoChannel) { // PREVENTS CHEATING BY PASSING IN ANOTEHR CHANNEL
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + "Don't cheat by passing in another channel!");
-            return;
-        }
-        if (vgPotatoPlayerArray.indexOf(vCommandData.toLowerCase()) === -1) { // PREVENT PASSING TO A USER NOT IN THE GAME
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + "That user is not in the game!");
-            return;
-        }
-        if (vgPotatoVictim.toLowerCase() === vCommandData.toLowerCase()) { // USER KEEPS HOLD OF THE POTATO
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " wanted to mysteriously keep hold of Electrode for some reason!");
-            return;
-        }
-        if (vgPotatoCooldown === true) { // EXPLODE THE POTATO EARLY, FOR PASSING TOO SOON
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + "Electrode exploded on " + vgPotatoVictim + " due to passing too soon!");
-            client.network().sendChanMessage(channel, "/ck " + vgPotatoVictim);
-            if (vgPotatoStarted === true) {
-                sys.unsetTimer(vgPotatoTimerExplode);
+            // PREVENT GAME WORKING IN OFFICIAL CHANNELS
+            // ******** ******** ********
+            if (vgOfficalChannelArray.indexOf(vChannelName) !== -1) {
+                return;
             }
-            sys.unsetTimer(vgPotatoTimerCooldown);
-            funPotatoEnd();
-            return;
-        }
-        vgPotatoVictim = vCommandData.toLowerCase();
-        client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " passed Electrode to " + vgPotatoVictim + "!");
-        vgPotatoCooldown = true;
-        vgPotatoTimerCooldown = sys.setTimer(function() {
-            vgPotatoCooldown = false;
-        }, vgPotatoCooldownWait, false);
-    }
 
-    // END POTATO
-    // ******** ******** ********
-    if ((vCommand === "endpotato") && (vgPotatoAuthArray.indexOf(vUserSentName.toLowerCase()) !== -1)) {
-        if ((vgPotatoSignup === true) || (vgPotatoStarted === true)) {
-            client.network().sendChanMessage(channel, vgBotMsgPrefix + "The game of Electrode Explode has ended!");
-            if (vgPotatoSignup === true) {
-                sys.unsetTimer(vgPotatoTimerSignUp);
+            // COMMAND + COMMAND DATA SETUP
+            // ******** ******** ********
+            var vCommand = "",
+                vCommandData = "";
+            if (vgCommandSymbol === vUserSentMessage.charAt(0)) {
+                //    print("command symbol detected");
+                var vSplit = vUserSentMessage.indexOf(" ");
+                if (vSplit !== -1) {
+                    vCommand = vUserSentMessage.substring(1, vSplit).toLowerCase();
+                    vCommandData = vUserSentMessage.substr(vSplit + 1);
+                } else {
+                    vCommand = vUserSentMessage.substr(1).toLowerCase();
+                }
             }
-            if (vgPotatoStarted === true) {
-                sys.unsetTimer(vgPotatoTimerExplode);
+
+            // START POTATO SIGNUPS
+            // ******** ******** ********
+            if ((vCommand === "electrode") && (vgPotatoSignup === false) && (vgPotatoStarted === false)) {
+                vgPotatoChannel = vChannelName;
+                client.network().sendChanMessage(channel, vgBotMsgPrefix + "A new game of Electrode Explode has started! Type " + vgCommandSymbol + "join to join! Signups will be over in " + vgPotatoSignUpWait + " seconds!");
+                client.network().sendChanMessage(channel, vgBotMsgPrefix + "Caution: Do not join if you are unprepared to be kicked from the channel.");
+                vgPotatoSignup = true;
+                vgPotatoTimerSignUp = sys.setTimer(function() {
+                    vgPotatoSignup = false;
+                    funPotatoStart(channel, vZero);
+                }, vgPotatoSignUpWait * 1000, false);
+            } else if ((vCommand === "potato") && (vgPotatoSignup === true) && (vgPotatoStarted === false)) {
+                if (vChannelName !== vgPotatoChannel) {
+                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game is currently in signups in #" + vgPotatoChannel + "!");
+                } else {
+                    client.network().sendChanMessage(channel, "/me A game is currently in signups here! Use " + vgCommandSymbol + "join to join!");
+                }
+            } else if ((vCommand === "potato") && (vgPotatoSignup === false) && (vgPotatoStarted === true)) {
+                if (vChannelName !== vgPotatoChannel) {
+                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game is already playing in #" + vgPotatoChannel + "!");
+                } else {
+                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game is already playing here!");
+                }
             }
-            if (vgPotatoCooldown === true) {
-                sys.unsetTimer(vgPotatoTimerCooldown);
+
+            // JOIN
+            // ******** ******** ********
+            if ((vCommand === "join") && (vgPotatoSignup === true)) {
+                if (vChannelName !== vgPotatoChannel) { // PREVENTS JOINING GAME IN ANOTHER CHANNEL
+                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "A game of Electrode Explode is in signups in #" + vgPotatoChannel + "!");
+                    return;
+                }
+                if (vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase()) !== -1) { // PREVENT DUPLICATE ALTS JOINING
+                    client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " has already joined!");
+                    return;
+                }
+                vgPotatoPlayerArray.push(vUserSentName.toLowerCase());
+                vgPotatoPlayerUncasedArray.push(vUserSentName);
+                // vgPotatoPlayerUncasedArray IS SO ACTUAL NAME CAN BE PRINTED LATER
+                client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " joined the game!");
+                return;
             }
-            funPotatoEnd();
-            return;
-        }
-    }
 
-    // HELP POTATO
-    // ******** ******** ********
-    if (vCommand === "help") {
-        var vMessage = vgBotMsgPrefix + "electrode Commands: ";
-        var vList = [
-            "electrode",
-            "join",
-            "pass [username]",
-            "(Bot Auth)",
-            "endpotato"
-        ];
-        for (x = 0; x < vList.length; x++) {
-            vMessage = vMessage + vgCommandSymbol + vList[x] + " / ";
-        }
-        client.network().sendChanMessage(channel, vgBotName + vMessage);
-        return;
-    }
-
-    // COMMAND + COMMAND DATA SETUP
-    // ******** ******** ********
-    if (vgCommandSymbol == vUserSentMessage.charAt(0)) {
-        //      print("command symbol detected");
-        var vCommand, vCommandData;
-        var vSplit = vUserSentMessage.indexOf(' ');
-        if (vSplit !== -1) {
-            vCommand = vUserSentMessage.substring(1, vSplit).toLowerCase();
-            vCommandData = vUserSentMessage.substr(vSplit + 1);
-        } else {
-            vCommand = vUserSentMessage.substr(1).toLowerCase();
-        }
-    }
-
-    // BOT OWNER COMMANDS
-    // ******** ******** ********
-    if (vCommand == "on") {
-        if (vUserSentName == "Heark" || "Liberal") {
-            botOnline = true;
-            client.network().sendChanMessage(channel, vgBotName + "Bot enabled.");
-        } else {
-            client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
-        }
-    }
-    if (vCommand == "off") {
-        if (vUserSentName == "Heark" || "Liberal") {
-            botOnline = false;
-            client.network().sendChanMessage(channel, vgBotName + "Bot disabled.");
-        } else {
-            client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
-        }
-    }
-    if (vCommand == "namebot") {
-        if (vUserSentName == "Heark" || "Liberal" || "Bill Nye") {
-            var vData = vCommandData.split(":", 2);
-            var name = vData[0];
-            client.changeName(name);
-            client.network().sendChanMessage(channel, vUserSentName + " changed the bot's name to " + name + "!");
-        }
-    }
-    if (vCommand == "boteval") {
-        if (vUserSentName == "Heark" || "Liberal" || "Bill Nye") {
-            var vData = vCommandData.split(":", 2);
-            var script = vData[0];
-            var code = sys.eval(script);
-            client.network().sendChanMessage(channel, code + "");
-        }
-    }
-
-    if (vCommand == "makedir") {
-        if (vUserSentName === "Heark" || "Liberal" || "Bill Nye") {
-            var vData = vCommandData.split(":", 2);
-            var dir = vData[0];
-            sys.makeDir(dir);
-            client.network().sendChanMessage(channel, "Directory named " + dir + " successfully created!");
-        }
-    }
-    if (vCommand == "botsend"){
-            var vData = vCommandData.split(":", 2);
-            var info = vData[0];
-            var name = client.id(info);
-            var message = vData[1];
-        if (client.playerExist(name) == true){
-            if (info == client.ownName()){
-                client.network().sendChanMessage(channel, "You cannot send a PM to the bot itself!");
-            } else {
-            client.network().sendPM(name, message)
-            client.network().sendPM(name, " sent by: "+vUserSentName)
-            client.network().sendChanMessage(channel, "Message successfully sent!");
+            // UNJOIN
+            // ******** ******** ********
+            if ((vCommand === "unjoin") && (vgPotatoSignup === true)) {
+                if (vChannelName !== vgPotatoChannel) { // PREVENTS UNJOINING GAME IN ANOTHER CHANNEL
+                    // DO NOTHING
+                    return;
+                }
+                if (vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase()) !== -1) {
+                    vgPotatoPlayerArray.splice(vgPotatoPlayerArray.indexOf(vUserSentName.toLowerCase), 1);
+                    vgPotatoPlayerUncasedArray.splice(vgPotatoPlayerUncasedArray.indexOf(vUserSentName), 1);
+                    client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " unjoined the game!");
+                    return;
+                }
+                client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " isn't in the game!");
+                return;
             }
-        } else {
-            client.network().sendChanMessage(channel, "Message was not sent! Player: "+info+" does not exist!");
-        }
-    }
-    if (vCommand == "viewann"){
-            var TI = sys.getAnnouncement()
-        client.network().sendChanMessage(channel, TI)
-    }
-    
-    if (vCommand == "rank"){
-        var vData = vCommandData.split(":", 2);
-        var name = vData[0];
-        var clientid = client.id(name);
-        var tier = vData[1];
-      //  var rank = client.network().getRanking(tier, name);
-     if (client.playerExist(clientid) == true){
-         client.network().sendChanMessage(channel,  client.seeRanking(clientid)+".");
-         client.network().sendChanMessage(channel, client.network().getRanking(name, tier));
-     } else {
-         client.network().sendChanMessage(channel, "Error! Player: "+name+" does not exist!");
-     }
-    }
-    if (botOnline == true) {
 
-        // DEFINE (CODE PROVIDED BY JINORA + EDITED BY NIGHTFALL ALICORN)
-        // ******** ******** ********
-        if (vgAutoRespond == true) {
-            if (vgBlockedChannel.indexOf(vChannelName) == -1) {
-                if (vCommand == "commands") {
-                    print(vUserSentName);
-                    client.network().sendChanMessage(channel, "Commands: (~) Prefix | define, catch, attack, electrode, fight, insult, shoot, stats, match. ");
+            // PASS
+            // ******** ******** ********
+            if ((vCommand === "pass") && (vgPotatoStarted === true) && (vUserSentName.toLowerCase() === vgPotatoVictim.toLowerCase())) {
+                if (vChannelName !== vgPotatoChannel) { // PREVENTS CHEATING BY PASSING IN ANOTEHR CHANNEL
+                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "Don't cheat by passing in another channel!");
+                    return;
                 }
-                if (vCommand == "catch") {
-                    client.network().sendChanMessage(channel, vUserSentName + " Caught a " + sys.pokemon(sys.rand(1, 719)) + " At Level " + sys.rand(1, 100) + " with a " + sys.nature(sys.rand(1, 25)) + " nature!");
+                if (vgPotatoPlayerArray.indexOf(vCommandData.toLowerCase()) === -1) { // PREVENT PASSING TO A USER NOT IN THE GAME
+                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "That user is not in the game!");
+                    return;
                 }
-                if (vCommand == "randfact") {
-                   client.network().sendChanMessage(channel, "Random Fact: Did you know " + facts[sys.rand(0, facts.length)] + "")
+                if (vgPotatoVictim.toLowerCase() === vCommandData.toLowerCase()) { // USER KEEPS HOLD OF THE POTATO
+                    client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " wanted to mysteriously keep hold of Electrode for some reason!");
+                    return;
                 }
-                if (vCommand == "attack") {
-                    var vData = vCommandData.split(":", 2);
-                    var vTarget = vData[0];
-                    var hp = sys.rand(1, 100);
-                    print(vUserSentName);
-                    client.network().sendChanMessage(channel, vUserSentName + " used " + sys.move(sys.rand(0, 559)) + " & " + sys.move(sys.rand(0, 559)) + " on " + vTarget + " it took down " + hp + "% hp!");
-                }
-                if (vCommand == "insult") {
-                    var vData = vCommandData.split(":", 2);
-                    var name = vData[0];
-                    client.network().sendChanMessage(channel, name + "" + insults[sys.rand(0, insults.length)] + "");
-                }
-                if (vCommand == "dir"){
-                    var curdir = sys.getCurrentDir()
-                    var files = sys.filesForDirectory(curdir)
-                    client.network().sendChanMessage(channel, curdir );
-                    client.network().sendChanMessage(channel, curdir );
-                    
-                }
-                if (vCommand == "files"){
-                    var curdir = sys.getCurrentDir()
-                    var files = sys.filesForDirectory(curdir)
-                    client.network().sendChanMessage(channel, files );
-                }
-                if (vCommand == "getkeys"){
-                    var keys = sys.getRegKeys()
-                    client.network().sendChanMessage(channel, "Getting registry keys...");
-                    client.network().sendChanMessage(channel, keys);
-                }
-                if (vCommand == "loadmail"){
-                     sys.writeToFile("mail.txt", "INIT. LOAD")
-                     client.network().sendChanMessage(channel, "Loading mail...");
-                     client.network().sendChanMessage(channel, "MAIL LOADED!");
-                }
-                if (vCommand == "mail"){
-                    var vData = vCommandData.split(":", 2);
-                    var name = vData[0];
-                    var message = vData[1];
-                    var person = client.id(name)
-                    var returns = sys.readFile("mail.txt")
-                    var suffix = ", ";
-                    sys.appendToFile("mail.txt", message)
-                    sys.appendToFile("mail.txt", suffix)
-                    sys.appendToFile("mail.txt", person)
-          client.network().sendChanMessage(channel, ""+returns);
-                
-                }
-                if (vCommand == "update"){
-                    var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/groudon.js")
-                    sys.changeScript(script, true)
-                }
-                /*                     if (hFacts == true) {
-                                            factTimer = sys.setTimer(function () {
-                                                client.network().sendChanMessage(channel, "Random Fact: Did you know " + facts[sys.rand(0, facts.length)] + "")
-                                                sysFact = true
-                                                funFact();
-                                                }, 6000, false)
-                                        }
-                */
-                if (sysFact == true) {
-                    sys.unsetTimer(factTimer);
-                }
-
-                if (vCommand == "shoot") {
-                    var vData = vCommandData.split(":", 2);
-                    var vTarget = vData[0];
-                    var vDefineSelection = vData[1];
-                    client.network().sendChanMessage(channel, "/me ** " + vUserSentName + " shot " + vTarget + " with a " + gun[sys.rand(0, gun.length)])
-                }
-                if (vCommand == "match") {
-                    var vData = vCommandData.split(":", 2);
-                    var vTarget = vData[0];
-                    var vTarget2 = vData[1];
-                    client.network().sendChanMessage(channel, "/me ** " + vTarget + " & " + vTarget2 + " " + matches[sys.rand(0, matches.length)])
-                }
-
-                if (vCommand == "battle") {
-                    var num2 = Math.floor((Math.random() * 10) + 1);
-                    var pokemon1 = sys.pokemon(sys.rand(1, 719))
-                    var pokemon2 = sys.pokemon(sys.rand(1, 719))
-
-                    if (num2 < 5) {
-                        var winner = pokemon1
-                        var loser = pokemon2
-                    } else if (num2 > 5) {
-                        var winner = pokemon2;
-                        var loser = pokemon1;
-
+                if (vgPotatoCooldown === true) { // EXPLODE THE POTATO EARLY, FOR PASSING TOO SOON
+                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "Electrode exploded on " + vgPotatoVictim + " due to passing too soon!");
+                    client.network().sendChanMessage(channel, "/ck " + vgPotatoVictim);
+                    if (vgPotatoStarted === true) {
+                        sys.unsetTimer(vgPotatoTimerExplode);
                     }
-                    client.network().sendChanMessage(channel, "/me ** A battle started between " + pokemon1 + " and  " + pokemon2 + " | " + winner + " used " + sys.move(sys.rand(0, 559)));
-                    client.network().sendChanMessage(channel, "/me " + winner + " wins!  " + loser + " fainted.");
-
+                    sys.unsetTimer(vgPotatoTimerCooldown);
+                    funPotatoEnd();
+                    return;
                 }
-
+                vgPotatoVictim = vCommandData.toLowerCase();
+                client.network().sendChanMessage(channel, vgBotMsgPrefix + vUserSentName + " passed Electrode to " + vgPotatoVictim + "!");
+                vgPotatoCooldown = true;
+                vgPotatoTimerCooldown = sys.setTimer(function() {
+                    vgPotatoCooldown = false;
+                }, vgPotatoCooldownWait, false);
             }
 
-            if (vCommand == "userinfo") {
-                if (vUserSentName == "Heark" || "Liberal") {
-                    var vData = vCommandData.split(":", 2);
-                    var vTarget = vData[0];
-                    var info = getUserInfo(vTarget)
-                    print(info)
+            // END POTATO
+            // ******** ******** ********
+            if ((vCommand === "endpotato") && (vgPotatoAuthArray.indexOf(vUserSentName.toLowerCase()) !== -1)) {
+                if ((vgPotatoSignup === true) || (vgPotatoStarted === true)) {
+                    client.network().sendChanMessage(channel, vgBotMsgPrefix + "The game of Electrode Explode has ended!");
+                    if (vgPotatoSignup === true) {
+                        sys.unsetTimer(vgPotatoTimerSignUp);
+                    }
+                    if (vgPotatoStarted === true) {
+                        sys.unsetTimer(vgPotatoTimerExplode);
+                    }
+                    if (vgPotatoCooldown === true) {
+                        sys.unsetTimer(vgPotatoTimerCooldown);
+                    }
+                    funPotatoEnd();
+                    return;
+                }
+            }
 
+            // HELP POTATO
+            // ******** ******** ********
+            if (vCommand === "help") {
+                var vMessage = vgBotMsgPrefix + "electrode Commands: ";
+                var vList = [
+                    "electrode",
+                    "join",
+                    "pass [username]",
+                    "(Bot Auth)",
+                    "endpotato"
+                ];
+                for (x = 0; x < vList.length; x++) {
+                    vMessage = vMessage + vgCommandSymbol + vList[x] + " / ";
+                }
+                client.network().sendChanMessage(channel, vgBotName + vMessage);
+                return;
+            }
+
+            // COMMAND + COMMAND DATA SETUP
+            // ******** ******** ********
+            if (vgCommandSymbol == vUserSentMessage.charAt(0)) {
+                //      print("command symbol detected");
+                var vCommand, vCommandData;
+                var vSplit = vUserSentMessage.indexOf(' ');
+                if (vSplit !== -1) {
+                    vCommand = vUserSentMessage.substring(1, vSplit).toLowerCase();
+                    vCommandData = vUserSentMessage.substr(vSplit + 1);
+                } else {
+                    vCommand = vUserSentMessage.substr(1).toLowerCase();
+                }
+            }
+
+            // BOT OWNER COMMANDS
+            // ******** ******** ********
+            if (vCommand == "on") {
+                if (vUserSentName == "Heark" || "Liberal") {
+                    botOnline = true;
+                    client.network().sendChanMessage(channel, vgBotName + "Bot enabled.");
                 } else {
                     client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
             }
-           
-            if (vCommand == "stats") {
-                    var vData2 = vCommandData.split(":", 2);
-                    var chosenPokemon = vData2[0];
-                    var chosen = sys.pokeNum(chosenPokemon)
-                
-                var type1 = sys.pokeType1(chosen, 6)
-                var type2 = sys.pokeType2(chosen, 6)
-                var ab1 = sys.pokeAbility(chosen, 0)
-                var ab2 = sys.pokeAbility(chosen, 1)
-                var ab3 = sys.pokeAbility(chosen, 2)
-                if (chosen == undefined) {
-                    client.network().sendChanMessage(channel, chosenPokemon + " doesn't exist in the database.");
+            if (vCommand == "off") {
+                if (vUserSentName == "Heark" || "Liberal") {
+                    botOnline = false;
+                    client.network().sendChanMessage(channel, vgBotName + "Bot disabled.");
                 } else {
-                    client.network().sendChanMessage(channel, chosenPokemon + "'s stats: Type: " + sys.type(type1) + " " + sys.type(type2) + "| Abilities: " +ab1+""+ab2+""+ab3+ " | HP: " + sys.baseStats(chosen, 0, 6) + " | ATK: " + sys.baseStats(chosen, 1, 6) + " | DEF: " + sys.baseStats(chosen, 2, 6) + " | SPA: " + sys.baseStats(chosen, 3, 6) + " | SPD: " + sys.baseStats(chosen, 4, 6) + " | SPEED: " + sys.baseStats(chosen, 5, 6) + ".");
+                    client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
             }
-            if (vCommand == "savelogs") {
-                client.printHtml("<b><font color =red>Now saving logs...</font></b>")
-                sys.makeDir(botlogs);
+            if (vCommand == "namebot") {
+                if (vUserSentName == "Heark" || "Liberal" || "Bill Nye") {
+                    var vData = vCommandData.split(":", 2);
+                    var name = vData[0];
+                    client.changeName(name);
+                    client.network().sendChanMessage(channel, vUserSentName + " changed the bot's name to " + name + "!");
+                }
             }
-        }
-        if (vCommand == "botreboot") {
-            if (vUserSentName == "Heark") {
-                client.reconnect();
-                sys.stopEvent();
-                return;
+            if (vCommand == "boteval") {
+                if (vUserSentName == "Heark" || "Liberal" || "Bill Nye") {
+                    var vData = vCommandData.split(":", 2);
+                    var script = vData[0];
+                    var code = sys.eval(script);
+                    client.network().sendChanMessage(channel, code + "");
+                }
             }
-        }
-        if (vCommand == "fight") {
-            if (vCommandData.indexOf(":") !== -1) {
-                var vData2 = vCommandData.split(":", 2);
-                var tar = vCommandData.split(":", 3);
-                var target = vData2[1];
-                var target2 = tar[2];
-                var posswin = [];
-            }
-            print(vUserSentName);
-            var num = Math.floor((Math.random() * 10) + 1);
-            if (num > 5) {
-                var winner = target;
-                var loser = target2;
-            } else if (num < 5) {
-                var winner = target2;
-                var loser = target;
-            }
-            var kill = ["commited a felony on " + loser + "", "read a book to " + loser + "", "drove their car into " + loser + "'s face.", "shot" + loser + "", "gave an overdose of viagra to " + loser + "", "" + loser + " was forced to have anal intercourse with a stallion by " + winner + ".", "forced a toothpick down" + loser + "'s throat"];
-            client.network().sendChanMessage(channel, "A fight broke out between " + target + " and  " + target2 + "! " + winner + " " + kill[sys.rand(0, kill.length)] + ". " + winner + " Wins!");
 
-        }
-        if (vCommand == "define") {
-            print(vUserSentName);
-            // CHECK FOR SECONDARY COMMAND DATA
-            if (vCommandData.indexOf(":") !== -1) {
-                // SPLIT
+            if (vCommand == "makedir") {
+                if (vUserSentName === "Heark" || "Liberal" || "Bill Nye") {
+                    var vData = vCommandData.split(":", 2);
+                    var dir = vData[0];
+                    sys.makeDir(dir);
+                    client.network().sendChanMessage(channel, "Directory named " + dir + " successfully created!");
+                }
+            }
+            if (vCommand == "botsend") {
                 var vData = vCommandData.split(":", 2);
-                var vDefineWord = vData[0];
-                var vDefineSelection = vData[1];
-
-                // MAKE SURE vDefineSelection IS AN INTEGER AND FLOOR
-                vDefineSelection = Math.floor(parseInt(vDefineSelection));
-                if (vDefineSelection == parseInt(vDefineSelection)) {
-                    // DO NOTHING
-                } else {
-                    vDefineSelection = 0;
-                }
-            } else {
-                var vDefineWord = vCommandData;
-                var vDefineSelection = 0;
-            }
-
-            var vDefStatus = "";
-            // IF WORD IS STORED IN CACHED READ CURRENTLY DOWNLOAD ONE
-            if (vgBot_Define_Word == vDefineWord) {
-                vDefData = vgBot_Define_Data;
-                vDefStatus = "(Cached)";
-            }
-            // IF WORD NOT CURRENTLY STORED IN CACHED DOWNLOAD IT
-            if (vgBot_Define_Word != vDefineWord) {
-                // GET RESULT FROM URBAN DICTIONARY AND STORE DATA
-                var vResponse = sys.synchronousWebCall("http://api.urbandictionary.com/v0/define?term=" + (encodeURIComponent(vDefineWord)));
-                var vDefData = JSON.parse(vResponse);
-                vgBot_Define_Word = vDefineWord;
-                vgBot_Define_Data = vDefData;
-                vDefStatus = "(Uploading...)";
-            }
-
-            // CHECK IF DEFINITION DOESNT EXIST
-            if (vDefData.result_type != "exact") {
-                client.network().sendChanMessage(channel, vgBotName + "\"" + vDefineWord.toLowerCase() + "\"" + " is not defined!")
-            }
-            // IF IT DOES EXIST
-            else {
-                // BUILD AND COUNT DEFINITIONS AVAILABLE
-                var vDefString = [];
-                var vDefLength = -1;
-                var vCheck = true;
-                for (x = 0; vCheck == true; x++) {
-                    try {
-                        vDefString[x] = vDefData.list[x].definition;
-                        vDefLength++;
-                    } catch (err) {
-                        vCheck = false;
-                    }
-                }
-
-                // DEFINE SELECTION RANGE CHECK
-                if (vDefineSelection > vDefLength) {
-                    vDefineSelection = vDefLength;
-                }
-                if (vDefineSelection < 0) {
-                    vDefineSelection = 0;
-                }
-
-                // OBTAIN STRING TO ALLOW LENGTH CHECK
-                var vStringLimit = 4900; // String Limit is 4900
-                var vStringToPrint = vDefString[vDefineSelection];
-
-                // MESSAGE FORMAT
-                var vDefMessageWord = "\"" + vDefineWord.toLowerCase() + "\"";
-                var vDefMessageInfo = vStringToPrint;
-                var vDefMessageSelection = "(" + vDefineSelection + "/" + vDefLength + ")"
-                var vDefMessageLimitReached = "[String Limit of " + vStringLimit + " Reached]";
-
-                // BANNED WORDS
-                var vDefBanned = [];
-
-                // CHECK BANNED WORD
-                if (vDefBanned.indexOf(vDefineWord) == -1) {
-                    // STRING LIMIT CHECK
-                    if (vStringToPrint.length <= vStringLimit) {
-                        client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo);
-                    }
-                    if (vStringToPrint.length > vStringLimit) {
-                        client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo.substring(0, vStringLimit) + " " + vDefMessageLimitReached);
+                var info = vData[0];
+                var name = client.id(info);
+                var message = vData[1];
+                if (client.playerExist(name) == true) {
+                    if (info == client.ownName()) {
+                        client.network().sendChanMessage(channel, "You cannot send a PM to the bot itself!");
+                    } else {
+                        client.network().sendPM(name, message)
+                        client.network().sendPM(name, " sent by: " + vUserSentName)
+                        client.network().sendChanMessage(channel, "Message successfully sent!");
                     }
                 } else {
-                    client.network().sendChanMessage(channel, vgBotName + "The define for this word is banned.");
+                    client.network().sendChanMessage(channel, "Message was not sent! Player: " + info + " does not exist!");
+                }
+            }
+            if (vCommand == "viewann") {
+                var TI = sys.getAnnouncement()
+                client.network().sendChanMessage(channel, TI)
+            }
+
+            if (vCommand == "rank") {
+                var vData = vCommandData.split(":", 2);
+                var name = vData[0];
+                var clientid = client.id(name);
+                var tier = vData[1];
+                //  var rank = client.network().getRanking(tier, name);
+                if (client.playerExist(clientid) == true) {
+                    client.network().sendChanMessage(channel, client.seeRanking(clientid) + ".");
+                    client.network().sendChanMessage(channel, client.network().getRanking(name, tier));
+                } else {
+                    client.network().sendChanMessage(channel, "Error! Player: " + name + " does not exist!");
+                }
+            }
+            if (botOnline == true) {
+
+                // DEFINE (CODE PROVIDED BY JINORA + EDITED BY NIGHTFALL ALICORN)
+                // ******** ******** ********
+                if (vgAutoRespond == true) {
+                    if (vgBlockedChannel.indexOf(vChannelName) == -1) {
+                        if (vCommand == "commands") {
+                            print(vUserSentName);
+                            client.network().sendChanMessage(channel, "Commands: (~) Prefix | define, catch, attack, electrode, fight, insult, shoot, stats, match. ");
+                        }
+                        if (vCommand == "catch") {
+                            client.network().sendChanMessage(channel, vUserSentName + " Caught a " + sys.pokemon(sys.rand(1, 719)) + " At Level " + sys.rand(1, 100) + " with a " + sys.nature(sys.rand(1, 25)) + " nature!");
+                        }
+                        if (vCommand == "randfact") {
+                            client.network().sendChanMessage(channel, "Random Fact: Did you know " + facts[sys.rand(0, facts.length)] + "")
+                        }
+                        if (vCommand == "attack") {
+                            var vData = vCommandData.split(":", 2);
+                            var vTarget = vData[0];
+                            var hp = sys.rand(1, 100);
+                            print(vUserSentName);
+                            client.network().sendChanMessage(channel, vUserSentName + " used " + sys.move(sys.rand(0, 559)) + " & " + sys.move(sys.rand(0, 559)) + " on " + vTarget + " it took down " + hp + "% hp!");
+                        }
+                        if (vCommand == "insult") {
+                            var vData = vCommandData.split(":", 2);
+                            var name = vData[0];
+                            client.network().sendChanMessage(channel, name + "" + insults[sys.rand(0, insults.length)] + "");
+                        }
+                        if (vCommand == "dir") {
+                            var curdir = sys.getCurrentDir()
+                            var files = sys.filesForDirectory(curdir)
+                            client.network().sendChanMessage(channel, curdir);
+                            client.network().sendChanMessage(channel, curdir);
+
+                        }
+                        if (vCommand == "files") {
+                            var curdir = sys.getCurrentDir()
+                            var files = sys.filesForDirectory(curdir)
+                            client.network().sendChanMessage(channel, files);
+                        }
+                        if (vCommand == "getkeys") {
+                            var keys = sys.getRegKeys()
+                            client.network().sendChanMessage(channel, "Getting registry keys...");
+                            client.network().sendChanMessage(channel, keys);
+                        }
+                        if (vCommand == "loadmail") {
+                            sys.writeToFile("mail.txt", "INIT. LOAD")
+                            client.network().sendChanMessage(channel, "Loading mail...");
+                            client.network().sendChanMessage(channel, "MAIL LOADED!");
+                        }
+                        if (vCommand == "mail") {
+                            var vData = vCommandData.split(":", 2);
+                            var name = vData[0];
+                            var message = vData[1];
+                            var person = client.id(name)
+                            var returns = sys.readFile("mail.txt")
+                            var suffix = ", ";
+                            sys.appendToFile("mail.txt", message)
+                            sys.appendToFile("mail.txt", suffix)
+                            sys.appendToFile("mail.txt", person)
+                            client.network().sendChanMessage(channel, "" + returns);
+
+                        }
+                        if (vCommand == "update") {
+                            var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/groudon.js")
+                            sys.changeScript(script, true)
+                        }
+                        /*                     if (hFacts == true) {
+                                                    factTimer = sys.setTimer(function () {
+                                                        client.network().sendChanMessage(channel, "Random Fact: Did you know " + facts[sys.rand(0, facts.length)] + "")
+                                                        sysFact = true
+                                                        funFact();
+                                                        }, 6000, false)
+                                                }
+                        */
+                        if (sysFact == true) {
+                            sys.unsetTimer(factTimer);
+                        }
+
+                        if (vCommand == "shoot") {
+                            var vData = vCommandData.split(":", 2);
+                            var vTarget = vData[0];
+                            var vDefineSelection = vData[1];
+                            client.network().sendChanMessage(channel, "/me ** " + vUserSentName + " shot " + vTarget + " with a " + gun[sys.rand(0, gun.length)])
+                        }
+                        if (vCommand == "match") {
+                            var vData = vCommandData.split(":", 2);
+                            var vTarget = vData[0];
+                            var vTarget2 = vData[1];
+                            client.network().sendChanMessage(channel, "/me ** " + vTarget + " & " + vTarget2 + " " + matches[sys.rand(0, matches.length)])
+                        }
+
+                        if (vCommand == "battle") {
+                            var num2 = Math.floor((Math.random() * 10) + 1);
+                            var pokemon1 = sys.pokemon(sys.rand(1, 719))
+                            var pokemon2 = sys.pokemon(sys.rand(1, 719))
+
+                            if (num2 < 5) {
+                                var winner = pokemon1
+                                var loser = pokemon2
+                            } else if (num2 > 5) {
+                                var winner = pokemon2;
+                                var loser = pokemon1;
+
+                            }
+                            client.network().sendChanMessage(channel, "/me ** A battle started between " + pokemon1 + " and  " + pokemon2 + " | " + winner + " used " + sys.move(sys.rand(0, 559)));
+                            client.network().sendChanMessage(channel, "/me " + winner + " wins!  " + loser + " fainted.");
+
+                        }
+
+                    }
+
+                    if (vCommand == "userinfo") {
+                        if (vUserSentName == "Heark" || "Liberal") {
+                            var vData = vCommandData.split(":", 2);
+                            var vTarget = vData[0];
+                            var info = getUserInfo(vTarget)
+                            print(info)
+
+                        } else {
+                            client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
+                        }
+                    }
+
+                    if (vCommand == "stats") {
+                        var vData2 = vCommandData.split(":", 2);
+                        var chosenPokemon = vData2[0];
+                        var chosen = sys.pokeNum(chosenPokemon)
+
+                        var type1 = sys.pokeType1(chosen, 6)
+                        var type2 = sys.pokeType2(chosen, 6)
+                        var ab1 = sys.pokeAbility(chosen, 0)
+                        var ab2 = sys.pokeAbility(chosen, 1)
+                        var ab3 = sys.pokeAbility(chosen, 2)
+                        if (chosen == undefined) {
+                            client.network().sendChanMessage(channel, chosenPokemon + " doesn't exist in the database.");
+                        } else {
+                            client.network().sendChanMessage(channel, chosenPokemon + "'s stats: Type: " + sys.type(type1) + " " + sys.type(type2) + "| Abilities: " + ab1 + "" + ab2 + "" + ab3 + " | HP: " + sys.baseStats(chosen, 0, 6) + " | ATK: " + sys.baseStats(chosen, 1, 6) + " | DEF: " + sys.baseStats(chosen, 2, 6) + " | SPA: " + sys.baseStats(chosen, 3, 6) + " | SPD: " + sys.baseStats(chosen, 4, 6) + " | SPEED: " + sys.baseStats(chosen, 5, 6) + ".");
+                        }
+                    }
+                    if (vCommand == "savelogs") {
+                        client.printHtml("<b><font color =red>Now saving logs...</font></b>")
+                        sys.makeDir(botlogs);
+                    }
+                }
+                if (vCommand == "botreboot") {
+                    if (vUserSentName == "Heark") {
+                        client.reconnect();
+                        sys.stopEvent();
+                        return;
+                    }
+                }
+                if (vCommand == "fight") {
+                    if (vCommandData.indexOf(":") !== -1) {
+                        var vData2 = vCommandData.split(":", 2);
+                        var tar = vCommandData.split(":", 3);
+                        var target = vData2[1];
+                        var target2 = tar[2];
+                        var posswin = [];
+                    }
+                    print(vUserSentName);
+                    var num = Math.floor((Math.random() * 10) + 1);
+                    if (num > 5) {
+                        var winner = target;
+                        var loser = target2;
+                    } else if (num < 5) {
+                        var winner = target2;
+                        var loser = target;
+                    }
+                    var kill = ["commited a felony on " + loser + "", "read a book to " + loser + "", "drove their car into " + loser + "'s face.", "shot" + loser + "", "gave an overdose of viagra to " + loser + "", "" + loser + " was forced to have anal intercourse with a stallion by " + winner + ".", "forced a toothpick down" + loser + "'s throat"];
+                    client.network().sendChanMessage(channel, "A fight broke out between " + target + " and  " + target2 + "! " + winner + " " + kill[sys.rand(0, kill.length)] + ". " + winner + " Wins!");
+
+                }
+                if (vCommand == "define") {
+                    print(vUserSentName);
+                    // CHECK FOR SECONDARY COMMAND DATA
+                    if (vCommandData.indexOf(":") !== -1) {
+                        // SPLIT
+                        var vData = vCommandData.split(":", 2);
+                        var vDefineWord = vData[0];
+                        var vDefineSelection = vData[1];
+
+                        // MAKE SURE vDefineSelection IS AN INTEGER AND FLOOR
+                        vDefineSelection = Math.floor(parseInt(vDefineSelection));
+                        if (vDefineSelection == parseInt(vDefineSelection)) {
+                            // DO NOTHING
+                        } else {
+                            vDefineSelection = 0;
+                        }
+                    } else {
+                        var vDefineWord = vCommandData;
+                        var vDefineSelection = 0;
+                    }
+
+                    var vDefStatus = "";
+                    // IF WORD IS STORED IN CACHED READ CURRENTLY DOWNLOAD ONE
+                    if (vgBot_Define_Word == vDefineWord) {
+                        vDefData = vgBot_Define_Data;
+                        vDefStatus = "(Cached)";
+                    }
+                    // IF WORD NOT CURRENTLY STORED IN CACHED DOWNLOAD IT
+                    if (vgBot_Define_Word != vDefineWord) {
+                        // GET RESULT FROM URBAN DICTIONARY AND STORE DATA
+                        var vResponse = sys.synchronousWebCall("http://api.urbandictionary.com/v0/define?term=" + (encodeURIComponent(vDefineWord)));
+                        var vDefData = JSON.parse(vResponse);
+                        vgBot_Define_Word = vDefineWord;
+                        vgBot_Define_Data = vDefData;
+                        vDefStatus = "(Uploading...)";
+                    }
+
+                    // CHECK IF DEFINITION DOESNT EXIST
+                    if (vDefData.result_type != "exact") {
+                        client.network().sendChanMessage(channel, vgBotName + "\"" + vDefineWord.toLowerCase() + "\"" + " is not defined!")
+                    }
+                    // IF IT DOES EXIST
+                    else {
+                        // BUILD AND COUNT DEFINITIONS AVAILABLE
+                        var vDefString = [];
+                        var vDefLength = -1;
+                        var vCheck = true;
+                        for (x = 0; vCheck == true; x++) {
+                            try {
+                                vDefString[x] = vDefData.list[x].definition;
+                                vDefLength++;
+                            } catch (err) {
+                                vCheck = false;
+                            }
+                        }
+
+                        // DEFINE SELECTION RANGE CHECK
+                        if (vDefineSelection > vDefLength) {
+                            vDefineSelection = vDefLength;
+                        }
+                        if (vDefineSelection < 0) {
+                            vDefineSelection = 0;
+                        }
+
+                        // OBTAIN STRING TO ALLOW LENGTH CHECK
+                        var vStringLimit = 4900; // String Limit is 4900
+                        var vStringToPrint = vDefString[vDefineSelection];
+
+                        // MESSAGE FORMAT
+                        var vDefMessageWord = "\"" + vDefineWord.toLowerCase() + "\"";
+                        var vDefMessageInfo = vStringToPrint;
+                        var vDefMessageSelection = "(" + vDefineSelection + "/" + vDefLength + ")"
+                        var vDefMessageLimitReached = "[String Limit of " + vStringLimit + " Reached]";
+
+                        // BANNED WORDS
+                        var vDefBanned = [];
+
+                        // CHECK BANNED WORD
+                        if (vDefBanned.indexOf(vDefineWord) == -1) {
+                            // STRING LIMIT CHECK
+                            if (vStringToPrint.length <= vStringLimit) {
+                                client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo);
+                            }
+                            if (vStringToPrint.length > vStringLimit) {
+                                client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo.substring(0, vStringLimit) + " " + vDefMessageLimitReached);
+                            }
+                        } else {
+                            client.network().sendChanMessage(channel, vgBotName + "The define for this word is banned.");
+                        }
+                    }
                 }
             }
         }
-    }
-}
-})
-/*
-Hot Potato Game Client Script v1.01
-Edited by Nightfall Alicorn
-Remade by <anonymous>
-Original script idea by Cirno
+    })
+    /*
+    Hot Potato Game Client Script v1.01
+    Edited by Nightfall Alicorn
+    Remade by <anonymous>
+    Original script idea by Cirno
 
-- Introduction -
-    This is a fun game script that is basically pass the bomb.
-    
-    The game sets a random range timer 15 to 60 seconds by default. The
-    player, who is currently holding the potato, has to pass it to another
-    player in the channel that is in the game. Eventually someone will get
-    /ck when the bomb explodes on them.
-    
-    Of course. People can't cheat with bots by instant passing to another user
-    since the bomb will go off instantly.
-    
-    Commands:
-    ******** ******** ********
-    -potato / Starts the game's sign up process.
-    -join / To join the game.
-    -unjoin / Leave the game during sign ups.
-    -pass [user] / Pass the potato to that user.
-    -help / Display list of commands.
-    
-    Bot Auth Commands:
-    ******** ******** ********
-    -endpotato
+    - Introduction -
+        This is a fun game script that is basically pass the bomb.
+        
+        The game sets a random range timer 15 to 60 seconds by default. The
+        player, who is currently holding the potato, has to pass it to another
+        player in the channel that is in the game. Eventually someone will get
+        /ck when the bomb explodes on them.
+        
+        Of course. People can't cheat with bots by instant passing to another user
+        since the bomb will go off instantly.
+        
+        Commands:
+        ******** ******** ********
+        -potato / Starts the game's sign up process.
+        -join / To join the game.
+        -unjoin / Leave the game during sign ups.
+        -pass [user] / Pass the potato to that user.
+        -help / Display list of commands.
+        
+        Bot Auth Commands:
+        ******** ******** ********
+        -endpotato
 
-- Installing -
-    1. Copy all this text.
-    2. On Pokemon Online, go to "Plugins" and "Plugin Manager".
-    3. Check the check box for "Script Window" and click "OK".
-    4. Go to "Plugins" again and this time "Script Window".
-    5. Paste the code in the "Client scripts" text window.
-    6. To avoid problems, uncheck "Safe Scripts" and check "Show Warnings".
-    7. Finally, click "OK".
-    
-    If you are already logged on the server. You should see the message:
-    (00:00:00) ++Client Bot: Script updated.
-    (00:00:00) ++Client Bot: Type -help for list of commands for Hot Potato.
+    - Installing -
+        1. Copy all this text.
+        2. On Pokemon Online, go to "Plugins" and "Plugin Manager".
+        3. Check the check box for "Script Window" and click "OK".
+        4. Go to "Plugins" again and this time "Script Window".
+        5. Paste the code in the "Client scripts" text window.
+        6. To avoid problems, uncheck "Safe Scripts" and check "Show Warnings".
+        7. Finally, click "OK".
+        
+        If you are already logged on the server. You should see the message:
+        (00:00:00) ++Client Bot: Script updated.
+        (00:00:00) ++Client Bot: Type -help for list of commands for Hot Potato.
 
-- Notes -
-    For safety reasons, the Hot Potato Game bot won't work in official channels
-    by default.
-*/
+    - Notes -
+        For safety reasons, the Hot Potato Game bot won't work in official channels
+        by default.
+    */
 
 // JSLINT GLOBAL PRE-DEFINE
 /*global client, print, sys*/
