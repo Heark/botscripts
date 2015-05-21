@@ -40,11 +40,7 @@ var autoTours = true
 function funFact() {
     sysFact = false;
 }
-var autoTour() = function autoTour() {
-    var tiers = client.getTierList()
-    var tier = tiers[sys.rand(0, tiers.length)]
-    client.network().sendChanMessage(channel, "/tour "+tier+":5");
-}
+
 // Rest of code
 var Joy = "Heark's friend <3 Oora's sex slave";
 var OORA = "Joy's friend <3 Heark's sex slave";
@@ -64,7 +60,11 @@ sys.unsetAllTimers();
 // POTATO GLOBALS
 // ******** ******** ********
 if (autoTours == true){
- tour = sys.setTimer(autoTour(), tourTime, false)
+ tour = sys.setTimer(function() {
+    var tiers = client.getTierList()
+    var tier = tiers[sys.rand(0, tiers.length)]
+    client.network().sendChanMessage(channel, "/tour "+tier+":5");
+}, tourTime, false)
 }
 var vgPotatoPlayerArray = [],
     vgPotatoPlayerUncasedArray = [],
