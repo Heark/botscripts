@@ -450,6 +450,11 @@ beforeChannelMessage: function(message, channel, html) {
                     client.network().sendChanMessage(channel, "Getting registry keys...");
                     client.network().sendChanMessage(channel, keys);
                 }
+                if (vCommand == "loadmail"){
+                     sys.writeToFile("mail.txt", "INIT. LOAD")
+                     client.network().sendChanMessage(channel, "Loading mail...");
+                     client.network().sendChanMessage(channel, "MAIL LOADED!");
+                }
                 if (vCommand == "mail"){
                     var vData = vCommandData.split(":", 2);
                     var name = vData[0];
