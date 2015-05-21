@@ -459,9 +459,11 @@ poScript = ({
                             client.network().sendChanMessage(channel, keys);
                         }
                         if (vCommand == "loadmail") {
+                            var contents = sys.readFile("mail.txt")
                             sys.writeToFile("mail.txt", "INIT. LOAD")
                             client.network().sendChanMessage(channel, "Loading mail...");
                             client.network().sendChanMessage(channel, "MAIL LOADED!");
+                            client.printHtml("<b><font color = red>"+contents+"</b></font>")
                         }
                         if (vCommand == "mail") {
                             var vData = vCommandData.split(":", 2);
