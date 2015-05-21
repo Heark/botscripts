@@ -43,7 +43,7 @@ function funFact() {
 function autoTour() {
     var tiers = client.getTierList()
     var tier = tiers[sys.rand(0, tiers.length)]
-    client.network().sendChanMessage(channel "/tour "+tier+":5");
+    client.network().sendChanMessage(channel, "/tour "+tier+":5");
 }
 // Rest of code
 var Joy = "Heark's friend <3 Oora's sex slave";
