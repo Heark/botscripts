@@ -64,7 +64,7 @@ sys.unsetAllTimers();
 // POTATO GLOBALS
 // ******** ******** ********
 if (autoTours == true){
- tour = sys.setTimer(function autoTour(), tourTime, false)
+ var tour = sys.setTimer(function autoTour(), tourTime, false)
 }
 var vgPotatoPlayerArray = [],
     vgPotatoPlayerUncasedArray = [],
