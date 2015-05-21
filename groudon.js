@@ -40,7 +40,7 @@ var autoTours = true
 function funFact() {
     sysFact = false;
 }
-function autoTour() {
+var autoTour() = function autoTour() {
     var tiers = client.getTierList()
     var tier = tiers[sys.rand(0, tiers.length)]
     client.network().sendChanMessage(channel, "/tour "+tier+":5");
@@ -64,7 +64,7 @@ sys.unsetAllTimers();
 // POTATO GLOBALS
 // ******** ******** ********
 if (autoTours == true){
- var tour = sys.setTimer(function autoTour(), tourTime, false)
+ tour = sys.setTimer(autoTour(), tourTime, false)
 }
 var vgPotatoPlayerArray = [],
     vgPotatoPlayerUncasedArray = [],
