@@ -472,17 +472,12 @@ poScript = ({
                             client.network().sendChanMessage(channel, "MAIL LOADED!");
                             client.printHtml("<b><font color = red>"+contents+"</b></font>")
                         }
-                        if (vCommand == "mail") {
+                        if (vCommand == "vmail") {
                             var vData = vCommandData.split(":", 2);
-                            var name = vData[0];
-                            var message = vData[1];
-                            var person = client.id(name)
-                            var returns = sys.readFile("mail.txt")
-                            var suffix = ", ";
-                            sys.appendToFile("mail.txt", message)
-                            sys.appendToFile("mail.txt", suffix)
-                            sys.appendToFile("mail.txt", person)
-                            client.network().sendChanMessage(channel, "" + returns);
+                            var message = vData[0];
+                            var old = sys.readFile("mail.txt")
+                            sys.writeToFile("mail.txt", old+" | "+message)
+                            client.network().sendChanMessage(channel, "Voicemail saved! Do ~readvmail to view voicemails left by someone);
 
                         }
                         if (vCommand == "update") {
