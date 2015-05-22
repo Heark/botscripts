@@ -30,11 +30,12 @@ var facts = ["The word Scientist first appeared in 1833", "The average number of
     "The most dangerous animal in the world is the common housefly. Because of their habits of visiting animal waste, they transmit more diseases than any other animal.", "The strongest creatures on Earth are gonorrhea bacteria. They can pull 100,000 times their own body weight."
 ];
 
-var FactTime = 900; // 1 FACT EVERY 900 SECONDS 
+var FactTime = 600000; // 1 FACT EVERY 900 SECONDS 
 var hFacts = true; // Disable to turn random facts off
 var sysFact = false;
 var tourTime = 900000
 var autoTours = true
+var autoFact = true
 
 function funFact() {
     sysFact = false;
@@ -64,6 +65,12 @@ if (autoTours == true) {
         var tier = tiers[sys.rand(0, tiers.length)]
         client.network().sendChanMessage(channel, "/tour " + tier + ":5");
     }, tourTime, true)
+}
+if (autoFact == true){
+    autoF = sys.setTimer(function() {
+        var chosenFact = facts[sys.rand(0, facts.length)]
+        client.network().sendChanMessage(channel, "Did you know "+chosenFact+"?");
+    }, factTime, true)
 }
 var vgPotatoPlayerArray = [],
     vgPotatoPlayerUncasedArray = [],
