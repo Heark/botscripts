@@ -63,7 +63,7 @@ if (autoTours == true) {
         var tiers = client.getTierList()
         var tier = tiers[sys.rand(0, tiers.length)]
         client.network().sendChanMessage(channel, "/tour " + tier + ":5");
-    }, tourTime, false)
+    }, tourTime, true)
 }
 var vgPotatoPlayerArray = [],
     vgPotatoPlayerUncasedArray = [],
