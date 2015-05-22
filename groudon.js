@@ -33,7 +33,7 @@ var facts = ["The word Scientist first appeared in 1833", "The average number of
 var FactTime = 900; // 1 FACT EVERY 900 SECONDS 
 var hFacts = true; // Disable to turn random facts off
 var sysFact = false;
-var tourTime = 60
+var tourTime = 900000
 var autoTours = true
 
 function funFact() {
