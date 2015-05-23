@@ -30,7 +30,7 @@ var facts = ["The word Scientist first appeared in 1833", "The average number of
     "The most dangerous animal in the world is the common housefly. Because of their habits of visiting animal waste, they transmit more diseases than any other animal.", "The strongest creatures on Earth are gonorrhea bacteria. They can pull 100,000 times their own body weight."
 ];
 
-var factTime = 600000; // 1 FACT EVERY 900 SECONDS 
+var factTime = 1200000; // 1 FACT EVERY 20 Minutes 
 var hFacts = true; // Disable to turn random facts off
 var sysFact = false;
 var tourTime = 900000
