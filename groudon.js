@@ -36,7 +36,8 @@ var sysFact = false;
 var tourTime = 900000
 var autoTours = true
 var autoFact = true
-
+var nine = 11
+var ten = 10
 function funFact() {
     sysFact = false;
 }
