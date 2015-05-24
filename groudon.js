@@ -27,7 +27,8 @@ var facts = ["The word Scientist first appeared in 1833", "The average number of
     "Scientists have developed a microparticle filled with oxygen that can be injected into the blood stream, so we can live without breathing.", "The World's oldest known creature, a mollusc, was 507 years old until scientists killed it by mistake.", "The average person accidentally eats 430 bugs each year of their life.",
     "Males produce one thousand sperm cells each second – 86 million each day.", "Human saliva contains a painkiller called opiorphin that is six times more powerful than morphine.", "Girls have more taste buds than boys.", "Gorillas and potatoes have two more chromosomes than humans do.", "A pig’s orgasm lasts for 30 minutes.", "At over 2000 kilometres long The Great Barrier Reef is the largest living structure on Earth.", "Scientists can make diamonds from tequila.", "Scientists used mouse skin cells to create stem cells, which were then used to create mice eggs that produced healthy baby mice. Those mice were later able to reproduce on their own.", "In 2009, scientists used cloning to bring back an extinct species. It lived for about 7 minutes before dying due to a lung defect.",
     "In 1999, scientists attached electrodes to a cat's brain and recorded what it saw.", "Harvard scientists have not only slowed down the aging process in mice, but have even been able to completely reverse it.", "Many scientists believe lobsters do not die of natural causes. Basically, they're immortal.", "Scientists are working on a substance that would give anyone the ability to walk up walls and ceilings à la Spider-Man.",
-    "The most dangerous animal in the world is the common housefly. Because of their habits of visiting animal waste, they transmit more diseases than any other animal.", "The strongest creatures on Earth are gonorrhea bacteria. They can pull 100,000 times their own body weight."
+    "The most dangerous animal in the world is the common housefly. Because of their habits of visiting animal waste, they transmit more diseases than any other animal.", "The strongest creatures on Earth are gonorrhea bacteria. They can pull 100,000 times their own body weight.",
+    "Scientists used mouse skin cells to create stem cells, which were then used to create mice eggs that produced healthy baby mice. Those mice were later able to reproduce on their own.", "ucralose, like Splenda, was discovered when one scientist misinterpreted his coworker saying \"test this chemical\". He thought he said \"taste this chemical.\"", "In 1952, a European scientist released a bacterium into the wild which almost eradicated the continent's rabbit population. There was a 90% reduction in France and 95% in the UK."
 ];
 
 var factTime = 1200000; // 1 FACT EVERY 20 Minutes 
@@ -45,7 +46,7 @@ function funFact() {
 // Rest of code
 var Joy = "Heark's friend <3 Oora's sex slave";
 var OORA = "Joy's friend <3 Heark's sex slave";
-var matches = ["are a match made in heaven!", "were not meant to be.", "both had AIDS.", "'s wedding was destroyed by a gorilla.", "ended up dating eachothers siblings.", "decided to change their sexualities."];
+var matches = ["are a match made in heaven!", "were not meant to be.", "both had AIDS.", "have the love everyone envies", "were clearly meant to be.", "'s wedding was destroyed by a gorilla.", "ended up dating eachothers siblings.", "decided to change their sexualities."];
 var vgBotName = "++Client Bot: ";
 var vgCommandSymbol = "~";
 var vgBotMsgPrefix = "";
