@@ -578,9 +578,8 @@ poScript = ({
                 if (vCommand == "fight") {
                     if (vCommandData.indexOf(":") !== -1) {
                         var vData2 = vCommandData.split(":", 2);
-                        var tar = vCommandData.split(":", 3);
-                        var target = vData2[1];
-                        var target2 = tar[2];
+                        var target = vData2[0];
+                        var target2 = vData2[1];
                         var posswin = [];
                     }
                     print(vUserSentName);
