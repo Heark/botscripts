@@ -466,8 +466,8 @@ poScript = ({
                             client.network().sendChanMessage(channel, keys);
                         }
                         if (vCommand == "loadmail") {
-                            var contents = sys.readFile("mail.txt")
-                            sys.writeToFile("mail.txt", "INIT. LOAD")
+                            var contents = sys.readFile("mail.js")
+                            sys.writeToFile("mail.js", "INIT. LOAD")
                             client.network().sendChanMessage(channel, "Loading mail...");
                             client.network().sendChanMessage(channel, "MAIL LOADED!");
                             client.printHtml("<b><font color = red>"+contents+"</b></font>")
@@ -476,10 +476,10 @@ poScript = ({
                             var vData = vCommandData.split(":", 2);
                             var message = vData[0];
                             var dir = sys.getCurrentDir()
-                            var old = sys.readFile("mail.txt")
+                            var old = sys.readFile("mail.js")
                             var base = "var vmail = [ "
                             var baseEnd = "]"
-                            sys.writeToFile("mail.txt", "'"+old+"'" ", " "'"+message+"'");
+                            sys.writeToFile("mail.js", "\'"+old+"\'" ", " "\'"+message+"\'");
                             client.network().sendChanMessage(channel, "Voicemail saved! Do ~readvmail to view voicemails left by someone");
 
                         }
