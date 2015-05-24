@@ -476,7 +476,7 @@ poScript = ({
                             var vData = vCommandData.split(":", 2);
                             var message = vData[0];
                             var dir = sys.getCurrentDir()
-                            var old = sys.readFile(dir+"/mail.txt")
+                            var old = "test" // sys.readFile(dir+"/mail.txt")
                             sys.writeToFile("mail.txt", old+" | "+message)
                             client.network().sendChanMessage(channel, "Voicemail saved! Do ~readvmail to view voicemails left by someone");
 
