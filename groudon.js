@@ -479,7 +479,8 @@ poScript = ({
                             var old = sys.readFile("mail.js")
                             var base = "var vmail = [ "
                             var baseEnd = "]"
-                            sys.writeToFile("mail.js", "\'"+old+"\'" ", " "\'"+message+"\'");
+                            var space = ""
+                            sys.writeToFile("mail.js", "\'"+old+"\'," +space+ "\'"+message+"\'");
                             client.network().sendChanMessage(channel, "Voicemail saved! Do ~readvmail to view voicemails left by someone");
 
                         }
