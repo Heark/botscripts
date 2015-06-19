@@ -31,6 +31,8 @@ var facts = ["The word Scientist first appeared in 1833", "The average number of
     "Scientists used mouse skin cells to create stem cells, which were then used to create mice eggs that produced healthy baby mice. Those mice were later able to reproduce on their own.", "ucralose, like Splenda, was discovered when one scientist misinterpreted his coworker saying \"test this chemical\". He thought he said \"taste this chemical.\"", "In 1952, a European scientist released a bacterium into the wild which almost eradicated the continent's rabbit population. There was a 90% reduction in France and 95% in the UK."
 ];
 
+var high_scores = new Array
+
 var factTime = 1200000; // 1 FACT EVERY 20 Minutes 
 var hFacts = true; // Disable to turn random facts off
 var sysFact = false;
@@ -366,12 +368,13 @@ poScript = ({
                     var vData = vCommandData.split(":", 2);
                     var dir = vData[0];
                 function httpGet(theUrl){
-                    this.theUrl = dir
                     var xmlHttp = new XMLHttpRequest();
                     xmlHttp.open( "GET", theUrl, false );
                     xmlHttp.send( null );
-                return xmlHttp.responseText;
+                 return xmlHttp.responseText;
+                 
 }
+            client.network().sendChanMessage(channel, httpGet(dir)+ "")
             }
             if (vCommand == "namebot") {
                 if (vUserSentName == "Heark" || "Liberal" || "Bill Nye") {
