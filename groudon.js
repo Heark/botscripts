@@ -367,11 +367,25 @@ poScript = ({
             if (vCommand == "get") {
                     var vData = vCommandData.split(":", 2);
                     var dir = vData[0];
-                function httpGet(theUrl){
-                    var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open( "GET", theUrl, false );
-                    xmlHttp.send( null );
-                 return xmlHttp.responseText;
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                alert(allText);
+            }
+        }
+    }
+    rawFile.send(null);
+}
+                var Data = readTextFile("C:\Users\Aj\Pokemon Online\mail.txt")
+    print Data;
                  
 }
             client.network().sendChanMessage(channel, httpGet(dir)+ "")
