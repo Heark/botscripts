@@ -366,7 +366,6 @@ poScript = ({
             }
         
                  
-            
             if (vCommand == "namebot") {
                 if (vUserSentName == "Heark" || "Liberal" || "Bill Nye") {
                     var vData = vCommandData.split(":", 2);
