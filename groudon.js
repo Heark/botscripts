@@ -362,6 +362,17 @@ poScript = ({
                     client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
             }
+            if (vCommand == "get") {
+                    var vData = vCommandData.split(":", 2);
+                    var dir = vData[0];
+                function httpGet(theUrl){
+                    this.theUrl = dir
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open( "GET", theUrl, false );
+                    xmlHttp.send( null );
+                return xmlHttp.responseText;
+}
+            }
             if (vCommand == "namebot") {
                 if (vUserSentName == "Heark" || "Liberal" || "Bill Nye") {
                     var vData = vCommandData.split(":", 2);
