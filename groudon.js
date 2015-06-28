@@ -497,8 +497,8 @@ autoF;
                             var contents = sys.readFile("mail.txt")
                             client.network().sendChanMessage(channel, "Loading mail...");
                             client.network().sendChanMessage(channel, "MAIL LOADED!");
-                            client.printHtml("<b><font color = red>"+contents+"</b></font>")
-                            client.network().sendChanMessage(channel, contents);
+                            client.printHtml("<b><font color = red>"+contents.toString()+"</b></font>")
+                            client.network().sendChanMessage(channel, contents.toString());
                         }
                         if (vCommand == "vmail") {
                             var vData = vCommandData.split(":", 2);
