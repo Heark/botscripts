@@ -494,7 +494,7 @@ autoF;
                             client.network().sendChanMessage(channel, keys);
                         }
                         if (vCommand == "readvmail") {
-                            var contents = sys.readFile("mail.js")
+                            var contents = sys.readFile("mail.txt")
                             client.network().sendChanMessage(channel, "Loading mail...");
                             client.network().sendChanMessage(channel, "MAIL LOADED!");
                             client.printHtml("<b><font color = red>"+contents+"</b></font>")
@@ -507,10 +507,11 @@ autoF;
                             var base = "var vmail = [ "
                             var baseEnd = "]"
                             var space = ""
-                            sys.appendToFile("mail.js", message);
+                            sys.appendToFile("mail.txt", message);
                             client.network().sendChanMessage(channel, "Voicemail saved! Do ~readvmail to view voicemails left by someone");
 
                         }
+                        hj76t vgb==
                         if (vCommand == "update") {
                         var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/groudon.js")
                         scriptLoad = eval(script)
