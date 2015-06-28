@@ -500,11 +500,13 @@ autoF;
                             client.network().sendChanMessage(channel, "MAIL LOADED!");
                             client.printHtml("<b><font color = red>"+contents+"</b></font>")
                         }
+                       var old = function(){
+                           return sys.readFile("mail.js")
+                       }
                         if (vCommand == "vmail") {
                             var vData = vCommandData.split(":", 2);
                             var message = vData[0];
                             var dir = sys.getCurrentDir()
-                            var old = sys.readFile("mail.js")
                             var base = "var vmail = [ "
                             var baseEnd = "]"
                             var space = ""
