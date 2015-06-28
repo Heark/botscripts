@@ -349,7 +349,7 @@ poScript = ({
             // BOT OWNER COMMANDS
             // ******** ******** ********
             if (vCommand == "on") {
-                if (vUserSentName.toLowerCase() == "heark") {
+                if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                     botOnline = true;
                     client.network().sendChanMessage(channel, vgBotName + "Bot enabled.");
                 } else {
@@ -365,18 +365,30 @@ poScript = ({
                     client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
             }
-        
-                 
-            if (vCommand == "namebot") {
-                if (vUserSentName.toLowerCase() == "heark") {
+              if (vCommand == "namebot") {
+                if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                     var vData = vCommandData.split(":", 2);
                     var name = vData[0];
                     client.changeName(name);
                     client.network().sendChanMessage(channel, vUserSentName + " changed the bot's name to " + name + "!");
+                } else {
+                    client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
-            }
+            }      
+                 
+              if (vCommand == "makecontroller") {
+                if(vUserSentName.toLowerCase() == "heark") {
+                    var vData = vCommandData.split(":", 2);
+                    var name = vData[0];
+                    controllers.push(name.toLowerCase())
+                    client.network().sendChanMessage(channel, vUserSentName + " added " + name + " to the bot controller list!");
+                } else {
+                    client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
+                }
+            }      
+         
             if (vCommand == "boteval") {
-                if (vUserSentName.toLowerCase() == "heark") {
+                if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                     var vData = vCommandData.split(":", 2);
                     var script = vData[0];
                     var code = sys.eval(script);
@@ -385,7 +397,7 @@ poScript = ({
             }
 
             if (vCommand == "makedir") {
-                if (vUserSentName.toLowerCase() == "heark") {
+                if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                     var vData = vCommandData.split(":", 2);
                     var dir = vData[0];
                     sys.makeDir(dir);
