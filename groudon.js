@@ -367,7 +367,12 @@ autoF;
                     client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
             }
-            
+            if (vCommand == "google"){
+                var vData = vCommandData.split(":", 2);
+                var search = vData[0]
+                var result = sys.synchronousWebCall("https://www.google.com/search?q="+search+"&ie=utf-8&oe=utf-8").split("-", 2)
+                print(result)
+            }
               if (vCommand == "namebot") {
                 if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                     var vData = vCommandData.split(":", 2);
