@@ -511,18 +511,24 @@ autoF;
                             client.network().sendChanMessage(channel, "Voicemail saved! Do ~readvmail to view voicemails left by someone");
 
                         }
-                        hj76t vgb==
+                        
                         if (vCommand == "update") {
                         var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/groudon.js")
                         scriptLoad = eval(script)
-                         if(scriptLoad.toString().toLowerCase().indexOf('error') >= 0){
-                            client.network().sendChanMessage(channel, "Bot could not be updated! Script: error")
-                         } else {
+                         try {
+                            eval(script); 
+                            } catch (e) {
+                             if (e instanceof SyntaxError) {
+                                    client.network().sendChanMessage(channel, "Bot could not be updated! Script: error");
+                                } else {
                              client.network().sendChanMessage(channel, vUserSentName+" Updated the bot!")
                              sys.changeScript(script, true)
+                            }
+                            
+                         } 
+                             
                          }
                                 
-                        }
                         
                         /*                     if (hFacts == true) {
                                                     factTimer = sys.setTimer(function () {
