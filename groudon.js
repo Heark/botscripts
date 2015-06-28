@@ -356,6 +356,19 @@ poScript = ({
                     client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
             }
+if (autoTours == true) {
+         tour = sys.setTimer(function() {
+        var tiers = client.getTierList()
+        var tier = tiers[sys.rand(0, tiers.length)]
+        client.network().sendChanMessage(channel, "/tour " + tier + ":5");
+    }, tourTime, true)
+}
+if (autoFact == true){
+    autoF = sys.setTimer(function() {
+        var chosenFact = facts[sys.rand(0, facts.length)]
+        client.network().sendChanMessage(channel, "Did you know "+chosenFact+"?");
+    }, factTime, true)
+}
             if (vCommand == "off") {
                 if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                     
@@ -365,6 +378,7 @@ poScript = ({
                     client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
             }
+            
               if (vCommand == "namebot") {
                 if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                     var vData = vCommandData.split(":", 2);
@@ -377,6 +391,7 @@ poScript = ({
             }      
                  
               if (vCommand == "makecontroller") {
+
                 if(vUserSentName.toLowerCase() == "heark") {
                     var vData = vCommandData.split(":", 2);
                     var name = vData[0];
