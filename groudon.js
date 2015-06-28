@@ -508,25 +508,22 @@ autoF;
                             var base = "var vmail = [ "
                             var baseEnd = "]"
                             var space = ""
-                            sys.writeToFile("mail.js", ""+old.toString()+""+message+ " sent by: "+vUserSentName);
+                            sys.appendToFile("mail.js", message);
                             client.network().sendChanMessage(channel, "Voicemail saved! Do ~readvmail to view voicemails left by someone");
 
                         }
                         if (vCommand == "update") {
                             if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                             var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/groudon.js")
-                            if ( eval(script).toString().toLowerCase().indexOf('error') !== -1){
-                                client.network().sendChanMessage(channel, "Could not update bot! Script: Error");
-                            } else {
                                 sys.changeScript(script, true)
                                 client.network().sendChanMessage(channel, vUserSentName+" updated the bot!");
-                            }
+                            } else {
+                            client.network().sendChanMessage(channel, "You don't have permission to use this command!");
                             
                         }
-                        else {
-                            client.network().sendChanMessage(channel, "You don't have permission to use this command!");
+
                         }
-                        }
+                        
                         /*                     if (hFacts == true) {
                                                     factTimer = sys.setTimer(function () {
                                                         client.network().sendChanMessage(channel, "Random Fact: Did you know " + facts[sys.rand(0, facts.length)] + "")
