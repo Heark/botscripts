@@ -508,7 +508,7 @@ autoF;
                             var base = "var vmail = [ "
                             var baseEnd = "]"
                             var space = ""
-                            sys.writeToFile("mail.js", old.toString(); message+ " sent by: "+vUserSentName);
+                            sys.writeToFile("mail.js", ""+old.toString()+""+message+ " sent by: "+vUserSentName);
                             client.network().sendChanMessage(channel, "Voicemail saved! Do ~readvmail to view voicemails left by someone");
 
                         }
