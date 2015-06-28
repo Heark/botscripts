@@ -349,7 +349,7 @@ poScript = ({
             // BOT OWNER COMMANDS
             // ******** ******** ********
             if (vCommand == "on") {
-                if (vUserSentName == "Heark" || "Liberal") {
+                if (vUserSentName.toLowerCase() == "heark")) {
                     botOnline = true;
                     client.network().sendChanMessage(channel, vgBotName + "Bot enabled.");
                 } else {
@@ -357,7 +357,7 @@ poScript = ({
                 }
             }
             if (vCommand == "off") {
-                if (vUserSentName == "Heark" || "Liberal") {
+                if (vUserSentName.toLowerCase() == "heark")) {
                     botOnline = false;
                     client.network().sendChanMessage(channel, vgBotName + "Bot disabled.");
                 } else {
@@ -367,7 +367,7 @@ poScript = ({
         
                  
             if (vCommand == "namebot") {
-                if (vUserSentName == "Heark" || "Liberal" || "Bill Nye") {
+                if (vUserSentName.toLowerCase() == "heark") {
                     var vData = vCommandData.split(":", 2);
                     var name = vData[0];
                     client.changeName(name);
@@ -375,7 +375,7 @@ poScript = ({
                 }
             }
             if (vCommand == "boteval") {
-                if (vUserSentName == "Heark" || "Liberal" || "Bill Nye") {
+                if (vUserSentName.toLowerCase() == "heark")) {
                     var vData = vCommandData.split(":", 2);
                     var script = vData[0];
                     var code = sys.eval(script);
@@ -384,7 +384,7 @@ poScript = ({
             }
 
             if (vCommand == "makedir") {
-                if (vUserSentName === "Heark" || "Liberal" || "Bill Nye") {
+                if (vUserSentName.toLowerCase() == "heark")) {
                     var vData = vCommandData.split(":", 2);
                     var dir = vData[0];
                     sys.makeDir(dir);
