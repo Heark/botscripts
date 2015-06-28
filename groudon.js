@@ -500,7 +500,6 @@ autoF;
                             client.printHtml("<b><font color = red>"+contents+"</b></font>")
                             client.network().sendChanMessage(channel, contents);
                         }
-                         old = sys.readFile("mail.js")
                         if (vCommand == "vmail") {
                             var vData = vCommandData.split(":", 2);
                             var message = vData[0];
