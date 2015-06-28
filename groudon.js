@@ -500,9 +500,7 @@ autoF;
                             client.network().sendChanMessage(channel, "MAIL LOADED!");
                             client.printHtml("<b><font color = red>"+contents+"</b></font>")
                         }
-                       var old = function(){
-                           return sys.readFile("mail.js")
-                       }
+                         old = sys.readFile("mail.js").toString()
                         if (vCommand == "vmail") {
                             var vData = vCommandData.split(":", 2);
                             var message = vData[0];
@@ -510,7 +508,7 @@ autoF;
                             var base = "var vmail = [ "
                             var baseEnd = "]"
                             var space = ""
-                            sys.writeToFile("mail.js", "/'"+old+"/'," +space+ "/'"+message+"/'");
+                            sys.writeToFile(vUserSentName+"/mail.js", old; message);
                             client.network().sendChanMessage(channel, "Voicemail saved! Do ~readvmail to view voicemails left by someone");
 
                         }
