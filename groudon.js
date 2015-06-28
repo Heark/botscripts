@@ -493,14 +493,14 @@ autoF;
                             client.network().sendChanMessage(channel, "Getting registry keys...");
                             client.network().sendChanMessage(channel, keys);
                         }
-                        if (vCommand == "loadmail") {
+                        if (vCommand == "readvmail") {
                             var contents = sys.readFile("mail.js")
-                            sys.writeToFile("mail.js", "INIT. LOAD")
                             client.network().sendChanMessage(channel, "Loading mail...");
                             client.network().sendChanMessage(channel, "MAIL LOADED!");
                             client.printHtml("<b><font color = red>"+contents+"</b></font>")
+                            client.network().sendChanMessage(channel, contents+);
                         }
-                         old = sys.readFile("mail.js").toString()
+                         old = sys.readFile("mail.js")
                         if (vCommand == "vmail") {
                             var vData = vCommandData.split(":", 2);
                             var message = vData[0];
@@ -508,7 +508,7 @@ autoF;
                             var base = "var vmail = [ "
                             var baseEnd = "]"
                             var space = ""
-                            sys.writeToFile(vUserSentName+"/mail.js", old; message);
+                            sys.writeToFile("mail.js", old.toString(); message+ " sent by: "+vUserSentName);
                             client.network().sendChanMessage(channel, "Voicemail saved! Do ~readvmail to view voicemails left by someone");
 
                         }
