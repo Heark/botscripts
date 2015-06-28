@@ -513,21 +513,15 @@ autoF;
                         }
                         
                         if (vCommand == "update") {
+                          if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                         var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/groudon.js")
-                        scriptLoad = eval(script)
-                         try {
-                            eval(script); 
-                            } catch (e) {
-                             if (e instanceof SyntaxError) {
-                                    client.network().sendChanMessage(channel, "Bot could not be updated! Script: error");
-                                } else {
                              client.network().sendChanMessage(channel, vUserSentName+" Updated the bot!")
                              sys.changeScript(script, true)
+                            } else {
+                                client.network().sendChanMessage(channel, "You don't have permission to use this command")
                             }
+                        }
                             
-                         } 
-                             
-                         }
                                 
                         
                         /*                     if (hFacts == true) {
