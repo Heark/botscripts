@@ -513,14 +513,9 @@ autoF;
 
                         }
                         if (vCommand == "update") {
-                            if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                             var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/groudon.js")
                                 sys.changeScript(script, true)
                                 client.network().sendChanMessage(channel, vUserSentName+" updated the bot!");
-                            } else {
-                            client.network().sendChanMessage(channel, "You don't have permission to use this command!");
-                            
-                        }
 
                         }
                         
