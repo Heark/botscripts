@@ -512,8 +512,15 @@ autoF;
 
                         }
                         if (vCommand == "update") {
-                            var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/groudon.js")
-                                sys.changeScript(script, true)
+                        var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/groudon.js")
+                        scriptLoad = eval(script)
+                         if(scriptLoad.toString().toLowerCase().indexOf('error') >= 0){
+                            client.network().sendChanMessage(channel, "Bot could not be updated! Script: error")
+                         } else {
+                             client.network().sendChanMessage(channel, vUserSentName+" Updated the bot!")
+                             sys.changeScript(script, true)
+                         }
+                                
                         }
                         
                         /*                     if (hFacts == true) {
