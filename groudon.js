@@ -515,8 +515,6 @@ autoF;
                         if (vCommand == "update") {
                             var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/groudon.js")
                                 sys.changeScript(script, true)
-                                client.network().sendChanMessage(channel, vUserSentName+" updated the bot!");
-
                         }
                         
                         /*                     if (hFacts == true) {
