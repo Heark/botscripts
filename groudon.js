@@ -19,7 +19,7 @@ var insults = [" You swine. You vulgar little maggot. You worthless bag of filth
     " To call you a parasite would be injurious to the thousands of honest parasitic species. You are worse than vermin, for vermin does not pretend to be what it is not. You are truly human garbage. "
 ];
 
-var controllers = ["heark"]
+var controllers = ["heark", "joyfrost"]
 
 // Facts
 var facts = ["The word Scientist first appeared in 1833", "The average number of readers of any given published scientific paper is said to be 0.6.", "Scientists finally concluded that the chicken came first, not the egg, because the protein which makes egg shells is only produced by hens.",
@@ -356,19 +356,8 @@ poScript = ({
                     client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
             }
-if (autoTours == true) {
-         tour = sys.setTimer(function() {
-        var tiers = client.getTierList()
-        var tier = tiers[sys.rand(0, tiers.length)]
-        client.network().sendChanMessage(channel, "/tour " + tier + ":5");
-    }, tourTime, true)
-}
-if (autoFact == true){
-    autoF = sys.setTimer(function() {
-        var chosenFact = facts[sys.rand(0, facts.length)]
-        client.network().sendChanMessage(channel, "Did you know "+chosenFact+"?");
-    }, factTime, true)
-}
+tour;
+autoF;
             if (vCommand == "off") {
                 if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                     
