@@ -538,7 +538,6 @@ var players = client.channel(channel).players();
                           if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                         var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/groudon.js")
                              client.network().sendChanMessage(channel, vUserSentName+" Updated the bot!")
-                            client.network().sendChanMessage(channel, vUserSentName+" Updated the bot!")
                             sys.changeScript(script, true)
                             } else {
                                 client.network().sendChanMessage(channel, "You don't have permission to use this command")
@@ -578,7 +577,7 @@ var players = client.channel(channel).players();
                             var sel_p = players[sys.rand(0, players.length)]
                             var r_pl = vChannelPlayerNameArray[Math.floor((Math.random()*vChannelPlayerNameArray.length)+0)];
                             rand_t = vTargets[sys.rand(0, vTargets.length)]
-                            var matches = ["are a match made in heaven!", "were not meant to be.", "both had AIDS.", "have the love everyone envies", "were clearly meant to be.", "'s wedding was destroyed by a gorilla.", "ended up dating eachothers siblings.", "decided to change their sexualities.", "were not meant to be "+rand_t+" ran off with "+players[sys.rand(0, players.length)]+".", "were not meant to be "+rand_t+" ran off with "+r_pl+"."];
+                            var matches = ["are a match made in heaven!", "were not meant to be.", "both had AIDS.", "have the love everyone envies", "were clearly meant to be.", "'s wedding was destroyed by a gorilla.", "ended up dating eachothers siblings.", "decided to change their sexualities.", "were not meant to be "+rand_t+" ran off with "+players[sys.rand(0, players.length)]+".", "were not meant to be "+rand_t+" ran off with "+r_pl+".", " are perfect together even though "+rand_t+" contracted herpes from "+r_pl+"."];
                             client.network().sendChanMessage(channel, "/me  " + vTarget + " & " + vTarget2 + " " + matches[sys.rand(0, matches.length)])
                         }
 
