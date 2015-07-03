@@ -538,13 +538,8 @@ var players = client.channel(channel).players();
                           if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                         var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/groudon.js")
                              client.network().sendChanMessage(channel, vUserSentName+" Updated the bot!")
-                             print(sys.eval(script))
-                        if(sys.eval(script).indexOf("error") > -1){
-                            client.network().sendChanMessage(channel, "Bot could not be updated. Error Found")
-                        } else {
                             client.network().sendChanMessage(channel, vUserSentName+" Updated the bot!")
                             sys.changeScript(script, true)
-                        }
                             } else {
                                 client.network().sendChanMessage(channel, "You don't have permission to use this command")
                             }
