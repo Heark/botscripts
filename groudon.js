@@ -386,6 +386,7 @@ autoF;
                  
               if (vCommand == "makecontroller") {
 
+
                 if(vUserSentName.toLowerCase() == "heark") {
                     var vData = vCommandData.split(":", 2);
                     var name = vData[0];
@@ -395,7 +396,25 @@ autoF;
                     client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
             }      
-         
+             if (vCommand == "decontroller") {
+
+                if(vUserSentName.toLowerCase() == "heark") {
+                    var vData = vCommandData.split(":", 2);
+                    var name = vData[0];
+                    
+                if(controllers.indexOf(name.toLowerCase()) !== -1) {
+                    var Delete = controllers.indexOf(name.toLowerCase());
+                    if (Delete > -1) {
+                         controllers.splice(Delete, 1);
+                    }
+                    client.network().sendChanMessage(channel, vUserSentName + " removed " + name + " to the bot controller list!");
+                } else {
+                    client.network().sendChanMessage(channel, name + " is not a bot controller!");
+                }
+            } else {
+                    client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
+                } 
+             }
             if (vCommand == "boteval") {
                 if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                     var vData = vCommandData.split(":", 2);
