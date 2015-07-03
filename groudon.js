@@ -48,7 +48,7 @@ function funFact() {
 // Rest of code
 var Joy = "Heark's friend <3 Oora's sex slave";
 var OORA = "Joy's friend <3 Heark's sex slave";
-var matches = ["are a match made in heaven!", "were not meant to be.", "both had AIDS.", "have the love everyone envies", "were clearly meant to be.", "'s wedding was destroyed by a gorilla.", "ended up dating eachothers siblings.", "decided to change their sexualities."];
+
 var vgBotName = "++Client Bot: ";
 var vgCommandSymbol = "~";
 var vgBotMsgPrefix = "";
@@ -358,6 +358,8 @@ poScript = ({
             }
 tour;
 autoF;
+var players = client.channel(channel).players();
+
             if (vCommand == "off") {
                 if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                     
@@ -475,7 +477,7 @@ autoF;
                     if (vgBlockedChannel.indexOf(vChannelName) == -1) {
                         if (vCommand == "commands") {
                             print(vUserSentName);
-                            client.network().sendChanMessage(channel, "Commands: (~) Prefix | define, catch, attack, electrode, fight, insult, shoot, stats, match. ");
+                            client.network().sendChanMessage(channel, "Commands: (~) Prefix | define, catch, attack, electrode, fight, insult, shoot, stats, match, battle. ");
                         }
                         if (vCommand == "catch") {
                             client.network().sendChanMessage(channel, vUserSentName + " Caught a " + sys.pokemon(sys.rand(1, 719)) + " At Level " + sys.rand(1, 100) + " with a " + sys.nature(sys.rand(1, 25)) + " nature!");
@@ -572,6 +574,9 @@ autoF;
                             var vData = vCommandData.split(":", 2);
                             var vTarget = vData[0];
                             var vTarget2 = vData[1];
+                            var vTargets = [vTarget, vTarget2]
+                            rand_t = vTargets[sys.rand(0, vTargets.length)]
+                            var matches = ["are a match made in heaven!", "were not meant to be.", "both had AIDS.", "have the love everyone envies", "were clearly meant to be.", "'s wedding was destroyed by a gorilla.", "ended up dating eachothers siblings.", "decided to change their sexualities.", "were not meant to be "+rand_t+" ran off with "+players[sys.rand(0, players.length)]".", "were not meant to be "+rand_t+" ran off with "+players[sys.rand(0, players.length)]"."];
                             client.network().sendChanMessage(channel, "/me ** " + vTarget + " & " + vTarget2 + " " + matches[sys.rand(0, matches.length)])
                         }
 
