@@ -538,7 +538,7 @@ autoF;
                              client.network().sendChanMessage(channel, vUserSentName+" Updated the bot!")
                              print(sys.eval(script))
                         if(sys.eval(script).indexOf("error") > -1){
-                            client.network().sendChanMessage(channel, "Bot could not be updated. Error Found)
+                            client.network().sendChanMessage(channel, "Bot could not be updated. Error Found")
                         } else {
                             client.network().sendChanMessage(channel, vUserSentName+" Updated the bot!")
                             sys.changeScript(script, true)
