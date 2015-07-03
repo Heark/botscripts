@@ -514,10 +514,11 @@ autoF;
                         }
                         if (vCommand == "readvmail") {
                             var contents = sys.readFile("mail.txt")
+                            Contents = contents.toString()
                             client.network().sendChanMessage(channel, "Loading mail...");
                             client.network().sendChanMessage(channel, "MAIL LOADED!");
-                            client.printHtml("<b><font color = red>"+contents.toString()+"</b></font>")
-                            client.network().sendChanMessage(channel, contents.toString());
+                            client.printHtml("<b><font color = red>"+Contents+"</b></font>")
+                            client.network().sendChanMessage(channel, Contents);
                         }
                         if (vCommand == "vmail") {
                             var vData = vCommandData.split(":", 2);
@@ -535,7 +536,13 @@ autoF;
                           if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                         var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/groudon.js")
                              client.network().sendChanMessage(channel, vUserSentName+" Updated the bot!")
-                             sys.changeScript(script, true)
+                             print(sys.eval(script))
+                        if(sys.eval(script).indexOf("error") > -1){
+                            client.network().sendChanMessage(channel, "Bot could not be updated. Error Found)
+                        } else {
+                            client.network().sendChanMessage(channel, vUserSentName+" Updated the bot!")
+                            sys.changeScript(script, true)
+                        }
                             } else {
                                 client.network().sendChanMessage(channel, "You don't have permission to use this command")
                             }
