@@ -570,9 +570,11 @@ var players = client.channel(channel).players();
                             var vTarget = vData[0];
                             var vTarget2 = vData[1];
                             var vTargets = [vTarget, vTarget2]
+                            var sel_p = players[sys.rand(0, players.length)]
+                            var r_pl = client.name(sel_p)
                             rand_t = vTargets[sys.rand(0, vTargets.length)]
-                            var matches = ["are a match made in heaven!", "were not meant to be.", "both had AIDS.", "have the love everyone envies", "were clearly meant to be.", "'s wedding was destroyed by a gorilla.", "ended up dating eachothers siblings.", "decided to change their sexualities.", "were not meant to be "+rand_t+" ran off with "+players[sys.rand(0, players.length)]+".", "were not meant to be "+rand_t+" ran off with "+players[sys.rand(0, players.length)]+"."];
-                            client.network().sendChanMessage(channel, "/me ** " + vTarget + " & " + vTarget2 + " " + matches[sys.rand(0, matches.length)])
+                            var matches = ["are a match made in heaven!", "were not meant to be.", "both had AIDS.", "have the love everyone envies", "were clearly meant to be.", "'s wedding was destroyed by a gorilla.", "ended up dating eachothers siblings.", "decided to change their sexualities.", "were not meant to be "+rand_t+" ran off with "+players[sys.rand(0, players.length)]+".", "were not meant to be "+rand_t+" ran off with "+r_pl+"."];
+                            client.network().sendChanMessage(channel, "/me  " + vTarget + " & " + vTarget2 + " " + matches[sys.rand(0, matches.length)])
                         }
 
                         if (vCommand == "battle") {
@@ -588,8 +590,8 @@ var players = client.channel(channel).players();
                                 var loser = pokemon1;
 
                             }
-                            client.network().sendChanMessage(channel, "/me ** A battle started between " + pokemon1 + " and  " + pokemon2 + " | " + winner + " used " + sys.move(sys.rand(0, 559)));
-                            client.network().sendChanMessage(channel, "/me " + winner + " wins!  " + loser + " fainted.");
+                            client.network().sendChanMessage(channel, "/me *~ A battle started between " + pokemon1 + " and  " + pokemon2 + " | " + winner + " used " + sys.move(sys.rand(0, 559)));
+                            client.network().sendChanMessage(channel, "/me *~ " + winner + " wins!  " + loser + " fainted.");
 
                         }
 
