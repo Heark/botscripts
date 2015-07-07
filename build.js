@@ -149,13 +149,16 @@ print(vgBotName + "// -setbot [off/on]");
 print(vgBotName + "// -define [word]:[selection number]");
 
 var poScript;
+
+  if(client.battling() == true){
+	battleFinished()
+  }
+
 poScript = ({
         afterChallengeReceived: function(cid, b, c, d) {
             client.acceptChallenge(cid);
         },
-        battleFinished: function(battleid, res, winner, loser) {
-            // non funziona
-            client.openBattleFinder()
+         battleFinished: function(battleid, res, winner, loser) {
             client.removeBattleWindow(battleid);
         },
         beforeChannelMessage: function(message, channel, html) {
