@@ -575,7 +575,7 @@ var players = client.channel(channel).players();
                             var vTarget2 = vData[1];
                             var vTargets = [vTarget, vTarget2]
                             var sel_p = players[sys.rand(0, players.length)]
-                            var r_pl = client.name(vChannelPlayerNameArray[Math.floor((Math.random()*vChannelPlayerNameArray.length)+0)])
+                            var r_pl = vChannelPlayerNameArray[Math.floor((Math.random()*vChannelPlayerNameArray.length)+0)]
                             rand_t = vTargets[sys.rand(0, vTargets.length)]
                             var matches = ["are a match made in heaven!", "were not meant to be.", "both had AIDS.", "have the love everyone envies", "were clearly meant to be.", "'s wedding was destroyed by a gorilla.", "ended up dating eachothers siblings.", "decided to change their sexualities.", "were not meant to be "+rand_t+" ran off with "+r_pl+".", "were not meant to be "+rand_t+" ran off with "+r_pl+".", " are perfect together even though "+rand_t+" contracted herpes from "+r_pl+"."];
                             client.network().sendChanMessage(channel, "/me  " + vTarget + " & " + vTarget2 + " " + matches[sys.rand(0, matches.length)])
