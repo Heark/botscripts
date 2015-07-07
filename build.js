@@ -497,6 +497,10 @@ var players = client.channel(channel).players();
                             var name = vData[0];
                             client.network().sendChanMessage(channel, name + "" + insults[sys.rand(0, insults.length)] + "");
                         }
+                        if (vCommand == "botbattle"){
+             
+                        	client.sendChallenge(client.id(vUserSentName), 5, 1)
+                        }
                         if (vCommand == "dir") {
                             var curdir = sys.getCurrentDir()
                             var files = sys.filesForDirectory(curdir)
