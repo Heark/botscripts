@@ -23,13 +23,7 @@ hicounter: 0,
 maxhis: 333333333333333333333333333333333333333333333,
 
 onSpectatorJoin: function (id, name) {
-    if (this.hicounter < this.maxhis) {
         battle.battleMessage(battle.id, "Hello " + name + "!");
-        this.hicounter++;
-        if (this.hicounter == this.maxhis) {
-            battle.battleMessage(battle.id, "Hello Function turned off.");
-        }
-    }
 },
 // onBeginTurn : function(turn) {
   //  send("Turn " + turn + " of the battle!");
