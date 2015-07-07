@@ -663,7 +663,7 @@ var players = client.channel(channel).players();
                         loser = target;
                     }
                     var kill = ["commited a felony on " + loser + "", "read a book to " + loser + "", "drove their car into " + loser + "'s face.", "shot" + loser + "", "gave an overdose of viagra to " + loser + "", "" + loser + " was forced to have anal intercourse with a stallion by " + winner + ".", "forced a toothpick down" + loser + "'s throat"];
-                    client.network().sendChanMessage(channel, "A fight broke out between " + target + " and  " + target2 + "! " + winner + " " + kill[sys.rand(0, kill.length)] + ". " + winner + " Wins!");
+                    client.network().sendChanMessage(channel, "A fight broke out between " + target + " and  " + target2 + "! " + kill[sys.rand(0, kill.length)] + ". " + winner + " Wins!");
 
                 }
                 if (vCommand == "define") {
