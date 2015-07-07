@@ -647,15 +647,20 @@ var players = client.channel(channel).players();
                         var target = vData2[0];
                         var target2 = vData2[1];
                         var posswin = [];
+                        var winner;
+                        var loser;
                     }
                     print(vUserSentName);
+                    genNum = function(){
                     var num = Math.floor((Math.random() * 10) + 1);
+                    }
+                    genNum()
                     if (num > 5) {
-                        var winner = target;
-                        var loser = target2;
+                        winner = target;
+                        loser = target2;
                     } else if (num < 5) {
-                        var winner = target2;
-                        var loser = target;
+                        winner = target2;
+                        loser = target;
                     }
                     var kill = ["commited a felony on " + loser + "", "read a book to " + loser + "", "drove their car into " + loser + "'s face.", "shot" + loser + "", "gave an overdose of viagra to " + loser + "", "" + loser + " was forced to have anal intercourse with a stallion by " + winner + ".", "forced a toothpick down" + loser + "'s throat"];
                     client.network().sendChanMessage(channel, "A fight broke out between " + target + " and  " + target2 + "! " + winner + " " + kill[sys.rand(0, kill.length)] + ". " + winner + " Wins!");
