@@ -536,7 +536,7 @@ var players = client.channel(channel).players();
                         
                         if (vCommand == "update") {
                           if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
-                        var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/groudon.js")
+                        var script = sys.synchronousWebCall("https://raw.githubusercontent.com/Heark/botscripts/master/build.js")
                              client.network().sendChanMessage(channel, vUserSentName+" Updated the bot!")
                             sys.changeScript(script, true)
                             } else {
