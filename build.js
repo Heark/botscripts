@@ -590,17 +590,34 @@ var players = client.channel(channel).players();
 
                         if (vCommand == "battle") {
                             var num2 = Math.floor((Math.random() * 10) + 1);
-                            var pokemon1 = sys.pokemon(sys.rand(1, 719))
-                            var pokemon2 = sys.pokemon(sys.rand(1, 719))
+                            var pokemon1 = sys.pokemon(sys.rand(1, 719));
+                            var pokemon2 = sys.pokemon(sys.rand(1, 719));
+                            var winner;
+                            var loser;
+                            var p1hp = sys.baseStats(sys.pokeNum(pokemon1), 0, 6);
+                            var p1att = sys.baseStats(sys.pokeNum(pokemon1), 1, 6);
+                            var p1def = sys.baseStats(sys.pokeNum(pokemon1), 2, 6);
+                            var p14 = sys.baseStats(sys.pokeNum(pokemon1), 3, 6); 
+                            var p15 = sys.baseStats(sys.pokeNum(pokemon1), 4, 6);
+                            var p16 = sys.baseStats(sys.pokeNum(pokemon1), 5, 6); 
+                            
+                            var p2hp = sys.baseStats(sys.pokeNum(pokemon2), 0, 6);
+                            var p2att = sys.baseStats(sys.pokeNum(pokemon2), 1, 6);
+                            var p2def = sys.baseStats(sys.pokeNum(pokemon2), 2, 6);
+                            var p24 = sys.baseStats(sys.pokeNum(pokemon2), 3, 6); 
+                            var p25 = sys.baseStats(sys.pokeNum(pokemon2), 4, 6);
+                            var p26 = sys.baseStats(sys.pokeNum(pokemon2), 5, 6);
+                       var p1_stats = p1hp + p1att + p1def + p14 + p15 + p16;
+                       var p2_stats = p2hp + p2att + p2def + p24 + p25 + p26;
+                       
+                       if(p1_stats > p2_stats){
+                       	winner = pokemon1;
+                       	loser = pokemon2;
+                       } else if(p2_stats > p1_stats){
+                       	winner = pokemon2;
+                       	loser = pokemon1;
+                       }
 
-                            if (num2 < 5) {
-                                var winner = pokemon1
-                                var loser = pokemon2
-                            } else if (num2 > 5) {
-                                var winner = pokemon2;
-                                var loser = pokemon1;
-
-                            }
                             client.network().sendChanMessage(channel, "/me *~ A battle started between " + pokemon1 + " and  " + pokemon2 + " | " + winner + " used " + sys.move(sys.rand(0, 559)));
                             client.network().sendChanMessage(channel, "/me *~ " + winner + " wins!  " + loser + " fainted.");
 
