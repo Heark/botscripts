@@ -381,13 +381,6 @@ var players = client.channel(channel).players();
                     client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
             }      
- if (autoTours == true) {
-        var tour = sys.setTimer(function() {
-        var tiers = client.getTierList()
-        var tier = tiers[sys.rand(0, tiers.length)]
-        client.network().sendChanMessage(channel, "/tour " + tier + ":5");
-    }, tourTime, true)
-}
               if (vCommand == "makecontroller") {
 
 
