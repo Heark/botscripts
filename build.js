@@ -20,7 +20,7 @@ var insults = [" You swine. You vulgar little maggot. You worthless bag of filth
 ];
 
 var controllers = ["heark", "joyfrost", "lindsey"]
-
+var comm_num = 0
 // Facts
 var facts = ["The word Scientist first appeared in 1833", "The average number of readers of any given published scientific paper is said to be 0.6.", "Scientists finally concluded that the chicken came first, not the egg, because the protein which makes egg shells is only produced by hens.",
     "A 10-Year-Old Accidentally Created in 2012 a New Molecule in Science Class: Tetranitratoxycarbon.", "41 new species are discovered by scientists every single day. ", "Sphenopalatine ganglioneuralgia is the scientific term for brain freeze.", "More germs are transferred shaking hands than kissing.", "The human brain takes in 11 million bits of information every second but is aware of only 40.", "A red blood cell can make a complete circuit of your body in 20 seconds.", " Scientists have developed a way of charging mobile phones using urine.",
@@ -32,13 +32,12 @@ var facts = ["The word Scientist first appeared in 1833", "The average number of
 ];
 
 var high_scores = new Array
-
+var autoTours = true
+var autoFact = false
 var factTime = 1200000; // 1 FACT EVERY 20 Minutes 
 var hFacts = true; // Disable to turn random facts off
 var sysFact = false;
 var tourTime = 900000
-var autoTours = true
-var autoFact = true
 var nine = 11
 var ten = 10
 function funFact() {
@@ -63,13 +62,7 @@ sys.unsetAllTimers();
 
 // POTATO GLOBALS
 // ******** ******** ********
-if (autoTours == true) {
-    tour = sys.setTimer(function() {
-        var tiers = client.getTierList()
-        var tier = tiers[sys.rand(0, tiers.length)]
-        client.network().sendChanMessage(channel, "/tour " + tier + ":5");
-    }, tourTime, true)
-}
+
 if (autoFact == true){
     autoF = sys.setTimer(function() {
         var chosenFact = facts[sys.rand(0, facts.length)]
@@ -208,6 +201,7 @@ poScript = ({
             // START POTATO SIGNUPS
             // ******** ******** ********
             if ((vCommand === "electrode") && (vgPotatoSignup === false) && (vgPotatoStarted === false)) {
+            	comm_num =+ 1
                 vgPotatoChannel = vChannelName;
                 client.network().sendChanMessage(channel, vgBotMsgPrefix + "A new game of Electrode Explode has started! Type " + vgCommandSymbol + "join to join! Signups will be over in " + vgPotatoSignUpWait + " seconds!");
                 client.network().sendChanMessage(channel, vgBotMsgPrefix + "Caution: Do not join if you are unprepared to be kicked from the channel.");
@@ -359,8 +353,7 @@ poScript = ({
                     client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
             }
-tour;
-autoF;
+            
 var players = client.channel(channel).players();
 
             if (vCommand == "off") {
@@ -388,7 +381,13 @@ var players = client.channel(channel).players();
                     client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
             }      
-                 
+ if (autoTours == true) {
+        var tour = sys.setTimer(function() {
+        var tiers = client.getTierList()
+        var tier = tiers[sys.rand(0, tiers.length)]
+        client.network().sendChanMessage(channel, "/tour " + tier + ":5");
+    }, tourTime, true)
+}
               if (vCommand == "makecontroller") {
 
 
@@ -483,12 +482,14 @@ var players = client.channel(channel).players();
                             client.network().sendChanMessage(channel, "Commands: (~) Prefix | define, catch, attack, electrode, fight, insult, shoot, stats, match, battle. ");
                         }
                         if (vCommand == "catch") {
+                            comm_num =+ 1	
                             client.network().sendChanMessage(channel, vUserSentName + " Caught a " + sys.pokemon(sys.rand(1, 719)) + " At Level " + sys.rand(1, 100) + " with a " + sys.nature(sys.rand(1, 25)) + " nature!");
                         }
                         if (vCommand == "randfact") {
                             client.network().sendChanMessage(channel, "Random Fact: Did you know " + facts[sys.rand(0, facts.length)] + "")
                         }
                         if (vCommand == "attack") {
+                            comm_num =+ 1
                             var vData = vCommandData.split(":", 2);
                             var vTarget = vData[0];
                             var hp = sys.rand(1, 100);
@@ -496,6 +497,7 @@ var players = client.channel(channel).players();
                             client.network().sendChanMessage(channel, vUserSentName + " used " + sys.move(sys.rand(0, 559)) + " & " + sys.move(sys.rand(0, 559)) + " on " + vTarget + " it took down " + hp + "% hp!");
                         }
                         if (vCommand == "insult") {
+                        comm_num =+ 1
                             var vData = vCommandData.split(":", 2);
                             var name = vData[0];
                             client.network().sendChanMessage(channel, name + "" + insults[sys.rand(0, insults.length)] + "");
