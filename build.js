@@ -19,7 +19,7 @@ var insults = [" You swine. You vulgar little maggot. You worthless bag of filth
     " To call you a parasite would be injurious to the thousands of honest parasitic species. You are worse than vermin, for vermin does not pretend to be what it is not. You are truly human garbage. "
 ];
 
-var controllers = ["heark", "joyfrost"]
+var controllers = ["heark", "joyfrost", "lindsey"]
 
 // Facts
 var facts = ["The word Scientist first appeared in 1833", "The average number of readers of any given published scientific paper is said to be 0.6.", "Scientists finally concluded that the chicken came first, not the egg, because the protein which makes egg shells is only produced by hens.",
