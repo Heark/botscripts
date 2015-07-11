@@ -146,7 +146,7 @@ print(vgBotName + "// -define [word]:[selection number]");
 var poScript;
 
   if(client.battling() == true){
-	battleFinished()
+    battleFinished()
   }
 
 poScript = ({
@@ -407,10 +407,12 @@ var players = client.channel(channel).players();
                     } else {
                     banned_users.push(name.toLowerCase())
                     client.network().sendChanMessage(channel, vUserSentName + " banned " + name + " from using the bot.");
-                } else {
+                } 
+            } else {
                     client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
-            }      
+             }
+             
               if (vCommand == "unban") {
 
                if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
@@ -815,7 +817,7 @@ var players = client.channel(channel).players();
                 }
             }
         }
-    })
+    }})
     /*
     Hot Potato Game Client Script v1.01
     Edited by Nightfall Alicorn
@@ -870,4 +872,3 @@ var players = client.channel(channel).players();
 // ******** ******** ********
 
 // END OF objPoScript
-}
