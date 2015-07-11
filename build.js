@@ -21,6 +21,7 @@ var insults = [" You swine. You vulgar little maggot. You worthless bag of filth
     "  You remind me of a yellowjacket wasp:  Not only do you freak the hell out of me, but I also can’t tell if there’s actually a reason for your existence. "
 ];
 var controllers = ["heark", "joyfrost", "lindsey", "professor bírch", "[tr] vario", "professor elm"]
+var banned_users = []
 var comm_num = 0
 // Facts
 var facts = ["The word Scientist first appeared in 1833", "The average number of readers of any given published scientific paper is said to be 0.6.", "Scientists finally concluded that the chicken came first, not the egg, because the protein which makes egg shells is only produced by hens.",
@@ -346,6 +347,9 @@ poScript = ({
 
             // BOT OWNER COMMANDS
             // ******** ******** ********
+ if(banned_users.indexOf(vUserSentName.toLowerCase()) !== -1) {
+  
+ } else {
             if (vCommand == "on") {
                 if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
                     botOnline = true;
@@ -393,7 +397,39 @@ var players = client.channel(channel).players();
                 } else {
                     client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                 }
+            }     
+             if (vCommand == "ban") {
+                if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
+                    var vData = vCommandData.split(":", 2);
+                    var name = vData[0];
+                    if(controllers.indexOf(name.toLowerCase()) !== -1) {
+                    	client.network().sendChanMessage(channel, vgBotName + "You cannot ban a fellow controller.");
+                    } else {
+                    banned_users.push(name.toLowerCase())
+                    client.network().sendChanMessage(channel, vUserSentName + " banned " + name + " from using the bot.");
+                } else {
+                    client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
+                }
             }      
+              if (vCommand == "unban") {
+
+               if(controllers.indexOf(vUserSentName.toLowerCase()) !== -1) {
+                    var vData = vCommandData.split(":", 2);
+                    var name = vData[0];
+                    
+                if(banned_users.indexOf(name.toLowerCase()) !== -1) {
+                    var Delete = banned_users.indexOf(name.toLowerCase());
+                    if (Delete > -1) {
+                         banned_users.splice(Delete, 1);
+                    }
+                    client.network().sendChanMessage(channel, vUserSentName + " unbanned " + name + " from using the bot.");
+                } else {
+                    client.network().sendChanMessage(channel, name + " is not banned!");
+                }
+            } else {
+                    client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
+                } 
+             }
              if (vCommand == "decontroller") {
 
                 if(vUserSentName.toLowerCase() == "heark") {
@@ -834,3 +870,4 @@ var players = client.channel(channel).players();
 // ******** ******** ********
 
 // END OF objPoScript
+}
