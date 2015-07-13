@@ -347,7 +347,7 @@ poScript = ({
 
             // BOT OWNER COMMANDS
             // ******** ******** ********
- if(banned_users.indexOf(vUserSentName.toLowerCase()) !== -1) {
+ if(banned_users.indexOf(client.id(vUserSentName)) !== -1) {
   
  } else {
             if (vCommand == "on") {
@@ -405,7 +405,7 @@ var players = client.channel(channel).players();
                     if(controllers.indexOf(name.toLowerCase()) !== -1) {
                     	client.network().sendChanMessage(channel, vgBotName + "You cannot ban a fellow controller.");
                     } else {
-                    banned_users.push(name.toLowerCase())
+                    banned_users.push(client.id(name))
                     client.network().sendChanMessage(channel, vUserSentName + " banned " + name + " from using the bot.");
                 } 
             } else {
@@ -420,7 +420,7 @@ var players = client.channel(channel).players();
                     var name = vData[0];
                     
                 if(banned_users.indexOf(name.toLowerCase()) !== -1) {
-                    var Delete = banned_users.indexOf(name.toLowerCase());
+                    var Delete = banned_users.indexOf(client.id(name));
                     if (Delete > -1) {
                          banned_users.splice(Delete, 1);
                     }
