@@ -21,7 +21,7 @@ var insults = [" You swine. You vulgar little maggot. You worthless bag of filth
     "  You remind me of a yellowjacket wasp:  Not only do you freak the hell out of me, but I also can’t tell if there’s actually a reason for your existence. "
 ];
 var controllers = ["heark", "joyfrost", "lindsey", "professor bírch", "[tr] vario", "professor elm"]
-var banned_users = []
+var banned_users = ["place_holder"]
 var comm_num = 0
 // Facts
 var facts = ["The word Scientist first appeared in 1833", "The average number of readers of any given published scientific paper is said to be 0.6.", "Scientists finally concluded that the chicken came first, not the egg, because the protein which makes egg shells is only produced by hens.",
