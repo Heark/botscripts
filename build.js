@@ -681,6 +681,12 @@ var players = client.channel(channel).players();
                         var ab1 = sys.ability(sys.pokeAbility(chosen, 0))
                         var ab2 = sys.ability(sys.pokeAbility(chosen, 2))
                         var ab3 = sys.ability(sys.pokeAbility(chosen, 1))
+                        if(ab2 == "(No Ability)"){
+                        	ab2 = ""
+                        }
+                        if (ab3 == "(No Ability)"){
+                        	ab3 = ""
+                        }
                         if (chosen == undefined) {
                             client.network().sendChanMessage(channel, chosenPokemon + " doesn't exist in the database.");
                         } else {
