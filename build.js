@@ -678,13 +678,13 @@ var players = client.channel(channel).players();
 
                         var type1 = sys.pokeType1(chosen, 6)
                         var type2 = sys.pokeType2(chosen, 6)
-                        var ab1 = sys.pokeAbility(chosen, 0)
-                        var ab2 = sys.pokeAbility(chosen, 1)
-                        var ab3 = sys.pokeAbility(chosen, 2)
+                        var ab1 = sys.ability(sys.pokeAbility(chosen, 0))
+                        var ab2 = sys.ability(sys.pokeAbility(chosen, 1))
+                        var ab3 = sys.ability(sys.pokeAbility(chosen, 2))
                         if (chosen == undefined) {
                             client.network().sendChanMessage(channel, chosenPokemon + " doesn't exist in the database.");
                         } else {
-                            client.network().sendChanMessage(channel, chosenPokemon + "'s stats: Type: " + sys.type(type1) + " " + sys.type(type2) + "| Abilities: " + ab1 + "" + ab2 + "" + ab3 + " | HP: " + sys.baseStats(chosen, 0, 6) + " | ATK: " + sys.baseStats(chosen, 1, 6) + " | DEF: " + sys.baseStats(chosen, 2, 6) + " | SPA: " + sys.baseStats(chosen, 3, 6) + " | SPD: " + sys.baseStats(chosen, 4, 6) + " | SPEED: " + sys.baseStats(chosen, 5, 6) + ".");
+                            client.network().sendChanMessage(channel, chosenPokemon + "'s stats: Type: " + sys.type(type1) + " " + sys.type(type2) + "| Abilities: " + ab1 + " | " + ab2 + " | " + ab3 + " | HP: " + sys.baseStats(chosen, 0, 6) + " | ATK: " + sys.baseStats(chosen, 1, 6) + " | DEF: " + sys.baseStats(chosen, 2, 6) + " | SPA: " + sys.baseStats(chosen, 3, 6) + " | SPD: " + sys.baseStats(chosen, 4, 6) + " | SPEED: " + sys.baseStats(chosen, 5, 6) + ".");
                         }
                     }
                     if (vCommand == "savelogs") {
