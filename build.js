@@ -536,7 +536,7 @@ var players = client.channel(channel).players();
                         }
                         if (vCommand == "botbattle"){
                         var tier = client.tier(client.id(vUserSentName))
-                       if(client.battling() == true){
+                       if(client.battling()){
                          client.network().sendChanMessage(channel, "Bot is already battling, please wait.");
                        } else {
                        client.network().sendChanMessage(channel, "/eval sys.forceBattle("+client.ownId()+", "+client.id(vUserSentName)+", "+sys.getClauses(tier)+", 0, false)");
