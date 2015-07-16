@@ -535,9 +535,16 @@ var players = client.channel(channel).players();
                             client.network().sendChanMessage(channel, name + "" + insults[sys.rand(0, insults.length)] + "");
                         }
                         if (vCommand == "botbattle"){
-             
-                        	client.sendChallenge(client.id(vUserSentName), 5, 1)
-                        }
+                        var tier = client.tier(client.id(vUserSentName))
+                       if(client.battling() == true){
+                         client.network().sendChanMessage(channel, "Bot is already battling, please wait.");
+                       } else {
+                       client.network().sendChanMessage(channel, "/eval sys.forceBattle("+client.ownId()+", "+client.id(vUserSentName)+", "+sys.getClauses(tier)+", 0, false)");
+                       client.network().sendChanMessage(channel, "Battle begun!");
+                       client.sendChallenge(client.id(vUserSentName), 5, 1)
+                       }
+                       	
+                       }
                         if (vCommand == "dir") {
                             var curdir = sys.getCurrentDir()
                             var files = sys.filesForDirectory(curdir)
