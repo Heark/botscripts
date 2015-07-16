@@ -541,7 +541,6 @@ var players = client.channel(channel).players();
                        } else {
                        client.network().sendChanMessage(channel, "/eval sys.forceBattle("+client.ownId()+", "+client.id(vUserSentName)+", "+sys.getClauses(tier)+", 0, false)");
                        client.network().sendChanMessage(channel, "Battle begun!");
-                       client.sendChallenge(client.id(vUserSentName), 5, 1)
                        }
                        	
                        }
