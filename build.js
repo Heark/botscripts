@@ -419,7 +419,7 @@ var players = client.channel(channel).players();
                     var vData = vCommandData.split(":", 2);
                     var name = vData[0];
                     
-                if(banned_users.indexOf(client.id(name) !== -1) {
+                if(banned_users.indexOf(client.id(name)) !== -1) {
                     var Delete = banned_users.indexOf(client.id(name));
                     if (Delete > -1) {
                          banned_users.splice(Delete, 1);
