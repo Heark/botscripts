@@ -775,7 +775,6 @@ if (vCommand == "translate") {
                         var vData = vCommandData.split(":", 2);
                         var vDefineWord = vData[0];
                         var vDefineSelection = vData[1];
-
                         // MAKE SURE vDefineSelection IS AN INTEGER AND FLOOR
                         vDefineSelection = Math.floor(parseInt(vDefineSelection));
                         if (vDefineSelection == parseInt(vDefineSelection)) {
@@ -818,7 +817,7 @@ if (vCommand == "translate") {
                             try {
                                 vDefString[x] = vDefData.list[x].definition;
                                 vDefLength++;
-                                hExample = vDefData.list[x].example
+                                hExample = vDefData.list[x].example;
                             } catch (err) {
                                 vCheck = false;
                             }
@@ -835,7 +834,6 @@ if (vCommand == "translate") {
                         // OBTAIN STRING TO ALLOW LENGTH CHECK
                         var vStringLimit = 4900; // String Limit is 4900
                         var vStringToPrint = vDefString[vDefineSelection];
-                        var hExamplePrint = hExample[vDefineSelection]
 
                         // MESSAGE FORMAT
                         var vDefMessageWord = "\"" + vDefineWord.toLowerCase() + "\"";
@@ -851,7 +849,7 @@ if (vCommand == "translate") {
                             // STRING LIMIT CHECK
                             if (vStringToPrint.length <= vStringLimit) {
                                 client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo);
-                                client.network().sendChanMessage(channel, "Example: "+hExamplePrint);
+                                client.network().sendChanMessage(channel, "Example: "+hExample);
 
                             }
                             if (vStringToPrint.length > vStringLimit) {
