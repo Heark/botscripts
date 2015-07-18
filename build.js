@@ -676,7 +676,38 @@ var players = client.channel(channel).players();
                             client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                         }
                     }
+if (vCommand == "translate") {
+                    	var vData2 = vCommandData.split(":", 2);
+                        var tWord = vData2[0];
+                        var tLang = vData2[1];
+                        if(tLang == undefined){
+                        	client.network().sendChanMessage(channel, "Please define a language first. Use ~langs to see the supported languages")
+                        } else if(tLang.toLowerCase() == "spanish"){
+                        	tLang = "spa"
+                        }
 
+                           var loadtWord = sys.synchronousWebCall("https://glosbe.com/gapi/translate?from=eng&dest="+tLang+"&format=json&phrase="+tWord+"&pretty=false")
+                           var translated = JSON.parse(loadtWord)
+ 			
+                           print(loadtWord)
+                           var tString = []
+                           var vCheck = true;
+                        for (x = 0; vCheck == true; x++) {
+                            try {
+                                tString[x] = translated.tuc[x].text;
+                            } catch (err) {
+                                vCheck = false;
+                            }
+                        }
+                            var tWordED = tString[0]
+                           print(tWordED)
+                           if(translated.text == undefined ){
+                           	client.network().sendChanMessage(channel, "Failed to load data for "+tWord)
+                           } else {
+                           	client.network().sendChanMessage(channel, translated.text)
+                           }
+
+                    }
                     if (vCommand == "stats") {
                         var vData2 = vCommandData.split(":", 2);
                         var chosenPokemon = vData2[0];
@@ -787,6 +818,7 @@ var players = client.channel(channel).players();
                             try {
                                 vDefString[x] = vDefData.list[x].definition;
                                 vDefLength++;
+                                hExample = vDefData.list[x].example
                             } catch (err) {
                                 vCheck = false;
                             }
@@ -803,6 +835,7 @@ var players = client.channel(channel).players();
                         // OBTAIN STRING TO ALLOW LENGTH CHECK
                         var vStringLimit = 4900; // String Limit is 4900
                         var vStringToPrint = vDefString[vDefineSelection];
+                        var hExamplePrint = hExample[vDefineSelection]
 
                         // MESSAGE FORMAT
                         var vDefMessageWord = "\"" + vDefineWord.toLowerCase() + "\"";
@@ -818,6 +851,8 @@ var players = client.channel(channel).players();
                             // STRING LIMIT CHECK
                             if (vStringToPrint.length <= vStringLimit) {
                                 client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo);
+                                client.network().sendChanMessage(channel, "Example: "+hExamplePrint);
+
                             }
                             if (vStringToPrint.length > vStringLimit) {
                                 client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo.substring(0, vStringLimit) + " " + vDefMessageLimitReached);
