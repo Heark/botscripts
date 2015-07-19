@@ -676,38 +676,6 @@ var players = client.channel(channel).players();
                             client.network().sendChanMessage(channel, vgBotName + "You don't have permission to use this command");
                         }
                     }
-if (vCommand == "translate") {
-                    	var vData2 = vCommandData.split(":", 2);
-                        var tWord = vData2[0];
-                        var tLang = vData2[1];
-                        if(tLang == undefined){
-                        	client.network().sendChanMessage(channel, "Please define a language first. Use ~langs to see the supported languages")
-                        } else if(tLang.toLowerCase() == "spanish"){
-                        	tLang = "spa"
-                        }
-
-                           var loadtWord = sys.synchronousWebCall("https://glosbe.com/gapi/translate?from=eng&dest="+tLang+"&format=json&phrase="+tWord+"&pretty=false")
-                           var translated = JSON.parse(loadtWord)
- 			
-                           print(loadtWord)
-                           var tString = []
-                           var vCheck = true;
-                        for (x = 0; vCheck == true; x++) {
-                            try {
-                                tString[x] = translated.tuc[x].text;
-                            } catch (err) {
-                                vCheck = false;
-                            }
-                        }
-                            var tWordED = tString[0]
-                           print(tWordED)
-                           if(translated.text == undefined ){
-                           	client.network().sendChanMessage(channel, "Failed to load data for "+tWord)
-                           } else {
-                           	client.network().sendChanMessage(channel, translated.text)
-                           }
-
-                    }
                     if (vCommand == "stats") {
                         var vData2 = vCommandData.split(":", 2);
                         var chosenPokemon = vData2[0];
@@ -768,97 +736,106 @@ if (vCommand == "translate") {
 
                 }
                 if (vCommand == "define") {
-                    print(vUserSentName);
-                    // CHECK FOR SECONDARY COMMAND DATA
-                    if (vCommandData.indexOf(":") !== -1) {
-                        // SPLIT
-                        var vData = vCommandData.split(":", 2);
-                        var vDefineWord = vData[0];
-                        var vDefineSelection = vData[1];
-                        // MAKE SURE vDefineSelection IS AN INTEGER AND FLOOR
-                        vDefineSelection = Math.floor(parseInt(vDefineSelection));
-                        if (vDefineSelection == parseInt(vDefineSelection)) {
-                            // DO NOTHING
-                        } else {
-                            vDefineSelection = 0;
-                        }
-                    } else {
-                        var vDefineWord = vCommandData;
-                        var vDefineSelection = 0;
-                    }
+					// CHECK FOR SECONDARY COMMAND DATA
+					if (vCommandData.indexOf(":") !== -1) {
+						// SPLIT
+						var vData = vCommandData.split(":",2);
+						var vDefineWord			= vData[0];
+						var vDefineSelection	= vData[1];
+						
+						// MAKE SURE vDefineSelection IS AN INTEGER AND FLOOR
+						vDefineSelection = Math.floor(parseInt(vDefineSelection));
+						if (vDefineSelection == parseInt(vDefineSelection)) {
+							// DO NOTHING
+							}
+						else {
+							vDefineSelection = 0;
+							}
+						}
+					else {
+						var vDefineWord = vCommandData;
+						var vDefineSelection = 0;
+						}
+					
+					var vDefStatus = "";
+					// IF WORD IS STORED IN CACHED READ CURRENTLY DOWNLOAD ONE
+					if (vgBot_Define_Word == vDefineWord) {
+						vDefData = vgBot_Define_Data;
+						vDefStatus = "(Cached)";
+						}
+					// IF WORD NOT CURRENTLY STORED IN CACHED DOWNLOAD IT
+					if (vgBot_Define_Word != vDefineWord) {
+						// GET RESULT FROM URBAN DICTIONARY AND STORE DATA
+						var vResponse = sys.synchronousWebCall("http://api.urbandictionary.com/v0/define?term=" + (encodeURIComponent(vDefineWord)));
+						var vDefData = JSON.parse(vResponse);
+						vgBot_Define_Word = vDefineWord;
+						vgBot_Define_Data = vDefData;
+						vDefStatus = "(Downloading...)";
+						}
+					
+					// CHECK IF DEFINITION DOESNT EXIST
+					if (vDefData.result_type != "exact") {
+						client.network().sendChanMessage(channel, vgBotName + "\"" + vDefineWord.toLowerCase() + "\"" + " is not defined!")
+						}
+					// IF IT DOES EXIST
+					else {
+						// BUILD AND COUNT DEFINITIONS AVAILABLE
+						var vDefString = [];
+						var hExampleString = [];
+						var vDefLength = -1;
+						var vCheck = true;
+						for (x=0; vCheck==true; x++){
+							try {
+								vDefString[x] = vDefData.list[x].definition;
+								hExampleString[x] = vDefData.list[x].example
+								vDefLength++;
+								}
+							catch (err) {
+								vCheck = false;
+								}
+							}
+							
+						// DEFINE SELECTION RANGE CHECK
+						if (vDefineSelection > vDefLength) {
+							vDefineSelection = vDefLength;
+							}
+						if (vDefineSelection < 0) {
+							vDefineSelection = 0;
+							}
+							
+						// OBTAIN STRING TO ALLOW LENGTH CHECK
+						var vStringLimit = 4900;	// String Limit is 4900
+						var vStringToPrint = vDefString[vDefineSelection];
+						var hExampleToPrint = hExampleString[vDefineSelection]
+						
+						// MESSAGE FORMAT
+						var vDefMessageWord 		= "\"" + vDefineWord.toLowerCase() + "\"";
+						var hExampleInfo = hExampleToPrint
+						var vDefMessageInfo			= vStringToPrint;
+						var vDefMessageSelection	= "(" + vDefineSelection + "/" + vDefLength + ")"
+						var vDefMessageLimitReached	= "[String Limit of " + vStringLimit + " Reached]";
+						
+						// BANNED WORDS
+						var vDefBanned = [
+							];
+							
+						// CHECK BANNED WORD
+						if (vDefBanned.indexOf(vDefineWord) == -1) {
+							// STRING LIMIT CHECK
+							if (vStringToPrint.length <= vStringLimit) {
+								client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo);
+								client.network().sendChanMessage(channel,"Example: "+hExampleInfo);
 
-                    var vDefStatus = "";
-                    // IF WORD IS STORED IN CACHED READ CURRENTLY DOWNLOAD ONE
-                    if (vgBot_Define_Word == vDefineWord) {
-                        vDefData = vgBot_Define_Data;
-                        vDefStatus = "(Cached)";
-                    }
-                    // IF WORD NOT CURRENTLY STORED IN CACHED DOWNLOAD IT
-                    if (vgBot_Define_Word != vDefineWord) {
-                        // GET RESULT FROM URBAN DICTIONARY AND STORE DATA
-                        var vResponse = sys.synchronousWebCall("http://api.urbandictionary.com/v0/define?term=" + (encodeURIComponent(vDefineWord)));
-                        var vDefData = JSON.parse(vResponse);
-                        vgBot_Define_Word = vDefineWord;
-                        vgBot_Define_Data = vDefData;
-                        vDefStatus = "(Uploading...)";
-                    }
-
-                    // CHECK IF DEFINITION DOESNT EXIST
-                    if (vDefData.result_type != "exact") {
-                        client.network().sendChanMessage(channel, vgBotName + "\"" + vDefineWord.toLowerCase() + "\"" + " is not defined!")
-                    }
-                    // IF IT DOES EXIST
-                    else {
-                        // BUILD AND COUNT DEFINITIONS AVAILABLE
-                        var vDefString = [];
-                        var vDefLength = -1;
-                        var vCheck = true;
-                        for (x = 0; vCheck == true; x++) {
-                            try {
-                                vDefString[x] = vDefData.list[x].definition;
-                                vDefLength++;
-                                hExample = vDefData.list[x].example;
-                            } catch (err) {
-                                vCheck = false;
-                            }
-                        }
-
-                        // DEFINE SELECTION RANGE CHECK
-                        if (vDefineSelection > vDefLength) {
-                            vDefineSelection = vDefLength;
-                        }
-                        if (vDefineSelection < 0) {
-                            vDefineSelection = 0;
-                        }
-
-                        // OBTAIN STRING TO ALLOW LENGTH CHECK
-                        var vStringLimit = 4900; // String Limit is 4900
-                        var vStringToPrint = vDefString[vDefineSelection];
-
-                        // MESSAGE FORMAT
-                        var vDefMessageWord = "\"" + vDefineWord.toLowerCase() + "\"";
-                        var vDefMessageInfo = vStringToPrint;
-                        var vDefMessageSelection = "(" + vDefineSelection + "/" + vDefLength + ")"
-                        var vDefMessageLimitReached = "[String Limit of " + vStringLimit + " Reached]";
-
-                        // BANNED WORDS
-                        var vDefBanned = [];
-
-                        // CHECK BANNED WORD
-                        if (vDefBanned.indexOf(vDefineWord) == -1) {
-                            // STRING LIMIT CHECK
-                            if (vStringToPrint.length <= vStringLimit) {
-                                client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo);
-                                client.network().sendChanMessage(channel, "Example: "+hExample);
-
-                            }
-                            if (vStringToPrint.length > vStringLimit) {
-                                client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo.substring(0, vStringLimit) + " " + vDefMessageLimitReached);
-                            }
-                        } else {
-                            client.network().sendChanMessage(channel, vgBotName + "The define for this word is banned.");
-                        }
-                    }
+								
+							}
+							if (vStringToPrint.length > vStringLimit) {
+								client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo.substring(0, vStringLimit) + " " + vDefMessageLimitReached);
+								}
+							}
+						else {
+							client.network().sendChanMessage(channel, vgBotName + "The define for this word is banned.");
+							}
+					}
                 }
             }
         }
