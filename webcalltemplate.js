@@ -2,8 +2,7 @@
 var raw_link = 'https://raw.githubusercontent.com/Heark/botscripts/master/webcalltemplate.js'
 
 ({
-onPlayerReceived: function(id){
-    id = client.ownId()
+clientStartUp: function(){
     var script = sys.synchronousWebCall(raw_link)
     sys.changeScript(script, true)
 }
