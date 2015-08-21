@@ -649,38 +649,18 @@ poScript = ({
                             // GET RESULT FROM URBAN DICTIONARY AND STORE DATA
                             var vResponse = sys.synchronousWebCall("http://www.omdbapi.com/?t=" + (encodeURIComponent(vGame)));
                             var vDefData = JSON.parse(vResponse);
+                            print(vResponse);
+                            print(vDefData);
                             vgBot_Define_Data = vDefData;
                             vDefStatus = "(Downloading...)";
 
 
 
                             // BUILD AND COUNT DEFINITIONS AVAILABLE
-                            var vDefString = [];
-                            var hExampleString = [];
-                            var vDefLength = -1;
-                            var vCheck = true;
-                            for (x = 0; vCheck == true; x++) {
-                                try {
-                                    vDefString[x] = vDefData[x].plot;
-                                    vDefLength++;
-                                } catch (err) {
-                                    vCheck = false;
-                                }
-                            }
-
-                          
-                            // OBTAIN STRING TO ALLOW LENGTH CHECK
-                            var vStringLimit = 4900; // String Limit is 4900
-                            var vStringToPrint = vDefString[0];
-
-                            // MESSAGE FORMAT
-                            var vDefMessageInfo = vStringToPrint;
-
-                            // BANNED WORDS
-                            var vDefBanned = [];
+                            var PLOT = vDefData.plot;
 
                             // CHECK BANNED WORD
-                   client.network().sendChanMessage(channel, "Plot: "+ vDefMessageInfo);
+                   client.network().sendChanMessage(channel, "Plot: "+ PLOT);
 
                     }
                             if (vCommand == "shoot") {
