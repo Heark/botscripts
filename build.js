@@ -635,29 +635,25 @@ poScript = ({
                             if (sysFact == true) {
                                 sys.unsetTimer(factTimer);
                             }
-                                                if (vCommand == "movie") {
+                    if (vCommand == "movie") {
                         // CHECK FOR SECONDARY COMMAND DATA
                         if (vCommandData.indexOf(":") !== -1) {
                             // SPLIT
                             var vData = vCommandData.split(":", 2);
                             var vGame = vData[0];
+                          }
 
 
                         var vDefStatus = "";
                         // IF WORD NOT CURRENTLY STORED IN CACHED DOWNLOAD IT
                             // GET RESULT FROM URBAN DICTIONARY AND STORE DATA
-                            var vResponse = sys.synchronousWebCall("http://www.omdbapi.com/?t=" +(encodeURIComponent(vGame)));
+                            var vResponse = sys.synchronousWebCall("http://www.omdbapi.com/?t=" + (encodeURIComponent(vGame)));
                             var vDefData = JSON.parse(vResponse);
-                            vgBot_Define_Word = vDefineWord;
                             vgBot_Define_Data = vDefData;
                             vDefStatus = "(Downloading...)";
 
-                        // CHECK IF DEFINITION DOESNT EXIST
-                        if (vDefData.result_type != "exact") {
-                            client.network().sendChanMessage(channel, "Could not find "+vGame)
-                        }
-                        // IF IT DOES EXIST
-                        else {
+
+
                             // BUILD AND COUNT DEFINITIONS AVAILABLE
                             var vDefString = [];
                             var hExampleString = [];
@@ -678,32 +674,15 @@ poScript = ({
                             var vStringToPrint = vDefString[0];
 
                             // MESSAGE FORMAT
-                            var vDefMessageWord = "\"" + vDefineWord.toLowerCase() + "\"";
                             var vDefMessageInfo = vStringToPrint;
-                            var vDefMessageSelection = "(" + vDefineSelection + "/" + vDefLength + ")"
-                            var vDefMessageLimitReached = "[String Limit of " + vStringLimit + " Reached]";
 
                             // BANNED WORDS
                             var vDefBanned = [];
 
                             // CHECK BANNED WORD
-                            if (vDefBanned.indexOf(vDefineWord) == -1) {
-                                // STRING LIMIT CHECK
-                                if (vStringToPrint.length <= vStringLimit) {
-                                    client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo);
-                                    client.network().sendChanMessage(channel, "Example: " + hExampleInfo);
+                   client.network().sendChanMessage(channel, "Plot: "+ vDefMessageInfo);
 
-
-                                }
-                                if (vStringToPrint.length > vStringLimit) {
-                                    client.network().sendChanMessage(channel, vgBotName + " " + vDefStatus + " " + vDefMessageWord + " " + vDefMessageSelection + ": " + vDefMessageInfo.substring(0, vStringLimit) + " " + vDefMessageLimitReached);
-                                }
-                            } else {
-                                client.network().sendChanMessage(channel, vgBotName + "The define for this word is banned.");
-                            }
-                        }
                     }
-                                                }
                             if (vCommand == "shoot") {
                                 var vData = vCommandData.split(":", 2);
                                 var vTarget = vData[0];
