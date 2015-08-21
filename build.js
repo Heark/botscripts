@@ -424,8 +424,8 @@ poScript = ({
                         }
                         
                            var loadtWord = sys.synchronousWebCall("https://glosbe.com/gapi/translate?from=eng&dest="+(encodeURIComponent(tLang))+"&format=json&phrase="+(encodeURIComponent(tWord))+"&pretty=false")
-                           var translated = JSON.parse(loadtWord)
-                           print(loadtWord)
+                           var xtword = JSON.stringify(loadtWord);
+                           var translated = JSON.parse(loadtWord);
                            var tString = []
                            var vDefLength = -1;
                             var vCheck = true;
