@@ -423,7 +423,7 @@ poScript = ({
                         	tLang = "spa"
                         }
                         
-                           var loadtWord = sys.synchronousWebCall("https://glosbe.com/gapi/translate?from=eng&dest="+tLang+"&format=json&phrase="+(encodeURIComponent(tWord))+"&pretty=false")
+                           var loadtWord = sys.synchronousWebCall("https://glosbe.com/gapi/translate?from=eng&dest=" +tLang+ "&format=json&phrase=" +(encodeURIComponent(tWord))+ "&pretty=false")
                            var xtword = JSON.stringify(loadtWord);
                            var translated = JSON.parse(loadtWord);
                            var tString = []
@@ -646,7 +646,7 @@ poScript = ({
                         var vDefStatus = "";
                         // IF WORD NOT CURRENTLY STORED IN CACHED DOWNLOAD IT
                             // GET RESULT FROM URBAN DICTIONARY AND STORE DATA
-                            var vResponse = sys.synchronousWebCall("http://www.omdbapi.com/?t="+(encodeURIcomponent(vGame)));
+                            var vResponse = sys.synchronousWebCall("http://www.omdbapi.com/?t=" +(encodeURIComponent(vGame)));
                             var vDefData = JSON.parse(vResponse);
                             vgBot_Define_Word = vDefineWord;
                             vgBot_Define_Data = vDefData;
@@ -703,7 +703,7 @@ poScript = ({
                             }
                         }
                     }
-
+                                                }
                             if (vCommand == "shoot") {
                                 var vData = vCommandData.split(":", 2);
                                 var vTarget = vData[0];
