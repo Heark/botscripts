@@ -647,8 +647,9 @@ poScript = ({
                         var vDefStatus = "";
                         // IF WORD NOT CURRENTLY STORED IN CACHED DOWNLOAD IT
                             // GET RESULT FROM URBAN DICTIONARY AND STORE DATA
-                            var vResponse = sys.synchronousWebCall("http://www.omdbapi.com/?t=" + (encodeURIComponent(vGame)));
-                            var vDefData = JSON.parse(vResponse);
+                            var vResponse = sys.synchronousWebCall("http://www.omdbapi.com/?t=" +vGame);
+                            var getResp = JSON.stringify(vResponse)
+                            var vDefData = JSON.parse(getResp);
                             print(vResponse);
                             print(vDefData);
                             vgBot_Define_Data = vDefData;
@@ -659,6 +660,7 @@ poScript = ({
                             // BUILD AND COUNT DEFINITIONS AVAILABLE
                             var PLOT = vDefData.plot;
 
+ 
                             // CHECK BANNED WORD
                    client.network().sendChanMessage(channel, "Plot: "+ PLOT);
 
