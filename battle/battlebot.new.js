@@ -442,6 +442,9 @@ var isOffensiveBooster = function (moveId) {
         battle.battleCommand(battle.id, choice);
     },
     
+onTierNotification: function (tier) {
+    battle.battleMessage(battle.id, "Hello "+ battle.data.team(battle.opp).name +"! I am The Best Bot, I will be the victor of this battle!");
+},
     onChoiceCancellation: function (player) {
         this.onChoiceSelection(player);
     },
