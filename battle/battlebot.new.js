@@ -1,5 +1,4 @@
 /* jshint laxbreak: true, laxcomma: true, evil: true, funcscope: true, expr: true */
-
 // Type chart for all effectivenesses that are not 1, stolen from Safari
 var TYPE_CHART = {
     "Normal": {
@@ -191,7 +190,7 @@ if (!sys.fileExists(sys.scriptsFolder + "AIalt.txt")) {
 global = this;
 
 // Defines a global variable; stays even when the script is reloaded
-var setVariable = function (variable, data) {
+var setVariable = function(variable, data) {
     if (typeof(global[variable]) == "undefined") {
         global[variable] = data;
     }
@@ -205,49 +204,49 @@ setVariable("verbose", false);
 setVariable("isBoosted", []);
 setVariable("firstTurn", []);
 setVariable("movesUsed", {});
-
-// If the player name is not the AI alt, do not use AI
+var hax_counter = 0
+    // If the player name is not the AI alt, do not use AI
 useAI = true;
 
 // Returns the nickname of the currently active Pokemon at a given spot
-var nick = function (spot) {
+var nick = function(spot) {
     return battle.data.field.poke(spot).pokemon.nick;
 };
 
 // Prints a message on the AI's battle window if the AI is set to verbose mode
-var send = function (message) {
-   if (verbose) {
-       print(message);
-   }
+var send = function(message) {
+    if (verbose) {
+        print(message);
+    }
 };
 
 // Returns the currently active Pokemon of a given player number
-var poke = function (spot) {
+var poke = function(spot) {
     return battle.data.team(spot).poke(0);
 };
 
 // Returns the currently active Pokemon of the AI
-var mpoke = function () {
+var mpoke = function() {
     return battle.data.team(battle.me).poke(0);
 };
 
 // Returns the currently active Pokemon of the opponent
-var opoke = function () {
+var opoke = function() {
     return battle.data.team(battle.opp).poke(0);
 };
 
 // Returns the currently active Pokemon at a given spot
-var fpoke = function (spot) {
+var fpoke = function(spot) {
     return battle.data.field.poke(spot);
 };
 
 // Returns the AI's Pokemon at a given index
-var tpoke = function (index) {
+var tpoke = function(index) {
     return battle.data.team(battle.me).poke(index);
 };
 
 // Calculates the type effectiveness of a given type against the foe's currently active Pokemon
-var effectiveness = function (type) {
+var effectiveness = function(type) {
     var foe = opoke().numRef;
     var type1 = sys.type(sys.pokeType1(foe));
     var type2 = sys.type(sys.pokeType2(foe));
@@ -265,7 +264,7 @@ var effectiveness = function (type) {
 };
 
 // Calculates the type effectiveness of the foe's currently active Pokemon against a given type
-var foeEffectiveness = function (type) {
+var foeEffectiveness = function(type) {
     var foe = opoke().numRef;
     var type1 = sys.type(sys.pokeType1(foe));
     var type2 = sys.type(sys.pokeType2(foe));
@@ -280,7 +279,7 @@ var foeEffectiveness = function (type) {
 };
 
 // Checks if the given Pokemon can have the given ability
-var hasAbility = function (poke, abilityName) {
+var hasAbility = function(poke, abilityName) {
     var ability = sys.abilityNum(abilityName);
     for (var i = 0; i < 3; i++) {
         if (sys.pokeAbility(poke, i) == ability) {
@@ -291,13 +290,16 @@ var hasAbility = function (poke, abilityName) {
 };
 
 // Selects the best possible move to use based on type effectiveness against the foe's currently active Pokemon
-var chooseAttack = function () {
-    var move, moveType, highest = 0, bestMove = "none", foe = opoke().numRef, myPoke = mpoke().numRef;
+var chooseAttack = function() {
+    var move, moveType, highest = 0,
+        bestMove = "none",
+        foe = opoke().numRef,
+        myPoke = mpoke().numRef;
     for (var i = 0; i < 4; i++) {
         move = poke(battle.me).move(i).num;
         moveType = sys.type(sys.moveType(move));
         send("The effectiveness of the move " + sys.move(move) + " against the foe's active Pokemon is " + effectiveness(moveType) + ".");
-        
+
         if (moveType == "Electric" && (hasAbility(foe, "Lightning Rod") || hasAbility(foe, "Volt Absorb") || hasAbility(foe, "Motor Drive"))) {
             send("Foe could have Lightning Rod, Volt Absorb or Motor Drive; not using the Electric-type move.");
             continue;
@@ -318,12 +320,12 @@ var chooseAttack = function () {
             send("Foe could have Levitate; not using the Ground-type move.");
             continue;
         }
-        
+
         if (movePower(move) >= 1 && effectiveness(moveType) > highest && sys.move(move) != "Fake Out" && !(sys.move(move) == "Last Resort" && movesUsed[myPoke].length <= 2)) {
             highest = effectiveness(moveType);
             bestMove = i;
         }
-        
+
         if (firstTurn[myPoke] && sys.move(move) == "Fake Out" && foeEffectiveness("Normal") !== 0) {
             if (movesUsed[myPoke].indexOf(i) == -1) {
                 movesUsed[myPoke].push(i);
@@ -331,7 +333,7 @@ var chooseAttack = function () {
             firstTurn[myPoke] = false;
             return i;
         }
-        
+
         if (isOffensiveBooster(move) && !isBoosted[myPoke] && foeEffectiveness(sys.type(sys.pokeType1(myPoke))) * foeEffectiveness(sys.type(sys.pokeType2(myPoke))) < 1) {
             send("Foe effectiveness against current Pokemon is lower than 1; stat boosting.");
             if (movesUsed[myPoke].indexOf(i) == -1) {
@@ -341,17 +343,18 @@ var chooseAttack = function () {
             return i;
         }
     }
-    
+
     if (movesUsed[myPoke].indexOf(bestMove) == -1) {
         movesUsed[myPoke].push(bestMove);
     }
-    
+
     return bestMove;
 };
 
 // Selects the best possible switch-in based on the foe's currently active Pokemon's type effectiveness against it, which should be as low as possible
-var chooseDefensiveSwitchIn = function (switches) {
-    var poke, pokeType1, pokeType2, switchInEffectiveness, lowest = Number.MAX_VALUE, bestSwitchIn = switches[sys.rand(0, switches.length)];
+var chooseDefensiveSwitchIn = function(switches) {
+    var poke, pokeType1, pokeType2, switchInEffectiveness, lowest = Number.MAX_VALUE,
+        bestSwitchIn = switches[sys.rand(0, switches.length)];
     for (var i in switches) {
         poke = sys.pokeNum(tpoke(switches[i]).pokeName);
         pokeType1 = sys.type(sys.pokeType1(poke));
@@ -367,8 +370,9 @@ var chooseDefensiveSwitchIn = function (switches) {
 };
 
 // Selects the best possible switch-in based on type effectiveness against the foe's currently active Pokemon, which should be as high as possible
-var chooseOffensiveSwitchIn = function (switches) {
-    var poke, pokeType1, pokeType2, switchInEffectiveness, highest = 0, bestSwitchIn = switches[sys.rand(0, switches.length)];
+var chooseOffensiveSwitchIn = function(switches) {
+    var poke, pokeType1, pokeType2, switchInEffectiveness, highest = 0,
+        bestSwitchIn = switches[sys.rand(0, switches.length)];
     for (var i in switches) {
         poke = sys.pokeNum(tpoke(switches[i]).pokeName);
         pokeType1 = sys.type(sys.pokeType1(poke));
@@ -384,7 +388,7 @@ var chooseOffensiveSwitchIn = function (switches) {
 };
 
 // Calculates the move power of a given move
-var movePower = function (moveId) {
+var movePower = function(moveId) {
     if (Object.keys(powerList).length === 0) {
         var data = sys.getFileContent("db/moves/6G/power.txt").split('\n');
         for (var i = 0; i < data.length; i++) {
@@ -401,96 +405,153 @@ var movePower = function (moveId) {
 };
 
 // Returns whether a given move is an offensive boosting move or not.
-var isOffensiveBooster = function (moveId) {
+var isOffensiveBooster = function(moveId) {
     return offensiveBoosters.indexOf(sys.move(moveId)) != -1;
 };
 
 ({
-    onChoiceSelection: function (player) {
+    onChoiceSelection: function(player) {
         if (player !== battle.me || !useAI) {
             return;
         }
-        
+
         var switches = [];
         for (var i = 1; i < 6; i++) {
             if (!tpoke(i).isKoed()) {
-               switches.push(i);
+                switches.push(i);
             }
         }
 
         var random = sys.rand(0, 8);
 
         if (random === 0 || isBoosted[mpoke().numRef] || (fpoke(battle.me).onTheField && !poke(battle.me).isKoed() && (random != 1 || switches.length === 0))) {
-            choice = {"slot": battle.me, "type": "attack", "attackSlot": chooseAttack()};
+            choice = {
+                "slot": battle.me,
+                "type": "attack",
+                "attackSlot": chooseAttack()
+            };
             if (choice.attackSlot == "none") {
                 if (switches.length === 0) {
-                    choice = {"slot": battle.me, "type": "attack", "pokeSlot": sys.rand(0, 4)};
+                    choice = {
+                        "slot": battle.me,
+                        "type": "attack",
+                        "pokeSlot": sys.rand(0, 4)
+                    };
                 } else {
-                    choice = {"slot": battle.me, "type": "switch", "pokeSlot": chooseOffensiveSwitchIn(switches)};
+                    choice = {
+                        "slot": battle.me,
+                        "type": "switch",
+                        "pokeSlot": chooseOffensiveSwitchIn(switches)
+                    };
                 }
             }
         } else if (poke(battle.me).isKoed()) {
-            choice = {"slot": battle.me, "type": "switch", "pokeSlot": chooseOffensiveSwitchIn(switches)};
+            choice = {
+                "slot": battle.me,
+                "type": "switch",
+                "pokeSlot": chooseOffensiveSwitchIn(switches)
+            };
         } else {
-            choice = {"slot": battle.me, "type": "switch", "pokeSlot": chooseDefensiveSwitchIn(switches)};
+            choice = {
+                "slot": battle.me,
+                "type": "switch",
+                "pokeSlot": chooseDefensiveSwitchIn(switches)
+            };
         }
-        
+
         if (choice.type == "switch") {
             isBoosted[mpoke().numRef] = false;
         }
-        
+
         battle.battleCommand(battle.id, choice);
     },
-    
-onTierNotification: function (tier) {
-    battle.battleMessage(battle.id, "Hello "+ battle.data.team(battle.opp).name +"! I am The Best Bot, I will be the victor of this battle!");
-},
-    onChoiceCancellation: function (player) {
+
+    onTierNotification: function(tier) {
+        battle.battleMessage(battle.id, "Hello " + battle.data.team(battle.opp).name + "! I am The Best Bot, I will be the victor of this battle!");
+    },
+    onChoiceCancellation: function(player) {
         this.onChoiceSelection(player);
     },
-    
-    onDrawRequest: function (player) {
+
+    onDrawRequest: function(player) {
         this.onChoiceCancelled(player);
     },
-    
-    onChoiceCancelled: function (player) {
+
+    onChoiceCancelled: function(player) {
         useAI = !useAI;
         print("The cancel button was clicked or a draw request was made, so the AI has been disabled.");
     },
-    
-    onSendOut: function (spot, previndex, pokemon, silent) {
+
+    onSendOut: function(spot, previndex, pokemon, silent) {
         if (spot === battle.me) {
             var myPoke = poke(spot).numRef;
             firstTurn[myPoke] = true;
             movesUsed[myPoke] = [];
         }
     },
-    onSpectatorJoin: function (id, name) {
+    onSpectatorJoin: function(id, name) {
         battle.battleMessage(battle.id, "Hello " + name + "!");
-},
-// onBeginTurn : function(turn) {
-  //  send("Turn " + turn + " of the battle!");
-// },
-onKo : function(spot) {
-    battle.battleMessage(battle.id, "Oh no! " + nick(spot) + " fainted!");
-},
-onDamageDone: function(spot, damage) {
-    if (spot == battle.me) {
-        battle.battleMessage(battle.id, "My " + nick(spot) + " took " + damage + " damage!");
-    } else {
-       battle.battleMessage(battle.id, nick(spot) + " took " + damage + "% damage!");
+    },
+    // onBeginTurn : function(turn) {
+    //  send("Turn " + turn + " of the battle!");
+    // },
+    onCriticalHit: function(spot) {
+        if (spot === battle.me) {
+            battle.battleMessage(battle.id, "Hax!! >:(");
+            hax_counter++
+        } else {
+            battle.battleMessage(battle.id, "Hehe, thanks hax!")
+
+        }
+    },
+    onFlinch: function(spot) {
+        if (spot === battle.me) {
+            battle.battleMessage(battle.id, "Hax!! >:(");
+            hax_counter++
+        } else {
+            battle.battleMessage(battle.id, "Hehe, thanks hax!")
+
+        }
+    },
+    onMiss: function(spot) {
+        if (spot === battle.me) {
+            battle.battleMessage(battle.id, "Hax!! >:(");
+            hax_counter++
+        } else {
+            battle.battleMessage(battle.id, "Hehe, thanks hax!")
+        }
+    },
+    onBattleEnd: function(result, winner) {
+        if (hax_counter >= 12) {
+            if (winner == battle.me) {
+                battle.battleMessage(battle.id, "Wow Hax was on my side!")
+            } else {
+                battle.battleMessage(battle.id, "You only won cause hax")
+            }
+        } else {
+            battle.battleMessage(battle.id, "Good game!")
+        }
     }
-},
-    onPlayerMessage: function (player, message) {
+    onKo: function(spot) {
+        battle.battleMessage(battle.id, "Oh no! " + nick(spot) + " fainted!");
+    },
+    onDamageDone: function(spot, damage) {
+        if (spot == battle.me) {
+            battle.battleMessage(battle.id, "My " + nick(spot) + " took " + damage + " damage!");
+        } else {
+            battle.battleMessage(battle.id, nick(spot) + " took " + damage + "% damage!");
+        }
+    },
+    onPlayerMessage: function(player, message) {
         if (player === battle.me) {
             if (message == "/verbose") {
                 verbose = !verbose;
             } else if (message.substr(0, 6) == "/eval ") {
-                 sys.eval(message.slice(6));
+                sys.eval(message.slice(6));
             } else if (message.substr(0, 5) == "/alt ") {
-                 AIalt = message.slice(5);
-                 sys.writeToFile(sys.scriptsFolder + "AIalt.txt", AIalt);
-                 print("The AI alt has been set to '" + AIalt + "'.");
+                AIalt = message.slice(5);
+                sys.writeToFile(sys.scriptsFolder + "AIalt.txt", AIalt);
+                print("The AI alt has been set to '" + AIalt + "'.");
             }
         }
     }
