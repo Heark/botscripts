@@ -531,7 +531,7 @@ var isOffensiveBooster = function(moveId) {
         } else {
             battle.battleMessage(battle.id, "Good game!")
         }
-    }
+    },
     onKo: function(spot) {
         battle.battleMessage(battle.id, "Oh no! " + nick(spot) + " fainted!");
     },
